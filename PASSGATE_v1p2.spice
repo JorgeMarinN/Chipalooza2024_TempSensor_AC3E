@@ -1,0 +1,32 @@
+**.subckt PASSGATE_v1p2 VIN VDD VSS CTR VOUT
+*.ipin VIN
+*.iopin VDD
+*.iopin VSS
+*.ipin CTR
+*.opin VOUT
+XMNSW VOUT CTR VIN VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XMPSW VOUT net1 VIN VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+X1 CTR net1 VDD VSS INVMIN_v1p1
+**.ends
+
+* expanding   symbol:  INVMIN_v1p1.sym # of pins=4
+* sym_path: /home/jorge/Documents/Postdoc/sky130_work_jm/SDC_SKY130_V1/INVMIN_v1p1.sym
+* sch_path: /home/jorge/Documents/Postdoc/sky130_work_jm/SDC_SKY130_V1/INVMIN_v1p1.sch
+.subckt INVMIN_v1p1  VIN VOUT VDD VSS
+*.ipin VIN
+*.iopin VDD
+*.iopin VSS
+*.opin VOUT
+XM1 VOUT VIN VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 VOUT VIN VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.end
