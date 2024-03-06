@@ -5,6 +5,27 @@ K {}
 V {}
 S {}
 E {}
+B 2 1600 240 2400 640 {flags=graph
+y1=-0.049
+y2=1.9
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=2e-05
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node=dout
+color=4
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
 N 210 60 210 80 { lab=GND}
 N 210 -50 210 0 { lab=VDD}
 N 820 -70 820 -30 { lab=VDD}
@@ -34,7 +55,10 @@ N 390 270 480 270 { lab=#net2}
 N 390 110 480 110 { lab=#net2}
 C {devices/vsource.sym} 210 30 0 0 {name=V1 value=VDD}
 C {devices/gnd.sym} 210 80 0 0 {name=l2 lab=GND}
-C {devices/code_shown.sym} 190 -520 0 0 {name=SPICE only_toplevel=false value="*.lib /home/jorge/Documents/Postdoc/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+C {devices/code_shown.sym} 190 -520 0 0 {name=SPICE
+only_toplevel=false
+spice_ignore=1
+value="
 .param VDD = 1.8
 .ic v(SENS_IN) = 0
 .ic v(REF_IN) = 1.8
@@ -67,7 +91,7 @@ C {devices/gnd.sym} 210 300 0 0 {name=l23 lab=GND}
 C {devices/lab_pin.sym} 210 170 0 0 {name=l24 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 820 250 0 0 {name=l10 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 620 190 3 0 {name=l9 sig_type=std_logic lab=REF_IN}
-C {symbol/SDC_v7p1_ROrangeext.sym} 600 50 0 0 {name=X1}
+C {symbol/SDC.sym} 600 50 0 0 {name=X1}
 C {sky130_fd_pr/res_high_po_5p73.sym} 550 140 0 0 {name=R1
 W=5.73
 L=8
@@ -81,12 +105,88 @@ L=30.5
 model=res_iso_pw
 spiceprefix=X
 mult=1}
-C {devices/code.sym} 1140 -470 0 0 {name=TT_MODELS
+C {devices/code.sym} 1770 -150 0 0 {name=SKY_MODELS
 only_toplevel=true
 format="tcleval( @value )"
 value="
-** opencircuitdesign pdks install
-.lib $::SKYWATER_MODELS/sky130.lib.spice tt
+.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+"}
+C {devices/launcher.sym} 1650 100 0 0 {name=h2
+descr="Load TRAN"
+tclcommand="
+set filepath $\{netlist_dir\}/rawspice.raw
+puts $filepath
 
+xschem raw_clear
+xschem raw_read $filepath tran
 "
-spice_ignore=false}
+}
+C {devices/launcher.sym} 1650 0 0 0 {name=h5
+descr="Load ALL 3.4.5+"
+tclcommand="
+set filepath $\{netlist_dir\}/rawspice.raw
+
+puts $filepath
+
+xschem raw clear
+xschem raw read $filepath tran
+xschem redraw
+xschem raw read $filepath dc
+xschem redraw
+"}
+C {devices/launcher.sym} 1650 60 0 0 {name=h1
+descr="Load DC"
+tclcommand="
+set filepath $\{netlist_dir\}/rawspice.raw
+puts $filepath
+
+xschem raw_clear
+xschem raw_read $filepath dc
+"
+}
+C {devices/code_shown.sym} 1580 -130 0 0 {name="Setup testbench"
+only_toplevel=false
+place=header
+format="tcleval( @value )"
+value="
+.control
+write
+set appendwrite
+.endc
+
+"}
+C {devices/launcher.sym} 1650 140 0 0 {name=h3
+descr="Load AC"
+tclcommand="
+set filepath $\{netlist_dir\}/rawspice.raw
+puts $filepath
+
+xschem raw_clear
+xschem raw_read $filepath ac
+"
+}
+C {devices/code_shown.sym} 400 340 0 0 {name=CONFIGURATION
+only_toplevel=false
+spice_ignore=0
+value="
+.param VDD = 1.8
+.ic v(SENS_IN) = 0
+.ic v(REF_IN) = 1.8
+.option temp = 0
+.save v(DOUT)
+"}
+C {devices/code_shown.sym} 1040 290 0 0 {name="tran"
+only_toplevel=false
+spice_ignore=0
+value="
+.control
+compose vin_var start=2.05k stop=2.05k step=0.02k
+
+foreach val $&vin_var
+  alter R_SENS $val
+  tran 0.1n 20u
+end
+
+write
+
+.endc"}

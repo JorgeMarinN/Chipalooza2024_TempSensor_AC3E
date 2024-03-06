@@ -45,7 +45,7 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {symbol/INVMIN_v1p1.sym} 0 115 0 0 {name=X1}
+C {symbol/INVMIN.sym} 0 115 0 0 {name=X1}
 C {devices/lab_pin.sym} 100 0 0 0 {name=l1 sig_type=std_logic lab=VIN}
 C {devices/lab_pin.sym} 260 0 0 1 {name=l2 sig_type=std_logic lab=VOUT}
 C {devices/lab_pin.sym} 180 -45 3 0 {name=l3 sig_type=std_logic lab=VSS}

@@ -16,11 +16,11 @@ N 95 70 95 125 { lab=VSS}
 N 190 -80 190 -30 { lab=CON_CBASE}
 N 190 -80 200 -80 { lab=CON_CBASE}
 N 200 -100 200 -80 { lab=CON_CBASE}
-C {symbol/INV_v1p1.sym} 20 -50 0 0 {name=XINV_OSC}
+C {symbol/INV.sym} 20 -50 0 0 {name=XINV_OSC}
 C {devices/ipin.sym} 20 -50 0 0 {name=p1 lab=VIN}
 C {devices/iopin.sym} 95 -130 3 0 {name=p2 lab=VDD}
 C {devices/iopin.sym} 95 120 1 0 {name=p3 lab=VSS}
-C {symbol/CAPOSC_v3p1.sym} 90 10 0 0 {name=XCN}
+C {symbol/CAPOSC.sym} 90 10 0 0 {name=XCN}
 C {devices/opin.sym} 220 -50 0 0 {name=p4 lab=VOUT}
 C {devices/iopin.sym} 170 -100 3 0 {name=p5 lab=CON_CV}
 C {devices/iopin.sym} 200 -100 3 0 {name=p6 lab=CON_CBASE}

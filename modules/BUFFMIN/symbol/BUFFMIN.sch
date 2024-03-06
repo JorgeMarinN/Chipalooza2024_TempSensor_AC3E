@@ -11,8 +11,8 @@ N -25 -0 -0 -0 { lab=VIN}
 N 160 -0 185 0 { lab=VOUT}
 N 75 -60 75 -30 { lab=VDD}
 N 75 30 75 70 { lab=VSS}
-C {symbol/INVMIN_v1p1.sym} -40 0 0 0 {name=X1}
-C {symbol/INVMIN_v1p1.sym} 40 0 0 0 {name=X2}
+C {symbol/INVMIN.sym} -40 0 0 0 {name=X1}
+C {symbol/INVMIN.sym} 40 0 0 0 {name=X2}
 C {devices/iopin.sym} 75 -50 3 0 {name=p1 lab=VDD}
 C {devices/iopin.sym} 75 60 1 0 {name=p2 lab=VSS}
 C {devices/ipin.sym} -25 0 0 0 {name=p3 lab=VIN}

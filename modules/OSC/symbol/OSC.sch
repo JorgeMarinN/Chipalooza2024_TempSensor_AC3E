@@ -45,10 +45,10 @@ C {devices/iopin.sym} 185 180 1 0 {name=p3 lab=VSS}
 C {devices/opin.sym} 500 -100 0 0 {name=p4 lab=N1}
 C {devices/opin.sym} 940 -80 0 0 {name=p5 lab=N2}
 C {devices/iopin.sym} 660 40 0 0 {name=p6 lab=CON_CV}
-C {symbol/INVandCAP_v4p1.sym} 10 0 0 0 {name=XST1}
-C {symbol/INVandCAP_v4p1.sym} 180 0 0 0 {name=XST2}
-C {symbol/INVandCAP_v4p1.sym} 350 0 0 0 {name=XST3}
+C {symbol/INVandCAP.sym} 10 0 0 0 {name=XST1}
+C {symbol/INVandCAP.sym} 180 0 0 0 {name=XST2}
+C {symbol/INVandCAP.sym} 350 0 0 0 {name=XST3}
 C {devices/lab_pin.sym} 865 -150 0 0 {name=l25 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 865 -10 0 0 {name=l29 sig_type=std_logic lab=VSS}
-C {symbol/BUFFMIN_v1p1.sym} 790 -80 0 0 {name=XBUFFS}
+C {symbol/BUFFMIN.sym} 790 -80 0 0 {name=XBUFFS}
 C {devices/opin.sym} 700 0 0 0 {name=p7 lab=N3}
