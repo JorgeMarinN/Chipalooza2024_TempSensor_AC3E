@@ -102,7 +102,12 @@ MODULES= $(foreach \
 ifeq (UNDEFINED,$(TOP))
 
 $(call WARNING_MESSAGE,TOP not defined. Using default values)
-SCH=0_top.sch
+
+# sky130
+# SCH=$(PDK_ROOT)/$(PDK)/libs.tech/xschem/test/0_top.sch
+
+# gf180mcu
+SCH=$(wildcard $(PDK_ROOT)/$(PDK)/libs.tech/xschem/sky130_tests/top.sch)
 
 else # ifeq (UNDEFINED,$(TOP))
 
@@ -316,3 +321,14 @@ lvs:
 
 pex:
 	$(MAKE) magic-pex-extraction
+
+
+dump-modules:
+	mkdir -p dumped_modules
+	$(foreach module,$(MODULES), \
+		$(foreach file,$(wildcard $(module)/symbol/*), \
+			$(shell cp $(file) dumped_modules/) \
+	))
+
+	$(shell cp $(XSCHEM_RCFILE) dumped_modules/)
+	$(shell cp $(MAGIC_RCFILE)  dumped_modules/)

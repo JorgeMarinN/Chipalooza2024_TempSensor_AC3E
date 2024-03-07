@@ -148,13 +148,10 @@ C {devices/code_shown.sym} 1580 -130 0 0 {name="Setup testbench"
 only_toplevel=false
 place=header
 format="tcleval( @value )"
-value="
-.control
+value=".control
 write
 set appendwrite
-.endc
-
-"}
+.endc"}
 C {devices/launcher.sym} 1650 140 0 0 {name=h3
 descr="Load AC"
 tclcommand="
@@ -187,6 +184,7 @@ foreach val $&vin_var
   tran 0.1n 20u
 end
 
+plot dout
 write
 
 .endc"}
