@@ -10,7 +10,7 @@ Clone with the `--recurse-submodules` flag
 $ git clone --recurse-submodules https://github.com/JorgeMarinN/Chipalooza2024_TempSensor_AC3E.git
 ~~~
 
-If the repo it's cloned without submodules, run
+If the repo it's cloned without submodules, or is required to update the commits, use
 
 ~~~
 $ git submodule update --init --recursive

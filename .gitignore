@@ -165,3 +165,4 @@ programs/*
 xschem
 **/output
 **/dumped_modules/*
+**/sky130_drc.txt
