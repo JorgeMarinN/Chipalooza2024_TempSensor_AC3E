@@ -57,3 +57,4 @@ set XSCHEM_START_WINDOW {0_top.sch}
 append_modules ./*
 
 startup_information
+set intuitive_interface 1
