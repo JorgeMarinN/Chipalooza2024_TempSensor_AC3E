@@ -34,6 +34,7 @@ _FIRST_TOP_MODULE_DIR=$(word 1, $(MODULE_SOURCE_DIR))
 # Tool configuration files
 
 PDK=sky130A
+PYTHON=python
 
 ## XSCHEM
 XSCHEM_RCFILE=$(realpath $(MODULE_CONFIG_FILES)/xschemrc)
@@ -104,10 +105,6 @@ ifeq (UNDEFINED,$(TOP))
 
 $(call WARNING_MESSAGE,TOP not defined. Using default values)
 
-# sky130
-# SCH=$(PDK_ROOT)/$(PDK)/libs.tech/xschem/test/0_top.sch
-
-# gf180mcu
 SCH=$(wildcard $(PDK_ROOT)/$(PDK)/libs.tech/xschem/sky130_tests/top.sch)
 
 else # ifeq (UNDEFINED,$(TOP))
@@ -187,9 +184,6 @@ FULL_CLEANABLE:= $(CLEANABLE) \
 
 # Logs
 
-TIMESTAMP_DAY=$(shell date +%Y_%m_%d)
-TIMESTAMP_TIME=$(shell date +%H_%M_%S)
-
 LOG_DIR=$(abspath ./logs/$(TIMESTAMP_DAY))
 ifeq (,$(wildcard $(LOG_DIR)))
 $(shell mkdir -p $(LOG_DIR))
@@ -198,11 +192,12 @@ endif
 # Include modules
 
 include $(_IC_MAKEFILE)/xschem.mk
-include $(_IC_MAKEFILE)/klayout_sky130.mk
+include $(_IC_MAKEFILE)/klayout.mk
 include $(_IC_MAKEFILE)/magic.mk
 include $(_IC_MAKEFILE)/netgen.mk
 include $(_IC_MAKEFILE)/ngspice.mk
 include $(_IC_MAKEFILE)/extra_be_checks.mk
+include $(_IC_MAKEFILE)/cace.mk
 
 # Some variables are created on included makefiles
 MAKE=make TOP=$(TOP) TEST=$(TEST) GND_NAME=$(GND_NAME)
@@ -210,15 +205,17 @@ MAKE=make TOP=$(TOP) TEST=$(TEST) GND_NAME=$(GND_NAME)
 
 .PHONY: print_vars
 print_vars : \
-	print_MAKE \
+	print_raw_MAKE \
 	print_TOP \
 	print_MODULE_DIR \
 	print_SCH \
 	print_SYM \
 	print_TB \
+	print_MAG \
+	print_MAG_CELL \
 	print_GDS \
 	print_GDS_CELL \
-	print_TBS \
+	print_names_TBS \
 	print_SCH_NETLIST \
 	print_SCH_NETLIST_NOPREFIX \
 	print_SCH_NETLIST_PREFIX \
@@ -263,7 +260,7 @@ endif
 
 .PHONY: create-testbench
 create-testbench: create-validation
-ifdef TEST
+ifndef TEST
 	$(call ERROR_MESSAGE, TEST parameter not defined)
 else ifneq (,$(wildcard $(_FIRST_TOP_MODULE_DIR)/$(TOP)/test/$(TEST).sch))
 	$(call ERROR_MESSAGE, testbench already exists)
@@ -271,7 +268,7 @@ else
 	xschem --rcfile $(XSCHEM_RCFILE) \
 	--no_x \
 	--quit \
-	--command "xschem clear; xschem saveas $(_FIRST_TOP_MODULE_DIR)/$(TOP)/test/$(TEST).sch
+	--command "xschem clear; xschem saveas $(_FIRST_TOP_MODULE_DIR)/$(TOP)/test/$(TEST).sch"
 endif
 
 
@@ -290,7 +287,9 @@ create-layout: create-validation
 ifneq (,$(wildcard $(_FIRST_TOP_MODULE_DIR)/$(TOP)/layout/$(TOP).gds))
 	$(call WARNING_MESSAGE, layout already exists)
 else
-	klayout -t -e -zz -r $(_IC_MAKEFILE)/scripts/empty-gds.py -rd filepath=$(_FIRST_TOP_MODULE_DIR)/$(TOP)/layout/$(TOP).gds
+	klayout -t -e -zz \
+		-r $(_IC_MAKEFILE)/scripts/empty-gds.py \
+		-rd filepath=$(_FIRST_TOP_MODULE_DIR)/$(TOP)/layout/$(TOP).gds
 endif
 
 
@@ -333,3 +332,17 @@ dump-modules:
 
 	$(shell cp $(XSCHEM_RCFILE) dumped_modules/)
 	$(shell cp $(MAGIC_RCFILE)  dumped_modules/)
+
+
+PDK_SC_DIR:=$(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hd
+PDK_SC_GDS:=$(PDK_SC_DIR)/gds/sky130_fd_sc_hd.gds
+PDK_SC_SPICE:=$(PDK_SC_DIR)/spice/sky130_fd_sc_hd.spice
+
+
+sc-klayout:
+	$(MAKE) GDS=$(PDK_SC_GDS) klayout-view
+
+
+# https://skywater-pdk.readthedocs.io/en/main/contents/libraries/foundry-provided.html
+sc-spice:
+	@echo $(realpath $(PDK_SC_SPICE))
