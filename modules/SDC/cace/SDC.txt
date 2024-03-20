@@ -132,6 +132,33 @@ electrical_parameters {
 		name:		corner
 		typical:	tt
 	}
+
+	+
+	name:		mean_130
+	status:		skip
+	description:	Mean output value at 130 degrees C
+	display:	At 130 °C
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data null result
+	}
+	measure {
+		tool: python
+		filename: analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		typical:	130
+
+		+
+		name:		corner
+		typical:	tt
+	}
 }
 
 # List of physical parameters to be measured and their specified limits
