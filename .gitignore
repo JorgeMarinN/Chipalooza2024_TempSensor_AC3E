@@ -168,4 +168,5 @@ xschem
 **/sky130_drc.txt
 
 **/cace/*.spice
+**/cace/*.sym
 **/ngspice/*

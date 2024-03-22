@@ -24,43 +24,39 @@ thres = 0.2
 
 def func(filename: str):
     logger = logging.getLogger("func")
-
-    with open(filename) as f:
-        json_content = logger.info(json.loads(f.read()))
-
-    # logger.info(json_content)
+    
     df: pd.DataFrame = None
 
     with open(filename) as f:
-        df = pd.read_json(f.read())
-        # df = pd.read_json(json_content)
-
-    logger.info(df)
+        content = f.read()
+        
+        # logger.info(content) # Too much info
+        
+        df = pd.read_fwf(filename)
+        logger.info(df)
 
     # df.plot()
+    logger.info(f"Measure without filtering {df['v(out)'].mean()}")
+    df.loc[df["v(out)"] >  thres, "v(out)"] = 1.8
+    df.loc[df["v(out)"] <= thres, "v(out)"] = 0
+    logger.info(f"Measure with filtering {df['v(out)'].mean()}")
 
-    return
-
-    logger.info(f"Measure without filtering {df['dout'].mean()}")
-
-    df.loc[df["dout"] > thres, "dout"] = 1.8
-    df.loc[df["dout"] <= thres, "dout"] = 0
-
-    logger.info(f"Measure with filtering {df['dout'].mean()}")
+    print(df['v(out)'].mean())
 
 
 import sys
 
-logging.info("Running the program")
-logging.info(f"Argv: {sys.argv}")
+if __name__ == "__main__":
+    logging.info("Running the program")
+    logging.info(f"Argv: {sys.argv}")
 
-if len(sys.argv) < 1:
-    raise ValueError("Usage: python analyze_temps.py <filename>")
+    if len(sys.argv) < 1:
+        raise ValueError("Usage: python analyze_temps.py <filename>")
 
-file = Path(sys.argv[1])
+    # I'm ignoring totally the output of cace, and using the .data file
+    file = Path(sys.argv[1]).with_suffix(".data")
 
-if not file.exists():
-    raise ValueError("filename doesn't exists")
+    if not file.exists():
+        raise ValueError("filename doesn't exists")
 
-
-func(file)
+    func(file)

@@ -19,10 +19,10 @@ set ngbehavior=hsa     ; set compatibility for reading PDK libs
 ** Plot / Data configuration
 ****************************
 
-set filetype = ascii    ; Some files are TOO BIG to use this parameter
+set filetype=ascii    ; Some files are TOO BIG to use this parameter
 set wr_singlescale
 set wr_vecnames
-set numdgt=6            ; Number of digits to use when printing tables of data (def 6)
+*set numdgt=6            ; Number of digits to use when printing tables of data (def 6)
 *set appendwrite         ; DO NOT SET.
 
 *set ticchar     ; Character applied as tic mark (def x)
@@ -45,7 +45,7 @@ option noinit          ; don't print operating point data
 *set strict_errorhandling
 
 *option sparse          ; Sparce 1.3 matrix solver (default)
-option klu             ;  (ngspice 42+) select KLU as matrix solver 
+*option klu             ;  (ngspice 42+) select KLU as matrix solver 
 
 
 *set sqrnoise    ; Set V2/Hz or A2/Hz. Unset V/Hz or A/Hz
