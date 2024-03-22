@@ -20,7 +20,7 @@ authorship {
 paths {
 	root:		..
 	documentation:	doc
-	schematic:		symbol
+	schematic:		SDC/symbol
 	layout:		gds
 	magic:		mag
 	netlist:	netlist
@@ -35,6 +35,40 @@ paths {
 # Project dependencies
 
 dependencies {
+	name:           INTERNAL_SDC
+	path:           .
+
+	+
+	name:           BUFFMIN
+	path:           .
+
+	+
+	name:           DFF
+	path:           .
+
+	+
+	name:           INV
+	path:           .
+
+	+
+	name:           INVandCAP
+	path:           .
+
+	+
+	name:           OSC
+	path:           .
+
+	+
+	name:           CAPOSC
+	path:           .
+
+	+
+	name:           INVMIN
+	path:           .
+
+	+
+	name:           PASSGATE
+	path:           .
 }
 
 # Pin names and descriptions
@@ -111,29 +145,6 @@ default_conditions {
 # List of electrical parameters to be measured and their specified limits
 
 electrical_parameters {
-	name:		ton
-	status:		skip
-	description:	Mean output value
-	display:	Temp
-	unit:		V
-	spec {
-		typical:	any
-	}
-	simulate {
-		tool:		ngspice
-		template:	transient.spice
-		format:		ascii .data null result
-	}
-	conditions {
-		name:		temperature
-		typical:	0
-
-		+
-		name:		corner
-		typical:	tt
-	}
-
-	+
 	name:		mean_130
 	status:		skip
 	description:	Mean output value at 130 degrees C
@@ -153,7 +164,7 @@ electrical_parameters {
 	}
 	conditions {
 		name:		temperature
-		typical:	130
+		typical:	-40
 
 		+
 		name:		corner

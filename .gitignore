@@ -166,3 +166,6 @@ xschem
 **/output
 **/dumped_modules/*
 **/sky130_drc.txt
+
+**/cace/*.spice
+**/ngspice/*

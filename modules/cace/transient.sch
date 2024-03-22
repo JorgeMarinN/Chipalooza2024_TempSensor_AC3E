@@ -31,7 +31,9 @@ C {devices/lab_wire.sym} -420 -270 0 0 {name=p25 sig_type=std_logic lab=out}
 C {devices/vsource.sym} -1120 -60 0 0 {name=vvdd value="DC \{vvdd\}" savecurrent=false}
 C {devices/code_shown.sym} -1220 -280 0 0 {name=CONTROL only_toplevel=false value=".control
 tran 10u 50u
-wrdata \{simpath\}/\{filename\}_\{N\}.data out
+
+set wr_singlescale
+wrdata \{simpath\}/\{filename\}_\{N\}.data v(out)
 quit
 .endc
 "}
@@ -56,4 +58,4 @@ value="
 C {devices/gnd.sym} -1030 -30 0 0 {name=l1 lab=GND}
 C {devices/lab_wire.sym} -650 -200 2 1 {name=p3 sig_type=std_logic lab=vss}
 C {devices/lab_wire.sym} -650 -340 0 1 {name=p4 sig_type=std_logic lab=vdd}
-C {cace/SDC.sym} -650 -270 0 0 {name=x1}
+C {SDC.sym} -650 -270 0 0 {name=x1}
