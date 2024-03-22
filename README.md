@@ -2,7 +2,7 @@
 
 Time-based temperature sensor proposal for Chipalooza 2024
 
-## Usage
+## Setup
 
 Clone with the `--recurse-submodules` flag
 
@@ -14,4 +14,17 @@ If the repo it's cloned without submodules, or is required to update the commits
 
 ~~~
 $ git submodule update --init --recursive
+~~~
+
+## Usage
+
+This projects relies on `ic-makefile` to add an abstraction layer over the tools. The operations are made on the `./modules` directory.
+
+~~~
+$ make TOP=SDC xschem           # Open the schematic
+$ make TOP=SDC xschem-tb        # Open the testbench
+$ make TOP=SDC cace-gui         # Open CACE specification tool
+$ make TOP=SDC CACE_TEST=transient cace-tb
+                                # Open a CACE testbench
+$ make TOP=SDC cace-validation  # Shows cace variables related to a design
 ~~~
