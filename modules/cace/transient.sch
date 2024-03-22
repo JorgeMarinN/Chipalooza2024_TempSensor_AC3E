@@ -30,7 +30,7 @@ C {devices/lab_wire.sym} -1030 -110 0 1 {name=p24 sig_type=std_logic lab=vss}
 C {devices/lab_wire.sym} -420 -270 0 0 {name=p25 sig_type=std_logic lab=out}
 C {devices/vsource.sym} -1120 -60 0 0 {name=vvdd value="DC \{vvdd\}" savecurrent=false}
 C {devices/code_shown.sym} -1220 -280 0 0 {name=CONTROL only_toplevel=false value=".control
-tran 100n 30u
+tran 0.1n 20u
 
 set wr_singlescale
 wrdata \{simpath\}/\{filename\}_\{N\}.data v(out)
