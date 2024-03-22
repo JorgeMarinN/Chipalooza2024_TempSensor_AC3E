@@ -145,7 +145,61 @@ default_conditions {
 # List of electrical parameters to be measured and their specified limits
 
 electrical_parameters {
-	name:		mean_130
+	name:		mean_at_m40
+	status:		skip
+	description:	Mean output value at -40 degrees C
+	display:	At -40 °C
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data null result
+	}
+	measure {
+		tool: python
+		filename: analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		typical:	-40
+
+		+
+		name:		corner
+		typical:	tt
+	}
+
+	+
+	name:		mean_at_27
+	status:		skip
+	description:	Mean output value at 27 degrees C
+	display:	At 0 °C
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data null result
+	}
+	measure {
+		tool: python
+		filename: analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		typical:	27
+
+		+
+		name:		corner
+		typical:	tt
+	}
+
+	+
+	name:		mean_at_130
 	status:		skip
 	description:	Mean output value at 130 degrees C
 	display:	At 130 °C
@@ -164,7 +218,37 @@ electrical_parameters {
 	}
 	conditions {
 		name:		temperature
-		typical:	-40
+		typical:	130
+
+		+
+		name:		corner
+		typical:	tt
+	}
+
+	+
+	name:		temperature_sweep
+	status:		skip
+	description:	Mean voltage in a range of temperatures
+	display:	Temperate sweep
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	measure {
+		tool: python
+		filename: analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	130
+		step: 		linear
+		stepsize:	30
 
 		+
 		name:		corner

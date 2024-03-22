@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -14,9 +14,9 @@ N -1090 -30 -1030 -30 {
 lab=GND}
 N -1140 -30 -1090 -30 {
 lab=GND}
-N -650 -220 -650 -190 {
+N -500 -250 -500 -220 {
 lab=vss}
-N -650 -350 -650 -320 {
+N -500 -320 -500 -290 {
 lab=vdd}
 N -1030 -120 -1030 -90 {
 lab=vss}
@@ -30,7 +30,7 @@ C {devices/lab_wire.sym} -1030 -110 0 1 {name=p24 sig_type=std_logic lab=vss}
 C {devices/lab_wire.sym} -420 -270 0 0 {name=p25 sig_type=std_logic lab=out}
 C {devices/vsource.sym} -1120 -60 0 0 {name=vvdd value="DC \{vvdd\}" savecurrent=false}
 C {devices/code_shown.sym} -1220 -280 0 0 {name=CONTROL only_toplevel=false value=".control
-tran 10u 20u
+tran 100n 30u
 
 set wr_singlescale
 wrdata \{simpath\}/\{filename\}_\{N\}.data v(out)
@@ -57,8 +57,8 @@ value="
 .ic v(x1.REF_IN) = 1.8
 "}
 C {devices/gnd.sym} -1030 -30 0 0 {name=l1 lab=GND}
-C {devices/lab_wire.sym} -650 -200 2 1 {name=p3 sig_type=std_logic lab=vss}
-C {devices/lab_wire.sym} -650 -340 0 1 {name=p4 sig_type=std_logic lab=vdd}
+C {devices/lab_wire.sym} -500 -230 2 1 {name=p3 sig_type=std_logic lab=vss}
+C {devices/lab_wire.sym} -500 -310 0 1 {name=p4 sig_type=std_logic lab=vdd}
 C {SDC.sym} -650 -270 0 0 {name=x1}
 C {devices/code_shown.sym} -460 -540 0 0 {name="HIDDEN SETUP"
 only_toplevel=false
