@@ -24,6 +24,8 @@ This projects relies on `ic-makefile` to add an abstraction layer over the tools
 $ make TOP=SDC xschem           # Open the schematic
 $ make TOP=SDC xschem-tb        # Open the testbench
 $ make TOP=SDC cace-gui         # Open CACE specification tool
+$ make TOP=SDC USE_RESULTS=y cace-gui 
+                                # Open CACE using a .txt with results
 $ make TOP=SDC CACE_TEST=transient cace-tb
                                 # Open a CACE testbench
 $ make TOP=SDC cace-validation  # Shows cace variables related to a design

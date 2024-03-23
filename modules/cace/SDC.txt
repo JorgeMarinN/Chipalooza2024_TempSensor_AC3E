@@ -20,7 +20,7 @@ authorship {
 paths {
 	root:		..
 	documentation:	doc
-	schematic:		SDC/symbol
+	schematic:	SDC/symbol
 	layout:		gds
 	magic:		mag
 	netlist:	netlist
@@ -35,40 +35,40 @@ paths {
 # Project dependencies
 
 dependencies {
-	name:           INTERNAL_SDC
-	path:           .
+	name:		INTERNAL_SDC
+	path:		.
 
 	+
-	name:           BUFFMIN
-	path:           .
+	name:		BUFFMIN
+	path:		.
 
 	+
-	name:           DFF
-	path:           .
+	name:		DFF
+	path:		.
 
 	+
-	name:           INV
-	path:           .
+	name:		INV
+	path:		.
 
 	+
-	name:           INVandCAP
-	path:           .
+	name:		INVandCAP
+	path:		.
 
 	+
-	name:           OSC
-	path:           .
+	name:		OSC
+	path:		.
 
 	+
-	name:           CAPOSC
-	path:           .
+	name:		CAPOSC
+	path:		.
 
 	+
-	name:           INVMIN
-	path:           .
+	name:		INVMIN
+	path:		.
 
 	+
-	name:           PASSGATE
-	path:           .
+	name:		PASSGATE
+	path:		.
 }
 
 # Pin names and descriptions
@@ -148,7 +148,7 @@ electrical_parameters {
 	name:		mean_at_m40
 	status:		skip
 	description:	Mean output value at -40 degrees C
-	display:	At -40 °C
+	display:	At -40 {degrees}C
 	unit:		V
 	spec {
 		typical:	any
@@ -159,8 +159,8 @@ electrical_parameters {
 		format:		ascii .data null result
 	}
 	measure {
-		tool: python
-		filename: analyze_temps.py
+		tool:		python
+		filename:	analyze_temps.py
 	}
 	conditions {
 		name:		temperature
@@ -175,7 +175,7 @@ electrical_parameters {
 	name:		mean_at_27
 	status:		skip
 	description:	Mean output value at 27 degrees C
-	display:	At 0 °C
+	display:	At 0 {degrees}C
 	unit:		V
 	spec {
 		typical:	any
@@ -186,8 +186,8 @@ electrical_parameters {
 		format:		ascii .data null result
 	}
 	measure {
-		tool: python
-		filename: analyze_temps.py
+		tool:		python
+		filename:	analyze_temps.py
 	}
 	conditions {
 		name:		temperature
@@ -202,7 +202,7 @@ electrical_parameters {
 	name:		mean_at_130
 	status:		skip
 	description:	Mean output value at 130 degrees C
-	display:	At 130 °C
+	display:	At 130 {degrees}C
 	unit:		V
 	spec {
 		typical:	any
@@ -213,8 +213,8 @@ electrical_parameters {
 		format:		ascii .data null result
 	}
 	measure {
-		tool: python
-		filename: analyze_temps.py
+		tool:		python
+		filename:	analyze_temps.py
 	}
 	conditions {
 		name:		temperature
@@ -229,7 +229,7 @@ electrical_parameters {
 	name:		temperature_sweep
 	status:		skip
 	description:	Mean voltage in a range of temperatures
-	display:	Temperate sweep
+	display:	Temperature sweep
 	unit:		V
 	spec {
 		typical:	any
@@ -237,22 +237,18 @@ electrical_parameters {
 	simulate {
 		tool:		ngspice
 		template:	transient.spice
-		format:		ascii .data result
+		format:		ascii .data null result
 	}
 	measure {
-		tool: python
-		filename: analyze_temps.py
+		tool:		python
+		filename:	analyze_temps.py
 	}
 	conditions {
 		name:		temperature
 		minimum:	-40
 		maximum:	130
-		step: 		linear
+		step:		linear
 		stepsize:	30
-
-		+
-		name:		corner
-		typical:	tt
 	}
 }
 

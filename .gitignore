@@ -170,3 +170,4 @@ xschem
 **/cace/*.spice
 **/cace/*.sym
 **/ngspice/*
+**/_obj_dir/*
