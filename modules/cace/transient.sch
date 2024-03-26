@@ -54,7 +54,8 @@ value="
 .option warn=1
 
 .ic v(x1.SENS_IN) = 0
-.ic v(x1.REF_IN) = 1.8
+*.ic v(x1.REF_IN) = 1.8
+.ic v(x1.REF_IN) = \{vvdd\}
 "}
 C {devices/gnd.sym} -1030 -30 0 0 {name=l1 lab=GND}
 C {devices/lab_wire.sym} -500 -230 2 1 {name=p3 sig_type=std_logic lab=vss}

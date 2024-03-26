@@ -169,5 +169,6 @@ xschem
 
 **/cace/*.spice
 **/cace/*.sym
-**/ngspice/*
+**/modules/ngspice/*
+**/modules/netlist/*
 **/_obj_dir/*

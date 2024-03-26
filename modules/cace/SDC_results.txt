@@ -12,7 +12,7 @@ authorship {
 	designer:	Jorge Marín.
 	company:	AC3E
 	creation_date:	March 12, 2024
-	modification_date:	March 23, 2024 at 07:13pm
+	modification_date:	March 26, 2024 at 02:07pm
 	license:	Apache 2.0
 }
 
@@ -121,26 +121,13 @@ default_conditions {
 	description:	Ambient temperature
 	display:	Temp
 	unit:		{degrees}C
-	minimum:	-40
 	typical:	27
-	maximum:	130
 
 	+
 	name:		corner
 	description:	Process corner
 	display:	Corner
-	minimum:	ss
 	typical:	tt
-	maximum:	ff
-
-	+
-	name:		iterations
-	description:	Iterations to run
-	display:	Iterations
-	minimum:	1
-	maximum:	10
-	step:		linear
-	stepsize:	1
 }
 
 # List of electrical parameters to be measured and their specified limits
@@ -285,7 +272,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		status:		done
+		typical:	1.021 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -553,6 +540,124 @@ electrical_parameters {
 		}
 		results {
 			0.17424839083676494
+		}
+	}
+
+	+
+	name:		voltage_sensitivity
+	status:		active
+	description:	Voltage sensitivity between 1.6V and 2.0V
+	display:	Voltage sensitivity
+	unit:		V
+	spec {
+		typical:	any
+	}
+	results {
+		name:		schematic
+		status:		done
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data null result
+	}
+	measure {
+		tool:		python
+		filename:	analyze_temps.py
+	}
+	conditions {
+		name:		vvdd
+		minimum:	1.0
+		maximum:	2.0
+		step:		linear
+		stepsize:	0.2
+
+		+
+		name:		corner
+		typical:	tt
+	}
+	testbenches {
+		filename:	ngspice/voltage_sensitivity_1.spice
+		conditions {
+			corner  tt
+			temperature {degrees}C 27
+			vvdd V 1.0
+			vvss V 0
+		}
+		results {
+			0.0
+		}
+
+		+
+		filename:	ngspice/voltage_sensitivity_2.spice
+		conditions {
+			corner  tt
+			temperature {degrees}C 27
+			vvdd V 1.2
+			vvss V 0
+		}
+		results {
+			1.4029378677959494
+		}
+
+		+
+		filename:	ngspice/voltage_sensitivity_3.spice
+		conditions {
+			corner  tt
+			temperature {degrees}C 27
+			vvdd V 1.4
+			vvss V 0
+		}
+		results {
+			1.3122045354557454
+		}
+
+		+
+		filename:	ngspice/voltage_sensitivity_4.spice
+		conditions {
+			corner  tt
+			temperature {degrees}C 27
+			vvdd V 1.5999999999999999
+			vvss V 0
+		}
+		results {
+			1.244198850861854
+		}
+
+		+
+		filename:	ngspice/voltage_sensitivity_5.spice
+		conditions {
+			corner  tt
+			temperature {degrees}C 27
+			vvdd V 1.7999999999999998
+			vvss V 0
+		}
+		results {
+			1.2004973608912552
+		}
+
+		+
+		filename:	ngspice/voltage_sensitivity_6.spice
+		conditions {
+			corner  tt
+			temperature {degrees}C 27
+			vvdd V 1.9999999999999998
+			vvss V 0
+		}
+		results {
+			1.1737752664415775
+		}
+
+		+
+		filename:	ngspice/voltage_sensitivity_7.spice
+		conditions {
+			corner  tt
+			temperature {degrees}C 27
+			vvdd V 2.0
+			vvss V 0
+		}
+		results {
+			1.1737752664415775
 		}
 	}
 }
