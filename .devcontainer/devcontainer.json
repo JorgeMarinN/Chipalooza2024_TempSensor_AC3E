@@ -36,7 +36,7 @@
 		"XDG_RUNTIME_DIR": "/mnt/wslg/runtime-dir",
 		"WAYLAND_DISPLAY": "wayland-0",
 		"PULSE_SERVER": "unix:/mnt/wslg/PulseServer",
-		"PDK": "gf180mcuD"
+		"PDK": "sky130A"
 	},
 	"initializeCommand": "powershell -noprofile -nologo -ExecutionPolicy Bypass .devcontainer\\set-wsl-distro.ps1"
 }
