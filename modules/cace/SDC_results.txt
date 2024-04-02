@@ -12,7 +12,7 @@ authorship {
 	designer:	Jorge Marín.
 	company:	AC3E
 	creation_date:	March 12, 2024
-	modification_date:	March 26, 2024 at 02:07pm
+	modification_date:	April  2, 2024 at 03:02pm
 	license:	Apache 2.0
 }
 
@@ -143,7 +143,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	1.759 pass
+		typical:	1.701 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -165,13 +165,13 @@ electrical_parameters {
 	testbenches {
 		filename:	ngspice/mean_at_m40_1.spice
 		conditions {
-			corner  tt
 			temperature {degrees}C -40
-			vvss V 0
 			vvdd V 1.8
+			vvss V 0
+			corner  tt
 		}
 		results {
-			1.7587165850105275
+			1.700691425536519
 		}
 	}
 
@@ -186,7 +186,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	1.2 pass
+		typical:	0.8614 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -208,13 +208,13 @@ electrical_parameters {
 	testbenches {
 		filename:	ngspice/mean_at_27_1.spice
 		conditions {
-			corner  tt
 			temperature {degrees}C 27
-			vvss V 0
 			vvdd V 1.8
+			vvss V 0
+			corner  tt
 		}
 		results {
-			1.2004523779802774
+			0.8613779474645707
 		}
 	}
 
@@ -229,7 +229,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	0.3469 pass
+		typical:	0.5251 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -251,28 +251,24 @@ electrical_parameters {
 	testbenches {
 		filename:	ngspice/mean_at_130_1.spice
 		conditions {
-			corner  tt
 			temperature {degrees}C 130
-			vvss V 0
 			vvdd V 1.8
+			vvss V 0
+			corner  tt
 		}
 		results {
-			0.346947010937422
+			0.5251307200966855
 		}
 	}
 
 	+
 	name:		temperature_sweep
-	status:		active
+	status:		skip
 	description:	Mean voltage in a range of temperatures
 	display:	Temperature sweep
 	unit:		V
 	spec {
 		typical:	any
-	}
-	results {
-		name:		schematic
-		typical:	1.021 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -290,383 +286,13 @@ electrical_parameters {
 		step:		linear
 		stepsize:	30
 	}
-	testbenches {
-		filename:	ngspice/temperature_sweep_1.spice
-		conditions {
-			corner  ss
-			temperature {degrees}C -40
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.7241661000679915
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_2.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C -40
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.7587165850105275
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_3.spice
-		conditions {
-			corner  ff
-			temperature {degrees}C -40
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.7225299269214946
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_4.spice
-		conditions {
-			corner  ss
-			temperature {degrees}C -10
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.5820771833717373
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_5.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C -10
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.4956322757931557
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_6.spice
-		conditions {
-			corner  ff
-			temperature {degrees}C -10
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.4749370258305885
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_7.spice
-		conditions {
-			corner  ss
-			temperature {degrees}C 20
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.379921116171185
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_8.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 20
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.2570593787926465
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_9.spice
-		conditions {
-			corner  ff
-			temperature {degrees}C 20
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.2127451420365303
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_10.spice
-		conditions {
-			corner  ss
-			temperature {degrees}C 50
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.1673966812069974
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_11.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 50
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			1.0102043566135193
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_12.spice
-		conditions {
-			corner  ff
-			temperature {degrees}C 50
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.937029560848697
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_13.spice
-		conditions {
-			corner  ss
-			temperature {degrees}C 80
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.9008724067634013
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_14.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 80
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.7516245595472199
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_15.spice
-		conditions {
-			corner  ff
-			temperature {degrees}C 80
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.6830619623488347
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_16.spice
-		conditions {
-			corner  ss
-			temperature {degrees}C 110
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.6791015390765541
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_17.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 110
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.523416877649773
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_18.spice
-		conditions {
-			corner  ff
-			temperature {degrees}C 110
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.3804686602787197
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_19.spice
-		conditions {
-			corner  ss
-			temperature {degrees}C 130
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.5698821200395934
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_20.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 130
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.346947010937422
-		}
-
-		+
-		filename:	ngspice/temperature_sweep_21.spice
-		conditions {
-			corner  ff
-			temperature {degrees}C 130
-			vvss V 0
-			vvdd V 1.8
-		}
-		results {
-			0.17424839083676494
-		}
-	}
-
-	+
-	name:		voltage_sensitivity
-	status:		active
-	description:	Voltage sensitivity between 1.6V and 2.0V
-	display:	Voltage sensitivity
-	unit:		V
-	spec {
-		typical:	any
-	}
-	results {
-		name:		schematic
-		status:		done
-	}
-	simulate {
-		tool:		ngspice
-		template:	transient.spice
-		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
-	}
-	conditions {
-		name:		vvdd
-		minimum:	1.0
-		maximum:	2.0
-		step:		linear
-		stepsize:	0.2
-
-		+
-		name:		corner
-		typical:	tt
-	}
-	testbenches {
-		filename:	ngspice/voltage_sensitivity_1.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 27
-			vvdd V 1.0
-			vvss V 0
-		}
-		results {
-			0.0
-		}
-
-		+
-		filename:	ngspice/voltage_sensitivity_2.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 27
-			vvdd V 1.2
-			vvss V 0
-		}
-		results {
-			1.4029378677959494
-		}
-
-		+
-		filename:	ngspice/voltage_sensitivity_3.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 27
-			vvdd V 1.4
-			vvss V 0
-		}
-		results {
-			1.3122045354557454
-		}
-
-		+
-		filename:	ngspice/voltage_sensitivity_4.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 27
-			vvdd V 1.5999999999999999
-			vvss V 0
-		}
-		results {
-			1.244198850861854
-		}
-
-		+
-		filename:	ngspice/voltage_sensitivity_5.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 27
-			vvdd V 1.7999999999999998
-			vvss V 0
-		}
-		results {
-			1.2004973608912552
-		}
-
-		+
-		filename:	ngspice/voltage_sensitivity_6.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 27
-			vvdd V 1.9999999999999998
-			vvss V 0
-		}
-		results {
-			1.1737752664415775
-		}
-
-		+
-		filename:	ngspice/voltage_sensitivity_7.spice
-		conditions {
-			corner  tt
-			temperature {degrees}C 27
-			vvdd V 2.0
-			vvss V 0
-		}
-		results {
-			1.1737752664415775
-		}
-	}
 }
 
 # List of physical parameters to be measured and their specified limits
 
 physical_parameters {
 	name:		area
-	status:		active
+	status:		skip
 	description:	Total circuit layout area
 	display:	area
 	unit:		{micro}m{squared}
@@ -675,9 +301,5 @@ physical_parameters {
 	}
 	evaluate {
 		tool:		cace_area
-	}
-	results {
-		name:		schematic
-		maximum:	1.658e+04 pass
 	}
 }

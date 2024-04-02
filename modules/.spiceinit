@@ -37,7 +37,7 @@ set wr_vecnames
 * optran may reduce problems when trying to find a simulation starting point
 * optran 0 0 0 100p 2n 0 ; don't use dc operating point, but transient op
 
-option noinit          ; don't print operating point data
+*option noinit          ; don't print operating point data
 *set skywaterpdk        ; Speed up loading of large PDKs (Sky130).
                         ; Assumes MOS devices with 4 terminals
                         ; Doesn't look for unquoted parameters

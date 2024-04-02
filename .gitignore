@@ -168,3 +168,6 @@ xschem
 **/modules/ngspice/*
 **/modules/netlist/*
 **/_obj_dir/*
+
+# Code Models
+**/*.h

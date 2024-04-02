@@ -2,8 +2,8 @@
 # CACE format 4.0 characterization file
 #---------------------------------------------------
 
-name:		SDC
-description:	Resistive Temperature sensor
+name:		OSC
+description:	Oscillator
 commit:		N/A
 PDK:		sky130A
 foundry:	SkyWater
@@ -20,7 +20,7 @@ authorship {
 paths {
 	root:		..
 	documentation:	doc
-	schematic:	SDC/symbol
+	schematic:	OSC/symbol
 	layout:		gds
 	magic:		mag
 	netlist:	netlist
@@ -90,12 +90,44 @@ pins {
 	Vmax:		0.3
 
 	+
-	name:		DOUT
-	description:	Amplifier voltage output
+	name:		N1
+	description:	Middle Node 1
 	type:		signal
 	direction:	output
-	Vmin:		vss
-	Vmax:		vdd
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		N2
+	description:	Middle Node 2
+	type:		signal
+	direction:	output
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		N3
+	description:	Middle Node 3
+	type:		signal
+	direction:	output
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		SENS_IN
+	description:	dummy1
+	type:		signal
+	direction:	inout
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		CON_CV
+	description:	dummy2
+	type:		signal
+	direction:	inout
+	Vmin:		VSS
+	Vmax:		VDD
 }
 
 # Default values for electrical parameter measurement conditions
@@ -120,7 +152,7 @@ default_conditions {
 	description:	Ambient temperature
 	display:	Temp
 	unit:		{degrees}C
-	typical:	27
+	typical:	25
 
 	+
 	name:		corner
@@ -132,22 +164,18 @@ default_conditions {
 # List of electrical parameters to be measured and their specified limits
 
 electrical_parameters {
-	name:		mean_at_m40
+	name:		freq_at_m40
 	status:		skip
-	description:	Mean output value at -40 degrees C
+	description:	Frequency value at -40 degrees C
 	display:	At -40 {degrees}C
-	unit:		V
+	unit:		Hz
 	spec {
 		typical:	any
 	}
 	simulate {
 		tool:		ngspice
-		template:	transient.spice
+		template:	osc_transient.spice
 		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
 	}
 	conditions {
 		name:		temperature
@@ -156,52 +184,25 @@ electrical_parameters {
 		+
 		name:		corner
 		typical:	tt
-	}
-
-	+
-	name:		mean_at_27
-	status:		skip
-	description:	Mean output value at 27 degrees C
-	display:	At 0 {degrees}C
-	unit:		V
-	spec {
-		typical:	any
-	}
-	simulate {
-		tool:		ngspice
-		template:	transient.spice
-		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
-	}
-	conditions {
-		name:		temperature
-		typical:	27
 
 		+
-		name:		corner
-		typical:	tt
+		name:		vvdd
+		typical:	1.8
 	}
 
 	+
-	name:		mean_at_130
+	name:		freq_at_130
 	status:		skip
-	description:	Mean output value at 130 degrees C
+	description:	Frequency value at 130 degrees C
 	display:	At 130 {degrees}C
-	unit:		V
+	unit:		Hz
 	spec {
 		typical:	any
 	}
 	simulate {
 		tool:		ngspice
-		template:	transient.spice
+		template:	osc_transient.spice
 		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
 	}
 	conditions {
 		name:		temperature
@@ -210,32 +211,33 @@ electrical_parameters {
 		+
 		name:		corner
 		typical:	tt
+
+		+
+		name:		vvdd
+		typical:	1.8
 	}
 
 	+
 	name:		temperature_sweep
 	status:		skip
-	description:	Mean voltage in a range of temperatures
-	display:	Temperature sweep
-	unit:		V
+	description:	Frequency between -40 and 130{degrees}C
+	display:	Temperature Sweep
+	unit:		Hz
 	spec {
 		typical:	any
-	}
-	simulate {
-		tool:		ngspice
-		template:	transient.spice
-		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
 	}
 	conditions {
 		name:		temperature
 		minimum:	-40
-		maximum:	130
+		maximum:	-40
 		step:		linear
 		stepsize:	30
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		typical:	1.8
+		maximum:	2.0
 	}
 }
 
