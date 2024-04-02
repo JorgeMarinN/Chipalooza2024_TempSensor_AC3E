@@ -1,5 +1,5 @@
 #---------------------------------------------------
-# CACE format 4.0 characterization file /workspaces/Chipalooza2024_TempSensor_AC3E/modules/cace/SDC_results.txt
+# CACE format 4.0 characterization file
 #---------------------------------------------------
 
 name:		SDC
@@ -12,23 +12,22 @@ authorship {
 	designer:	Jorge Marín.
 	company:	AC3E
 	creation_date:	March 12, 2024
-	modification_date:	April  2, 2024 at 03:02pm
 	license:	Apache 2.0
 }
 
 # Paths to various files
 
 paths {
-	root:		..
-	documentation:	doc
+	root:		../../
+	documentation:	../doc
 	schematic:	SDC/symbol
-	layout:		gds
-	magic:		mag
-	netlist:	netlist
-	testbench:	cace
-	simulation:	ngspice
-	plots:		plots
-	logs:		ngspice/log
+	layout:		SDC/gds
+	magic:		SDC/mag
+	netlist:	SDC/cace/netlist
+	testbench:	SDC/cace
+	simulation:	SDC/cace/ngspice
+	plots:		SDC/cace/plots
+	logs:		SDC/cace/ngspice/log
 
 	reports:	reports
 }
@@ -79,10 +78,10 @@ pins {
 	description:	Analog power supply
 	type:		power
 	direction:	inout
-	Vmin:		3.0
-	Vmax:		3.6
+	Vmin:		1.6
+	Vmax:		2.0
 
-	+
+ 	+
 	name:		VSS
 	description:	Analog ground
 	type:		ground
@@ -121,7 +120,7 @@ default_conditions {
 	description:	Ambient temperature
 	display:	Temp
 	unit:		{degrees}C
-	typical:	27
+	typical:	25
 
 	+
 	name:		corner
@@ -134,16 +133,12 @@ default_conditions {
 
 electrical_parameters {
 	name:		mean_at_m40
-	status:		active
+	status:		skip
 	description:	Mean output value at -40 degrees C
 	display:	At -40 {degrees}C
 	unit:		V
 	spec {
 		typical:	any
-	}
-	results {
-		name:		schematic
-		typical:	1.701 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -161,33 +156,23 @@ electrical_parameters {
 		+
 		name:		corner
 		typical:	tt
-	}
-	testbenches {
-		filename:	ngspice/mean_at_m40_1.spice
-		conditions {
-			temperature {degrees}C -40
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.700691425536519
-		}
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		typical:	1.8
+		maximum:	2.0
 	}
 
 	+
-	name:		mean_at_27
-	status:		active
-	description:	Mean output value at 27 degrees C
+	name:		mean_at_25
+	status:		skip
+	description:	Mean output value at 25 degrees C
 	display:	At 0 {degrees}C
 	unit:		V
 	spec {
 		typical:	any
 	}
-	results {
-		name:		schematic
-		typical:	0.8614 pass
-	}
 	simulate {
 		tool:		ngspice
 		template:	transient.spice
@@ -199,38 +184,28 @@ electrical_parameters {
 	}
 	conditions {
 		name:		temperature
-		typical:	27
+		typical:	25
 
 		+
 		name:		corner
 		typical:	tt
-	}
-	testbenches {
-		filename:	ngspice/mean_at_27_1.spice
-		conditions {
-			temperature {degrees}C 27
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.8613779474645707
-		}
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		typical:	1.8
+		maximum:	2.0
 	}
 
 	+
-	name:		mean_at_130
-	status:		active
-	description:	Mean output value at 130 degrees C
-	display:	At 130 {degrees}C
+	name:		mean_at_125
+	status:		skip
+	description:	Mean output value at 125 degrees C
+	display:	At 125 {degrees}C
 	unit:		V
 	spec {
 		typical:	any
 	}
-	results {
-		name:		schematic
-		typical:	0.5251 pass
-	}
 	simulate {
 		tool:		ngspice
 		template:	transient.spice
@@ -242,30 +217,24 @@ electrical_parameters {
 	}
 	conditions {
 		name:		temperature
-		typical:	130
+		typical:	125
 
 		+
 		name:		corner
 		typical:	tt
-	}
-	testbenches {
-		filename:	ngspice/mean_at_130_1.spice
-		conditions {
-			temperature {degrees}C 130
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.5251307200966855
-		}
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		typical:	1.8
+		maximum:	2.0
 	}
 
 	+
-	name:		temperature_sweep
+	name:		temp_sweep_corner
 	status:		skip
-	description:	Mean voltage in a range of temperatures
-	display:	Temperature sweep
+	description:	Mean output voltage over a temperature sweep. Variations in corners
+	display:	Temperature sweep (corners)
 	unit:		V
 	spec {
 		typical:	any
@@ -282,9 +251,47 @@ electrical_parameters {
 	conditions {
 		name:		temperature
 		minimum:	-40
-		maximum:	130
+		maximum:	125
 		step:		linear
-		stepsize:	30
+		stepsize:	16.5
+
+		+
+		name:		corner
+		minimum:	ss
+		typical:	tt
+		maximum:	ff
+	}
+
+	+
+	name:		temp_sweep_voltage
+	status:		skip
+	description:	Mean output voltage over a temperature sweep. Variations in voltage
+	display:	Temperature sweep (voltage)
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data null result
+	}
+	measure {
+		tool:		python
+		filename:	analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	125
+		step:		linear
+		stepsize:	16.5
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		typical:	1.8
+		maximum:	2.0
 	}
 }
 

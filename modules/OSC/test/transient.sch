@@ -106,7 +106,7 @@ format="tcleval( @value )"
 value="
 *.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice ff
 .lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.ff.red ff
-.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hg/spice/sky130_fd_sc_hd.spice
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}
 C {devices/code.sym} -460 -710 0 0 {name=MODELS_SS
 only_toplevel=true
@@ -115,7 +115,7 @@ format="tcleval( @value )"
 value="
 *.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice ss
 .lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.ss.red ss
-.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hg/spice/sky130_fd_sc_hd.spice
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}
 C {devices/lab_pin.sym} -560 -20 3 0 {name=l9 sig_type=std_logic lab=REF_IN}
 C {sky130_fd_pr/res_high_po_5p73.sym} -630 -70 0 0 {name=R1

@@ -28,10 +28,9 @@ def func(filename: str):
     df: pd.DataFrame = None
 
     with open(filename) as f:
-        content = f.read()
-        
+        # content = f.read()
         # logger.info(content) # Too much info
-        
+
         df = pd.read_fwf(filename)
         logger.info(df)
 

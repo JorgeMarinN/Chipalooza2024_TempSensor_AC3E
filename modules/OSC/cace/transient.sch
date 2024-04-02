@@ -69,8 +69,7 @@ meas tran period
 
 let freq = 1/period
 
-set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data freq
+echo $&freq > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}

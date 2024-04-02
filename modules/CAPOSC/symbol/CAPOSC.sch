@@ -23,7 +23,5 @@ C {sky130_fd_pr/cap_mim_m3_2.sym} 560 10 0 0 {name=C2_B model=cap_mim_m3_2 W=10 
 C {devices/iopin.sym} 210 -60 3 0 {name=p1 lab=TOP_V}
 C {devices/iopin.sym} 490 -60 3 0 {name=p2 lab=TOP_B}
 C {devices/iopin.sym} 350 80 1 0 {name=p3 lab=BOT}
-C {sky130_fd_pr/cap_mim_m3_1.sym} 950 10 0 0 {name=C5_B model=cap_mim_m3_1 W=10 L=10 MF=1 spiceprefix=X}
-C {sky130_fd_pr/cap_mim_m3_2.sym} 1090 10 0 0 {name=C6_B model=cap_mim_m3_2 W=10 L=10 MF=1 spiceprefix=X}
 C {sky130_fd_pr/cap_mim_m3_1.sym} 680 10 0 0 {name=C3_B model=cap_mim_m3_1 W=10 L=10 MF=1 spiceprefix=X}
 C {sky130_fd_pr/cap_mim_m3_2.sym} 820 10 0 0 {name=C4_B model=cap_mim_m3_2 W=10 L=10 MF=1 spiceprefix=X}
