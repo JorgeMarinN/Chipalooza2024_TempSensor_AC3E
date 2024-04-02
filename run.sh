@@ -8,4 +8,4 @@ docker run -it --rm \
 	-e DISPLAY \
 	-e XDG_RUNTIME_DIR \
 	-e PULSE_SERVER \
-	git.1159.cl/mario1159/chipathon-tools-desktop:latest bash
+	akilesalreadytaken/chipathon-tools:latest bash
