@@ -1,0 +1,126 @@
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/SDC/symbol/SDC.sch
+.subckt SDC VDD DOUT VSS
+*.PININFO VDD:B VSS:B DOUT:O
+X1 SENS_IN REF_IN DOUT VDD VSS net1 net2 INTERNAL_SDC
+XR1 REF_IN net2 REF_IN sky130_fd_pr__res_high_po_5p73 L=8 mult=1 m=1
+XR3 SENS_IN net1 SENS_IN sky130_fd_pr__res_iso_pw W=180 L=30.5 m=1
+.ends
+
+* expanding   symbol:  symbol/INTERNAL_SDC.sym # of pins=7
+** sym_path: ./INTERNAL_SDC/symbol/INTERNAL_SDC.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/INTERNAL_SDC/symbol/INTERNAL_SDC.sch
+.subckt INTERNAL_SDC SENS_IN REF_IN DOUT VDD VSS N3_S N3_R
+*.PININFO VDD:B VSS:B SENS_IN:I REF_IN:I DOUT:O N3_S:I N3_R:I
+XOSC_SENS SENS_IN N1_S N2_S VDD VSS net1 N3_S OSC
+XOSC_REF REF_IN N1_R N2_R VDD VSS net2 N3_R OSC
+XPG SENS_IN DOUT net1 VDD VSS PASSGATE
+XPG1 REF_IN VDD net2 VDD VSS PASSGATE
+X1 N2_S N2_R DOUT nDOUT VDD VSS DFF
+.ends
+
+
+* expanding   symbol:  symbol/OSC.sym # of pins=7
+** sym_path: ./OSC/symbol/OSC.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/OSC/symbol/OSC.sch
+.subckt OSC SENS_IN N1 N2 VDD VSS CON_CV N3
+*.PININFO SENS_IN:I VDD:B VSS:B N1:O N2:O CON_CV:B N3:O
+XST1 SENS_IN VDD VSS N1 N1 N1 INVandCAP
+XST2 N1 VDD VSS net1 net1 net1 INVandCAP
+XST3 net1 VDD VSS N3 CON_CV SENS_IN INVandCAP
+XBUFFS net1 N2 VDD VSS BUFFMIN
+.ends
+
+
+* expanding   symbol:  symbol/PASSGATE.sym # of pins=5
+** sym_path: ./PASSGATE/symbol/PASSGATE.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/PASSGATE/symbol/PASSGATE.sch
+.subckt PASSGATE VIN CTR VOUT VDD VSS
+*.PININFO VIN:I VDD:B VSS:B CTR:I VOUT:O
+XMNSW VOUT CTR VIN VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 m=1
+XMPSW VOUT net1 VIN VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6 nf=1 m=1
+X1 CTR net1 VDD VSS INVMIN
+.ends
+
+
+* expanding   symbol:  symbol/DFF.sym # of pins=6
+** sym_path: ./DFF/symbol/DFF.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/DFF/symbol/DFF.sch
+.subckt DFF IN CLK D ND VDD GND
+*.PININFO IN:I CLK:I VDD:B GND:B ND:O D:O
+XMN_NIN NDIFF IN GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XMP_NINCLK NDIFF CLK net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 m=1
+XMP_NIN net1 IN VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 m=1
+XMN_NIN1 PDIFF NDIFF GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XMP_NINCLK1 PDIFF CLK net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 m=1
+XMP_NIN1 net2 NDIFF VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 m=1
+XMN_NIN2 net3 CLK GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XMN_POUTT ND PDIFF net3 GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XMN_POUTT1 D NDIFF net4 GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XMN_POUTT2 D ND GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XMP_NIN2 D ND VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 m=1
+XMN_POUTT3 ND D GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XMP_NIN3 ND D VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 m=1
+XMN_NIN3 net4 CLK GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+.ends
+
+
+* expanding   symbol:  symbol/INVandCAP.sym # of pins=6
+** sym_path: ./INVandCAP/symbol/INVandCAP.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/INVandCAP/symbol/INVandCAP.sch
+.subckt INVandCAP VIN VDD VSS VOUT CON_CV CON_CBASE
+*.PININFO VIN:I VDD:B VSS:B VOUT:O CON_CV:B CON_CBASE:B
+XINV_OSC VIN VOUT VDD VSS INV
+XCN CON_CV CON_CBASE VSS CAPOSC
+.ends
+
+
+* expanding   symbol:  symbol/BUFFMIN.sym # of pins=4
+** sym_path: ./BUFFMIN/symbol/BUFFMIN.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/BUFFMIN/symbol/BUFFMIN.sch
+.subckt BUFFMIN VIN VOUT VDD VSS
+*.PININFO VDD:B VSS:B VIN:I VOUT:O
+X1 VIN net1 VDD VSS INVMIN
+X2 net1 VOUT VDD VSS INVMIN
+.ends
+
+
+* expanding   symbol:  symbol/INVMIN.sym # of pins=4
+** sym_path: ./INVMIN/symbol/INVMIN.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/INVMIN/symbol/INVMIN.sch
+.subckt INVMIN VIN VOUT VDD VSS
+*.PININFO VIN:I VDD:B VSS:B VOUT:O
+XM1 VOUT VIN VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XM2 VOUT VIN VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 m=1
+.ends
+
+
+* expanding   symbol:  symbol/INV.sym # of pins=4
+** sym_path: ./INV/symbol/INV.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/INV/symbol/INV.sch
+.subckt INV VIN VOUT VDD VSS
+*.PININFO VIN:I VDD:B VSS:B VOUT:O
+XM1 VOUT VIN VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=2 m=1
+XM2 VOUT VIN VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6 nf=6 m=1
+.ends
+
+
+* expanding   symbol:  symbol/CAPOSC.sym # of pins=3
+** sym_path: ./CAPOSC/symbol/CAPOSC.sym
+** sch_path: /home/designer/Chipalooza2024_TempSensor_AC3E/modules/CAPOSC/symbol/CAPOSC.sch
+.subckt CAPOSC TOP_V TOP_B BOT
+*.PININFO TOP_V:B TOP_B:B BOT:B
+XC1_V TOP_V BOT sky130_fd_pr__cap_mim_m3_1 W=10 L=10 m=1
+XC2_V TOP_V BOT sky130_fd_pr__cap_mim_m3_2 W=10 L=10 m=1
+XC1_B TOP_B BOT sky130_fd_pr__cap_mim_m3_1 W=10 L=10 m=1
+XC2_B TOP_B BOT sky130_fd_pr__cap_mim_m3_2 W=10 L=10 m=1
+XC5_B TOP_B BOT sky130_fd_pr__cap_mim_m3_1 W=10 L=10 m=1
+XC6_B TOP_B BOT sky130_fd_pr__cap_mim_m3_2 W=10 L=10 m=1
+XC3_B TOP_B BOT sky130_fd_pr__cap_mim_m3_1 W=10 L=10 m=1
+XC4_B TOP_B BOT sky130_fd_pr__cap_mim_m3_2 W=10 L=10 m=1
+XC7_B TOP_B BOT sky130_fd_pr__cap_mim_m3_1 W=10 L=10 m=1
+XC8_B TOP_B BOT sky130_fd_pr__cap_mim_m3_2 W=10 L=10 m=1
+XC9_B TOP_B BOT sky130_fd_pr__cap_mim_m3_1 W=10 L=10 m=1
+XC10_B TOP_B BOT sky130_fd_pr__cap_mim_m3_2 W=10 L=10 m=1
+.ends
+
+.end
