@@ -258,8 +258,8 @@ else
 endif
 
 
-.PHONY: create-testbench
-create-testbench: create-validation
+.PHONY: create-tb
+create-tb: create-validation
 ifndef TEST
 	$(call ERROR_MESSAGE, TEST parameter not defined)
 else ifneq (,$(wildcard $(_FIRST_TOP_MODULE_DIR)/$(TOP)/test/$(TEST).sch))
@@ -269,16 +269,6 @@ else
 	--no_x \
 	--quit \
 	--command "xschem clear; xschem saveas $(_FIRST_TOP_MODULE_DIR)/$(TOP)/test/$(TEST).sch"
-endif
-
-
-ifneq (,$(wildcard $(_FIRST_TOP_MODULE_DIR)/$(TOP)/test/$(TOP)-test.sch))
-	$(call WARNING_MESSAGE, schematic already exists)
-else
-	xschem --rcfile $(XSCHEM_RCFILE) \
-	--no_x \
-	--quit \
-	--command "xschem clear; xschem saveas $(_FIRST_TOP_MODULE_DIR)/$(TOP)/symbol/$(TOP).sch"
 endif
 
 

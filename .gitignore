@@ -163,8 +163,12 @@ xschem
 **/dumped_modules/*
 **/sky130_drc.txt
 
+# Case generated files
 **/cace/*.spice
 **/cace/*.sym
-**/modules/ngspice/*
-**/modules/netlist/*
+**/cace/ngspice/*
+**/cace/netlist/*
+
+# Code Models
 **/_obj_dir/*
+**/*.h

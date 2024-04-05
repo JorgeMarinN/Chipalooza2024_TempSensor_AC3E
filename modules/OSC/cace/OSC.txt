@@ -2,8 +2,8 @@
 # CACE format 4.0 characterization file
 #---------------------------------------------------
 
-name:		SDC
-description:	Resistive Temperature sensor
+name:		OSC
+description:	Oscillator
 commit:		N/A
 PDK:		sky130A
 foundry:	SkyWater
@@ -18,16 +18,16 @@ authorship {
 # Paths to various files
 
 paths {
-	root:		..
-	documentation:	doc
-	schematic:	SDC/symbol
-	layout:		gds
-	magic:		mag
-	netlist:	netlist
-	testbench:	cace
-	simulation:	ngspice
-	plots:		plots
-	logs:		ngspice/log
+	root:		../../
+	documentation:	../doc
+	schematic:	OSC/symbol
+	layout:		OSC/gds
+	magic:		OSC/mag
+	netlist:	OSC/cace/netlist
+	testbench:	OSC/cace
+	simulation:	OSC/cace/ngspice
+	plots:		OSC/cace/plots
+	logs:		OSC/cace/ngspice/log
 
 	reports:	reports
 }
@@ -78,8 +78,8 @@ pins {
 	description:	Analog power supply
 	type:		power
 	direction:	inout
-	Vmin:		3.0
-	Vmax:		3.6
+	Vmin:		1.6
+	Vmax:		2.0
 
  	+
 	name:		VSS
@@ -90,12 +90,44 @@ pins {
 	Vmax:		0.3
 
 	+
-	name:		DOUT
-	description:	Amplifier voltage output
+	name:		N1
+	description:	Middle Node 1
 	type:		signal
 	direction:	output
-	Vmin:		vss
-	Vmax:		vdd
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		N2
+	description:	Middle Node 2
+	type:		signal
+	direction:	output
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		N3
+	description:	Middle Node 3
+	type:		signal
+	direction:	output
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		SENS_IN
+	description:	dummy1
+	type:		signal
+	direction:	inout
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		CON_CV
+	description:	dummy2
+	type:		signal
+	direction:	inout
+	Vmin:		VSS
+	Vmax:		VDD
 }
 
 # Default values for electrical parameter measurement conditions
@@ -120,47 +152,30 @@ default_conditions {
 	description:	Ambient temperature
 	display:	Temp
 	unit:		{degrees}C
-	minimum:	-40
-	typical:	27
-	maximum:	130
+	typical:	25
 
 	+
 	name:		corner
 	description:	Process corner
 	display:	Corner
-	minimum:	ss
 	typical:	tt
-	maximum:	ff
-
-	+
-	name:		iterations
-	description:	Iterations to run
-	display:	Iterations
-	minimum:	1
-	maximum:	10
-	step:		linear
-	stepsize:	1
 }
 
 # List of electrical parameters to be measured and their specified limits
 
 electrical_parameters {
-	name:		mean_at_m40
+	name:		freq_at_m40
 	status:		skip
-	description:	Mean output value at -40 degrees C
+	description:	Frequency value at -40 degrees C
 	display:	At -40 {degrees}C
-	unit:		V
+	unit:		Hz
 	spec {
 		typical:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	transient.spice
-		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
+		format:		ascii .data result
 	}
 	conditions {
 		name:		temperature
@@ -169,86 +184,93 @@ electrical_parameters {
 		+
 		name:		corner
 		typical:	tt
+
+		+
+		name:		vvdd
+		typical:	1.8
 	}
 
 	+
-	name:		mean_at_27
+	name:		freq_at_125
 	status:		skip
-	description:	Mean output value at 27 degrees C
-	display:	At 0 {degrees}C
-	unit:		V
+	description:	Frequency value at 125 degrees C
+	display:	At 125 {degrees}C
+	unit:		Hz
 	spec {
 		typical:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	transient.spice
-		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
+		format:		ascii .data result
 	}
 	conditions {
 		name:		temperature
-		typical:	27
+		typical:	125
 
 		+
 		name:		corner
 		typical:	tt
-	}
-
-	+
-	name:		mean_at_130
-	status:		skip
-	description:	Mean output value at 130 degrees C
-	display:	At 130 {degrees}C
-	unit:		V
-	spec {
-		typical:	any
-	}
-	simulate {
-		tool:		ngspice
-		template:	transient.spice
-		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
-	}
-	conditions {
-		name:		temperature
-		typical:	130
 
 		+
-		name:		corner
-		typical:	tt
+		name:		vvdd
+		typical:	1.8
 	}
 
 	+
-	name:		temperature_sweep
+	name:		temp_sweep_corner
 	status:		skip
-	description:	Mean voltage in a range of temperatures
-	display:	Temperature sweep
-	unit:		V
+	description:	Frequency between -40 and 125{degrees}C. Variations in corners
+	display:	Temperature Sweep (corner)
+	unit:		Hz
 	spec {
 		typical:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	transient.spice
-		format:		ascii .data null result
-	}
-	measure {
-		tool:		python
-		filename:	analyze_temps.py
+		format:		ascii .data result
 	}
 	conditions {
 		name:		temperature
 		minimum:	-40
-		maximum:	130
+		maximum:	125
 		step:		linear
-		stepsize:	30
+		stepsize:	16.5
+
+		+
+		name:		corner
+		minimum:	ss
+		typical:	tt
+		maximum:	ff
+	}
+
+	+
+	name:		temp_sweep_voltage
+	status:		skip
+	description:	Frequency between -40 and 125{degrees}C. Variations in voltage
+	display:	Temperature Sweep (voltage)
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	125
+		step:		linear
+		stepsize:	16.5
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		typical:	1.8
+		maximum:	2.0
 	}
 }
 

@@ -1,4 +1,4 @@
-v {xschem version=3.4.5 file_version=1.2
+v {xschem version=3.4.4 file_version=1.2
 }
 G {}
 K {}
@@ -47,9 +47,6 @@ value="
 
 .include \{DUT_path\}
 
-*.lib \{PDK_ROOT\}/\{PDK\}/libs.tech/combined/sky130.lib.spice \{corner\}
-.lib \{PDK_ROOT\}/\{PDK\}/libs.tech/ngspice/sky130.lib.spice \{corner\}
-
 .option TEMP=\{temperature\}
 .option warn=1
 
@@ -84,4 +81,13 @@ value="
 .param vvdd=1.8
 .param vvss=0
 
+"}
+C {devices/code.sym} -270 -690 0 0 {name=MODELS
+only_toplevel=true
+spice_ignore=0
+format="tcleval( @value )"
+value="
+.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.tt.red \{corner\}
+
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}

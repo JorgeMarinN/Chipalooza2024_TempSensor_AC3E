@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -48,7 +48,8 @@ format="tcleval( @value )"
 value="
 *.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice tt
 .lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.tt.red tt
-.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hg/spice/sky130_fd_sc_hd.spice
+
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}
 C {devices/code.sym} 650 -130 0 0 {name=MODELS_FF
 only_toplevel=true
@@ -57,7 +58,8 @@ format="tcleval( @value )"
 value="
 *.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice ff
 .lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.ff.red ff
-.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hg/spice/sky130_fd_sc_hd.spice
+
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}
 C {devices/code.sym} 530 -130 0 0 {name=MODELS_SS
 only_toplevel=true
@@ -66,5 +68,6 @@ format="tcleval( @value )"
 value="
 *.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice ss
 .lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.ss.red ss
-.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hg/spice/sky130_fd_sc_hd.spice
+
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}
