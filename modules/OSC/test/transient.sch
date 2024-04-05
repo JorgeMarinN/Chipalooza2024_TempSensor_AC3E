@@ -60,8 +60,8 @@ C {devices/lab_wire.sym} -1030 -290 0 1 {name=p24 sig_type=std_logic lab=vss}
 C {devices/lab_wire.sym} -400 -110 0 0 {name=p25 sig_type=std_logic lab=out}
 C {devices/vsource.sym} -1120 -240 0 0 {name=vvdd value="DC 2.0" savecurrent=false}
 C {devices/code_shown.sym} -460 -540 0 0 {name=CONTROL only_toplevel=false value="
-
 .ic v(SENS_IN)=0
+.save v(out)
 .control
 tran 0.1n 15u 10u
 

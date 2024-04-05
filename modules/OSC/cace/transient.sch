@@ -60,6 +60,7 @@ C {devices/lab_wire.sym} -1030 -290 0 1 {name=p24 sig_type=std_logic lab=vss}
 C {devices/vsource.sym} -1120 -240 0 0 {name=vvdd value="DC \{vvdd\}" savecurrent=false}
 C {devices/code_shown.sym} -460 -540 0 0 {name=CONTROL only_toplevel=false value="
 .ic v(SENS_IN)=0
+.save v(out)
 .control
 tran 0.1n 11u 10u
 
@@ -106,7 +107,7 @@ only_toplevel=true
 spice_ignore=0
 format="tcleval( @value )"
 value="
-.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.tt.red \{corner\}
+.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.\{corner\}.red \{corner\}
 
 .include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}

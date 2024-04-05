@@ -1,0 +1,1216 @@
+#---------------------------------------------------
+# CACE format 4.0 characterization file /workspaces/Chipalooza2024_TempSensor_AC3E/modules/OSC/cace/OSC_results.txt
+#---------------------------------------------------
+
+name:		OSC
+description:	Oscillator
+commit:		N/A
+PDK:		sky130A
+foundry:	SkyWater
+cace_format:	4.0
+authorship {
+	designer:	Jorge Marín.
+	company:	AC3E
+	creation_date:	March 12, 2024
+	modification_date:	April  5, 2024 at 02:04pm
+	license:	Apache 2.0
+}
+
+# Paths to various files
+
+paths {
+	root:		../..
+	documentation:	../doc
+	schematic:	OSC/symbol
+	layout:		OSC/gds
+	magic:		OSC/mag
+	netlist:	OSC/cace/netlist
+	testbench:	OSC/cace
+	simulation:	OSC/cace/ngspice
+	plots:		OSC/cace/plots
+	logs:		OSC/cace/ngspice/log
+
+	reports:	reports
+}
+
+# Project dependencies
+
+dependencies {
+	name:		INTERNAL_SDC
+	path:		.
+
+	+
+	name:		BUFFMIN
+	path:		.
+
+	+
+	name:		DFF
+	path:		.
+
+	+
+	name:		INV
+	path:		.
+
+	+
+	name:		INVandCAP
+	path:		.
+
+	+
+	name:		OSC
+	path:		.
+
+	+
+	name:		CAPOSC
+	path:		.
+
+	+
+	name:		INVMIN
+	path:		.
+
+	+
+	name:		PASSGATE
+	path:		.
+}
+
+# Pin names and descriptions
+
+pins {
+	name:		VDD
+	description:	Analog power supply
+	type:		power
+	direction:	inout
+	Vmin:		1.6
+	Vmax:		2.0
+
+	+
+	name:		VSS
+	description:	Analog ground
+	type:		ground
+	direction:	inout
+	Vmin:		-0.3
+	Vmax:		0.3
+
+	+
+	name:		N1
+	description:	Middle Node 1
+	type:		signal
+	direction:	output
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		N2
+	description:	Middle Node 2
+	type:		signal
+	direction:	output
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		N3
+	description:	Middle Node 3
+	type:		signal
+	direction:	output
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		SENS_IN
+	description:	dummy1
+	type:		signal
+	direction:	inout
+	Vmin:		VSS
+	Vmax:		VDD
+
+	+
+	name:		CON_CV
+	description:	dummy2
+	type:		signal
+	direction:	inout
+	Vmin:		VSS
+	Vmax:		VDD
+}
+
+# Default values for electrical parameter measurement conditions
+# if not otherwise specified
+
+default_conditions {
+	name:		vvdd
+	description:	Analog power supply voltage
+	display:	vdd
+	unit:		V
+	typical:	1.8
+
+	+
+	name:		vvss
+	description:	Analog ground
+	display:	vss
+	unit:		V
+	typical:	0
+
+	+
+	name:		temperature
+	description:	Ambient temperature
+	display:	Temp
+	unit:		{degrees}C
+	typical:	25
+
+	+
+	name:		corner
+	description:	Process corner
+	display:	Corner
+	typical:	tt
+}
+
+# List of electrical parameters to be measured and their specified limits
+
+electrical_parameters {
+	name:		freq_at_slow_case
+	status:		active
+	description:	Frequency value at -40 {degrees}C corner SS and 1.6V
+	display:	T=-40 {degrees}C cor=SS V=1.6V
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	8.023e+07 pass
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		typical:	-40
+
+		+
+		name:		corner
+		typical:	ss
+
+		+
+		name:		vvdd
+		typical:	1.6
+	}
+	testbenches {
+		filename:	OSC/cace/ngspice/freq_at_slow_case_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.6
+			corner  ss
+		}
+		results {
+			8.02276E+07
+		}
+	}
+
+	+
+	name:		freq_at_min_temp
+	status:		active
+	description:	Frequency value at -40 degrees C
+	display:	T=-40 {degrees}C cor=TT V=1.8V
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	1.673e+08 pass
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		typical:	-40
+
+		+
+		name:		corner
+		typical:	tt
+
+		+
+		name:		vvdd
+		typical:	1.8
+	}
+	testbenches {
+		filename:	OSC/cace/ngspice/freq_at_m40_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.67255E+08
+		}
+	}
+
+	+
+	name:		freq_at_max_temp
+	status:		active
+	description:	Frequency value at 125 degrees C
+	display:	T=125 {degrees}C cor=TT V=1.8V
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	1.802e+08 pass
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		typical:	125
+
+		+
+		name:		corner
+		typical:	tt
+
+		+
+		name:		vvdd
+		typical:	1.8
+	}
+	testbenches {
+		filename:	OSC/cace/ngspice/freq_at_125_1.spice
+		conditions {
+			temperature {degrees}C 125
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.80158E+08
+		}
+	}
+
+	+
+	name:		freq_at_fast_case
+	status:		active
+	description:	Frequency value at 125 {degrees}C corner FF and 2.0V
+	display:	T=125 {degrees}C cor=FF V=2.0V
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	2.777e+08 pass
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		typical:	125
+
+		+
+		name:		corner
+		typical:	ff
+
+		+
+		name:		vvdd
+		typical:	2.0
+	}
+	testbenches {
+		filename:	OSC/cace/ngspice/freq_at_fast_case_1.spice
+		conditions {
+			temperature {degrees}C 125
+			vvss V 0
+			vvdd V 2.0
+			corner  ff
+		}
+		results {
+			2.77745E+08
+		}
+	}
+
+	+
+	name:		temp_sweep_corner
+	status:		active
+	description:	Frequency between -40 and 125{degrees}C. Variations in corners
+	display:	Temperature Sweep (corner)
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	1.742e+08 pass
+		status:		done
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	125
+		step:		linear
+		stepsize:	16.5
+
+		+
+		name:		corner
+		minimum:	ss
+		typical:	tt
+		maximum:	ff
+	}
+	testbenches {
+		filename:	OSC/cace/ngspice/temp_sweep_corner_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.15495E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_2.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.16508E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_3.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.1744E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_4.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.18317E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_5.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.19109E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_6.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.19847E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_7.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.20595E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_8.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.21295E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_9.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.2198E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_10.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.22628E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_11.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ss
+		}
+		results {
+			1.23301E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_12.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.67255E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_13.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.68793E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_14.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.7032E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_15.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.71811E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_16.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.73338E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_17.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.74587E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_18.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.75822E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_19.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.77054E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_20.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.78068E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_21.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.79155E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_22.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.80158E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_23.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.25194E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_24.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.2801E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_25.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.30394E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_26.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.329E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_27.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.35072E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_28.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.37209E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_29.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.39072E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_30.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.40735E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_31.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.42408E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_32.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.43632E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_corner_33.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvss V 0
+			vvdd V 1.8
+			corner  ff
+		}
+		results {
+			2.44728E+08
+		}
+	}
+
+	+
+	name:		temp_sweep_voltage
+	status:		active
+	description:	Frequency between -40 and 125{degrees}C. Variations in voltage
+	display:	Temperature Sweep (voltage)
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	1.742e+08 pass
+		status:		done
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	125
+		step:		linear
+		stepsize:	16.5
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		typical:	1.8
+		maximum:	2.0
+	}
+	testbenches {
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.2413E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_2.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.26803E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_3.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.29328E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_4.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.31687E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_5.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.33959E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_6.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.36073E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_7.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.38147E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_8.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.40178E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_9.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.42082E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_10.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.43962E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_11.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvss V 0
+			vvdd V 1.6
+			corner  tt
+		}
+		results {
+			1.45794E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_12.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.67255E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_13.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.68793E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_14.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.7032E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_15.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.71811E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_16.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.73338E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_17.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.74587E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_18.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.75822E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_19.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.77054E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_20.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.78068E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_21.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.79155E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_22.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvss V 0
+			vvdd V 1.8
+			corner  tt
+		}
+		results {
+			1.80158E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_23.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.0716E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_24.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.081E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_25.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.08717E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_26.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.09351E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_27.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.09937E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_28.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.10404E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_29.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.10801E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_30.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.11158E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_31.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.11543E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_32.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.1169E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_voltage_33.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvss V 0
+			vvdd V 2.0
+			corner  tt
+		}
+		results {
+			2.11991E+08
+		}
+	}
+}
+
+# List of physical parameters to be measured and their specified limits
+
+physical_parameters {
+	name:		area
+	status:		active
+	description:	Total circuit layout area
+	display:	area
+	unit:		{micro}m{squared}
+	spec {
+		maximum:	any
+	}
+	evaluate {
+		tool:		cace_area
+	}
+	results {
+		name:		schematic
+		maximum:	4224 pass
+	}
+}
