@@ -1,5 +1,5 @@
 #---------------------------------------------------
-# CACE format 4.0 characterization file
+# CACE format 4.0 characterization file /workspaces/Chipalooza2024_TempSensor_AC3E/modules/SDC/cace/SDC_results.txt
 #---------------------------------------------------
 
 name:		SDC
@@ -12,13 +12,14 @@ authorship {
 	designer:	Jorge Marín.
 	company:	AC3E
 	creation_date:	March 12, 2024
+	modification_date:	April  6, 2024 at 06:51am
 	license:	Apache 2.0
 }
 
 # Paths to various files
 
 paths {
-	root:		../../
+	root:		../..
 	documentation:	../doc
 	schematic:	SDC/symbol
 	layout:		SDC/gds
@@ -81,7 +82,7 @@ pins {
 	Vmin:		1.6
 	Vmax:		2.0
 
- 	+
+	+
 	name:		VSS
 	description:	Analog ground
 	type:		ground
@@ -132,10 +133,41 @@ default_conditions {
 # List of electrical parameters to be measured and their specified limits
 
 electrical_parameters {
-	name:		mean_at_m40
-	status:		skip
-	description:	Mean output value at -40 degrees C
-	display:	At -40 {degrees}C
+	name:		dout_at_slow_case
+	status:		active
+	description:	Mean DOUT at -40 {degrees}C corner SS and 1.6V
+	display:	T=-40 {degrees}C cor=SS V=1.6V
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	measure {
+		tool:		python
+		filename:	analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		typical:	-40
+
+		+
+		name:		corner
+		typical:	ss
+
+		+
+		name:		vvdd
+		typical:	1.6
+	}
+
+	+
+	name:		dout_at_m40
+	status:		active
+	description:	Mean DOUT at -40 {degrees}C
+	display:	T=-40 {degrees}C cor=TT V=1.8V
 	unit:		V
 	spec {
 		typical:	any
@@ -152,23 +184,13 @@ electrical_parameters {
 	conditions {
 		name:		temperature
 		typical:	-40
-
-		+
-		name:		corner
-		typical:	tt
-
-		+
-		name:		vvdd
-		minimum:	1.6
-		typical:	1.8
-		maximum:	2.0
 	}
 
 	+
-	name:		mean_at_25
-	status:		skip
-	description:	Mean output value at 25 degrees C
-	display:	At 0 {degrees}C
+	name:		dout_at_25
+	status:		active
+	description:	Mean DOUT at 25 {degrees}C
+	display:	T=25 {degrees}C cor=TT V=1.8V
 	unit:		V
 	spec {
 		typical:	any
@@ -185,23 +207,13 @@ electrical_parameters {
 	conditions {
 		name:		temperature
 		typical:	25
-
-		+
-		name:		corner
-		typical:	tt
-
-		+
-		name:		vvdd
-		minimum:	1.6
-		typical:	1.8
-		maximum:	2.0
 	}
 
 	+
-	name:		mean_at_125
-	status:		skip
-	description:	Mean output value at 125 degrees C
-	display:	At 125 {degrees}C
+	name:		dout_at_125
+	status:		active
+	description:	Mean DOUT at 125 {degrees}C
+	display:	T=125 {degrees}C cor=TT V=1.8V
 	unit:		V
 	spec {
 		typical:	any
@@ -218,21 +230,42 @@ electrical_parameters {
 	conditions {
 		name:		temperature
 		typical:	125
+	}
+
+	+
+	name:		dout_at_fastest_case
+	status:		active
+	description:	Mean DOUT at 125{degrees}C corner FF and 2.0V
+	display:	T=125 {degrees}C cor=TT V=2.0V
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	measure {
+		tool:		python
+		filename:	analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		typical:	125
 
 		+
 		name:		corner
-		typical:	tt
+		typical:	ff
 
 		+
 		name:		vvdd
-		minimum:	1.6
-		typical:	1.8
-		maximum:	2.0
+		typical:	2.0
 	}
 
 	+
 	name:		temp_sweep_corner
-	status:		skip
+	status:		active
 	description:	Mean output voltage over a temperature sweep. Variations in corners
 	display:	Temperature sweep (corners)
 	unit:		V
@@ -264,7 +297,7 @@ electrical_parameters {
 
 	+
 	name:		temp_sweep_voltage
-	status:		skip
+	status:		active
 	description:	Mean output voltage over a temperature sweep. Variations in voltage
 	display:	Temperature sweep (voltage)
 	unit:		V
@@ -299,7 +332,7 @@ electrical_parameters {
 
 physical_parameters {
 	name:		area
-	status:		skip
+	status:		active
 	description:	Total circuit layout area
 	display:	area
 	unit:		{micro}m{squared}

@@ -18,7 +18,7 @@ authorship {
 # Paths to various files
 
 paths {
-	root:		../../
+	root:		../..
 	documentation:	../doc
 	schematic:	OSC/symbol
 	layout:		OSC/gds
@@ -81,7 +81,7 @@ pins {
 	Vmin:		1.6
 	Vmax:		2.0
 
- 	+
+	+
 	name:		VSS
 	description:	Analog ground
 	type:		ground
@@ -164,10 +164,37 @@ default_conditions {
 # List of electrical parameters to be measured and their specified limits
 
 electrical_parameters {
-	name:		freq_at_m40
-	status:		skip
+	name:		freq_at_slow_case
+	status:		active
+	description:	Frequency value at -40 {degrees}C corner SS and 1.6V
+	display:	T=-40 {degrees}C cor=SS V=1.6V
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		typical:	-40
+
+		+
+		name:		corner
+		typical:	ss
+
+		+
+		name:		vvdd
+		typical:	1.6
+	}
+
+	+
+	name:		freq_at_min_temp
+	status:		active
 	description:	Frequency value at -40 degrees C
-	display:	At -40 {degrees}C
+	display:	T=-40 {degrees}C cor=TT V=1.8V
 	unit:		Hz
 	spec {
 		typical:	any
@@ -191,10 +218,10 @@ electrical_parameters {
 	}
 
 	+
-	name:		freq_at_125
-	status:		skip
+	name:		freq_at_max_temp
+	status:		active
 	description:	Frequency value at 125 degrees C
-	display:	At 125 {degrees}C
+	display:	T=125 {degrees}C cor=TT V=1.8V
 	unit:		Hz
 	spec {
 		typical:	any
@@ -218,8 +245,35 @@ electrical_parameters {
 	}
 
 	+
+	name:		freq_at_fast_case
+	status:		active
+	description:	Frequency value at 125 {degrees}C corner FF and 2.0V
+	display:	T=125 {degrees}C cor=FF V=2.0V
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		typical:	125
+
+		+
+		name:		corner
+		typical:	ff
+
+		+
+		name:		vvdd
+		typical:	2.0
+	}
+
+	+
 	name:		temp_sweep_corner
-	status:		skip
+	status:		active
 	description:	Frequency between -40 and 125{degrees}C. Variations in corners
 	display:	Temperature Sweep (corner)
 	unit:		Hz
@@ -247,7 +301,7 @@ electrical_parameters {
 
 	+
 	name:		temp_sweep_voltage
-	status:		skip
+	status:		active
 	description:	Frequency between -40 and 125{degrees}C. Variations in voltage
 	display:	Temperature Sweep (voltage)
 	unit:		Hz
@@ -272,13 +326,45 @@ electrical_parameters {
 		typical:	1.8
 		maximum:	2.0
 	}
+
+	+
+	name:		temp_sweep_worst_cases
+	status:		active
+	description:	Frequency between -40 and 125{degrees}C. on SS/FF and 1.6/2.0V
+	display:	Temperature Sweep (worst cases)
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	125
+		step:		linear
+		stepsize:	33
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		maximum:	2.0
+
+		+
+		name:		corner
+		minimum:	ss
+		maximum:	ff
+	}
 }
 
 # List of physical parameters to be measured and their specified limits
 
 physical_parameters {
 	name:		area
-	status:		skip
+	status:		active
 	description:	Total circuit layout area
 	display:	area
 	unit:		{micro}m{squared}

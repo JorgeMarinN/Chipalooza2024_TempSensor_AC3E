@@ -12,7 +12,7 @@ authorship {
 	designer:	Jorge Marín.
 	company:	AC3E
 	creation_date:	March 12, 2024
-	modification_date:	April  5, 2024 at 02:04pm
+	modification_date:	April  9, 2024 at 11:38pm
 	license:	Apache 2.0
 }
 
@@ -175,7 +175,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	8.023e+07 pass
+		typical:	5.83e+07 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -203,7 +203,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			8.02276E+07
+			5.83042E+07
 		}
 	}
 
@@ -218,7 +218,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	1.673e+08 pass
+		typical:	1.232e+08 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -238,7 +238,7 @@ electrical_parameters {
 		typical:	1.8
 	}
 	testbenches {
-		filename:	OSC/cace/ngspice/freq_at_m40_1.spice
+		filename:	OSC/cace/ngspice/freq_at_min_temp_1.spice
 		conditions {
 			temperature {degrees}C -40
 			vvss V 0
@@ -246,7 +246,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.67255E+08
+			1.23196E+08
 		}
 	}
 
@@ -261,7 +261,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	1.802e+08 pass
+		typical:	1.319e+08 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -281,7 +281,7 @@ electrical_parameters {
 		typical:	1.8
 	}
 	testbenches {
-		filename:	OSC/cace/ngspice/freq_at_125_1.spice
+		filename:	OSC/cace/ngspice/freq_at_max_temp_1.spice
 		conditions {
 			temperature {degrees}C 125
 			vvss V 0
@@ -289,7 +289,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.80158E+08
+			1.31918E+08
 		}
 	}
 
@@ -304,7 +304,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	2.777e+08 pass
+		typical:	2.008e+08 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -332,7 +332,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.77745E+08
+			2.00836E+08
 		}
 	}
 
@@ -347,7 +347,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	1.742e+08 pass
+		typical:	1.281e+08 pass
 		status:		done
 	}
 	simulate {
@@ -377,7 +377,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.15495E+08
+			8.466E+07
 		}
 
 		+
@@ -389,7 +389,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.16508E+08
+			8.55129E+07
 		}
 
 		+
@@ -401,7 +401,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.1744E+08
+			8.628E+07
 		}
 
 		+
@@ -413,7 +413,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.18317E+08
+			8.69805E+07
 		}
 
 		+
@@ -425,7 +425,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.19109E+08
+			8.76098E+07
 		}
 
 		+
@@ -437,7 +437,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.19847E+08
+			8.82042E+07
 		}
 
 		+
@@ -449,7 +449,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.20595E+08
+			8.87476E+07
 		}
 
 		+
@@ -461,7 +461,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.21295E+08
+			8.92332E+07
 		}
 
 		+
@@ -473,7 +473,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.2198E+08
+			8.97194E+07
 		}
 
 		+
@@ -485,7 +485,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.22628E+08
+			9.01398E+07
 		}
 
 		+
@@ -497,7 +497,7 @@ electrical_parameters {
 			corner  ss
 		}
 		results {
-			1.23301E+08
+			9.05692E+07
 		}
 
 		+
@@ -509,7 +509,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.67255E+08
+			1.23196E+08
 		}
 
 		+
@@ -521,7 +521,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.68793E+08
+			1.24362E+08
 		}
 
 		+
@@ -533,7 +533,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.7032E+08
+			1.25508E+08
 		}
 
 		+
@@ -545,7 +545,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.71811E+08
+			1.26496E+08
 		}
 
 		+
@@ -557,7 +557,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.73338E+08
+			1.27478E+08
 		}
 
 		+
@@ -569,7 +569,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.74587E+08
+			1.28392E+08
 		}
 
 		+
@@ -581,7 +581,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.75822E+08
+			1.29247E+08
 		}
 
 		+
@@ -593,7 +593,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.77054E+08
+			1.29983E+08
 		}
 
 		+
@@ -605,7 +605,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.78068E+08
+			1.30743E+08
 		}
 
 		+
@@ -617,7 +617,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.79155E+08
+			1.31349E+08
 		}
 
 		+
@@ -629,7 +629,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.80158E+08
+			1.31918E+08
 		}
 
 		+
@@ -641,7 +641,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.25194E+08
+			1.64879E+08
 		}
 
 		+
@@ -653,7 +653,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.2801E+08
+			1.66665E+08
 		}
 
 		+
@@ -665,7 +665,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.30394E+08
+			1.68488E+08
 		}
 
 		+
@@ -677,7 +677,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.329E+08
+			1.70108E+08
 		}
 
 		+
@@ -689,7 +689,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.35072E+08
+			1.7155E+08
 		}
 
 		+
@@ -701,7 +701,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.37209E+08
+			1.72822E+08
 		}
 
 		+
@@ -713,7 +713,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.39072E+08
+			1.74075E+08
 		}
 
 		+
@@ -725,7 +725,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.40735E+08
+			1.7506E+08
 		}
 
 		+
@@ -737,7 +737,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.42408E+08
+			1.75975E+08
 		}
 
 		+
@@ -749,7 +749,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.43632E+08
+			1.76809E+08
 		}
 
 		+
@@ -761,7 +761,7 @@ electrical_parameters {
 			corner  ff
 		}
 		results {
-			2.44728E+08
+			1.77437E+08
 		}
 	}
 
@@ -776,7 +776,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	1.742e+08 pass
+		typical:	1.281e+08 pass
 		status:		done
 	}
 	simulate {
@@ -806,7 +806,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.2413E+08
+			9.09057E+07
 		}
 
 		+
@@ -818,7 +818,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.26803E+08
+			9.29695E+07
 		}
 
 		+
@@ -830,7 +830,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.29328E+08
+			9.49037E+07
 		}
 
 		+
@@ -842,7 +842,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.31687E+08
+			9.67176E+07
 		}
 
 		+
@@ -854,7 +854,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.33959E+08
+			9.84584E+07
 		}
 
 		+
@@ -866,7 +866,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.36073E+08
+			1.00052E+08
 		}
 
 		+
@@ -878,7 +878,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.38147E+08
+			1.01585E+08
 		}
 
 		+
@@ -890,7 +890,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.40178E+08
+			1.03037E+08
 		}
 
 		+
@@ -902,7 +902,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.42082E+08
+			1.0443E+08
 		}
 
 		+
@@ -914,7 +914,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.43962E+08
+			1.05697E+08
 		}
 
 		+
@@ -926,7 +926,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.45794E+08
+			1.06931E+08
 		}
 
 		+
@@ -938,7 +938,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.67255E+08
+			1.23196E+08
 		}
 
 		+
@@ -950,7 +950,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.68793E+08
+			1.24362E+08
 		}
 
 		+
@@ -962,7 +962,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.7032E+08
+			1.25508E+08
 		}
 
 		+
@@ -974,7 +974,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.71811E+08
+			1.26496E+08
 		}
 
 		+
@@ -986,7 +986,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.73338E+08
+			1.27478E+08
 		}
 
 		+
@@ -998,7 +998,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.74587E+08
+			1.28392E+08
 		}
 
 		+
@@ -1010,7 +1010,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.75822E+08
+			1.29247E+08
 		}
 
 		+
@@ -1022,7 +1022,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.77054E+08
+			1.29983E+08
 		}
 
 		+
@@ -1034,7 +1034,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.78068E+08
+			1.30743E+08
 		}
 
 		+
@@ -1046,7 +1046,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.79155E+08
+			1.31349E+08
 		}
 
 		+
@@ -1058,7 +1058,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.80158E+08
+			1.31918E+08
 		}
 
 		+
@@ -1070,7 +1070,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.0716E+08
+			1.5253E+08
 		}
 
 		+
@@ -1082,7 +1082,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.081E+08
+			1.53045E+08
 		}
 
 		+
@@ -1094,7 +1094,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.08717E+08
+			1.53485E+08
 		}
 
 		+
@@ -1106,7 +1106,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.09351E+08
+			1.53848E+08
 		}
 
 		+
@@ -1118,7 +1118,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.09937E+08
+			1.52735E+08
 		}
 
 		+
@@ -1130,7 +1130,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.10404E+08
+			1.54311E+08
 		}
 
 		+
@@ -1142,7 +1142,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.10801E+08
+			1.54464E+08
 		}
 
 		+
@@ -1154,7 +1154,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.11158E+08
+			1.54668E+08
 		}
 
 		+
@@ -1166,7 +1166,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.11543E+08
+			1.54621E+08
 		}
 
 		+
@@ -1178,7 +1178,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.1169E+08
+			1.5464E+08
 		}
 
 		+
@@ -1190,7 +1190,332 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			2.11991E+08
+			1.54544E+08
+		}
+	}
+
+	+
+	name:		temp_sweep_worst_cases
+	status:		active
+	description:	Frequency between -40 and 125{degrees}C. on SS/FF and 1.6/2.0V
+	display:	Temperature Sweep (worst cases)
+	unit:		Hz
+	spec {
+		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	1.287e+08 pass
+		status:		done
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	125
+		step:		linear
+		stepsize:	33
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		maximum:	2.0
+
+		+
+		name:		corner
+		minimum:	ss
+		maximum:	ff
+	}
+	testbenches {
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.6
+			corner  ss
+		}
+		results {
+			5.83042E+07
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_2.spice
+		conditions {
+			temperature {degrees}C -7
+			vvss V 0
+			vvdd V 1.6
+			corner  ss
+		}
+		results {
+			6.13951E+07
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_3.spice
+		conditions {
+			temperature {degrees}C 26
+			vvss V 0
+			vvdd V 1.6
+			corner  ss
+		}
+		results {
+			6.40523E+07
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_4.spice
+		conditions {
+			temperature {degrees}C 59
+			vvss V 0
+			vvdd V 1.6
+			corner  ss
+		}
+		results {
+			6.63773E+07
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_5.spice
+		conditions {
+			temperature {degrees}C 92
+			vvss V 0
+			vvdd V 1.6
+			corner  ss
+		}
+		results {
+			6.84483E+07
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_6.spice
+		conditions {
+			temperature {degrees}C 125
+			vvss V 0
+			vvdd V 1.6
+			corner  ss
+		}
+		results {
+			7.03279E+07
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_7.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 2.0
+			corner  ss
+		}
+		results {
+			1.09835E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_8.spice
+		conditions {
+			temperature {degrees}C -7
+			vvss V 0
+			vvdd V 2.0
+			corner  ss
+		}
+		results {
+			1.10077E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_9.spice
+		conditions {
+			temperature {degrees}C 26
+			vvss V 0
+			vvdd V 2.0
+			corner  ss
+		}
+		results {
+			1.10169E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_10.spice
+		conditions {
+			temperature {degrees}C 59
+			vvss V 0
+			vvdd V 2.0
+			corner  ss
+		}
+		results {
+			1.10158E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_11.spice
+		conditions {
+			temperature {degrees}C 92
+			vvss V 0
+			vvdd V 2.0
+			corner  ss
+		}
+		results {
+			1.09994E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_12.spice
+		conditions {
+			temperature {degrees}C 125
+			vvss V 0
+			vvdd V 2.0
+			corner  ss
+		}
+		results {
+			1.09814E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_13.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 1.6
+			corner  ff
+		}
+		results {
+			1.28472E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_14.spice
+		conditions {
+			temperature {degrees}C -7
+			vvss V 0
+			vvdd V 1.6
+			corner  ff
+		}
+		results {
+			1.33978E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_15.spice
+		conditions {
+			temperature {degrees}C 26
+			vvss V 0
+			vvdd V 1.6
+			corner  ff
+		}
+		results {
+			1.38848E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_16.spice
+		conditions {
+			temperature {degrees}C 59
+			vvss V 0
+			vvdd V 1.6
+			corner  ff
+		}
+		results {
+			1.43025E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_17.spice
+		conditions {
+			temperature {degrees}C 92
+			vvss V 0
+			vvdd V 1.6
+			corner  ff
+		}
+		results {
+			1.46903E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_18.spice
+		conditions {
+			temperature {degrees}C 125
+			vvss V 0
+			vvdd V 1.6
+			corner  ff
+		}
+		results {
+			1.50029E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_19.spice
+		conditions {
+			temperature {degrees}C -40
+			vvss V 0
+			vvdd V 2.0
+			corner  ff
+		}
+		results {
+			1.96924E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_20.spice
+		conditions {
+			temperature {degrees}C -7
+			vvss V 0
+			vvdd V 2.0
+			corner  ff
+		}
+		results {
+			1.98942E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_21.spice
+		conditions {
+			temperature {degrees}C 26
+			vvss V 0
+			vvdd V 2.0
+			corner  ff
+		}
+		results {
+			2.00341E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_22.spice
+		conditions {
+			temperature {degrees}C 59
+			vvss V 0
+			vvdd V 2.0
+			corner  ff
+		}
+		results {
+			2.00953E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_23.spice
+		conditions {
+			temperature {degrees}C 92
+			vvss V 0
+			vvdd V 2.0
+			corner  ff
+		}
+		results {
+			2.01131E+08
+		}
+
+		+
+		filename:	OSC/cace/ngspice/temp_sweep_worst_cases_24.spice
+		conditions {
+			temperature {degrees}C 125
+			vvss V 0
+			vvdd V 2.0
+			corner  ff
+		}
+		results {
+			2.00836E+08
 		}
 	}
 }
@@ -1211,6 +1536,6 @@ physical_parameters {
 	}
 	results {
 		name:		schematic
-		maximum:	4224 pass
+		maximum:	5608 pass
 	}
 }
