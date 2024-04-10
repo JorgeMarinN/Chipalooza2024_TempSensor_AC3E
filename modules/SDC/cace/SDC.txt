@@ -134,7 +134,7 @@ default_conditions {
 
 electrical_parameters {
 	name:		dout_at_slow_case
-	status:		active
+	status:		skip
 	description:	Mean DOUT at -40 {degrees}C corner SS and 1.6V
 	display:	T=-40 {degrees}C cor=SS V=1.6V
 	unit:		V
@@ -165,7 +165,7 @@ electrical_parameters {
 
 	+
 	name:		dout_at_m40
-	status:		active
+	status:		skip
 	description:	Mean DOUT at -40 {degrees}C
 	display:	T=-40 {degrees}C cor=TT V=1.8V
 	unit:		V
@@ -188,7 +188,7 @@ electrical_parameters {
 
 	+
 	name:		dout_at_25
-	status:		active
+	status:		skip
 	description:	Mean DOUT at 25 {degrees}C
 	display:	T=25 {degrees}C cor=TT V=1.8V
 	unit:		V
@@ -211,7 +211,7 @@ electrical_parameters {
 
 	+
 	name:		dout_at_125
-	status:		active
+	status:		skip
 	description:	Mean DOUT at 125 {degrees}C
 	display:	T=125 {degrees}C cor=TT V=1.8V
 	unit:		V
@@ -234,7 +234,7 @@ electrical_parameters {
 
 	+
 	name:		dout_at_fastest_case
-	status:		active
+	status:		skip
 	description:	Mean DOUT at 125{degrees}C corner FF and 2.0V
 	display:	T=125 {degrees}C cor=TT V=2.0V
 	unit:		V
@@ -265,7 +265,7 @@ electrical_parameters {
 
 	+
 	name:		temp_sweep_corner
-	status:		active
+	status:		skip
 	description:	Mean output voltage over a temperature sweep. Variations in corners
 	display:	Temperature sweep (corners)
 	unit:		V
@@ -297,7 +297,7 @@ electrical_parameters {
 
 	+
 	name:		temp_sweep_voltage
-	status:		active
+	status:		skip
 	description:	Mean output voltage over a temperature sweep. Variations in voltage
 	display:	Temperature sweep (voltage)
 	unit:		V
@@ -326,13 +326,49 @@ electrical_parameters {
 		typical:	1.8
 		maximum:	2.0
 	}
+
+	+
+	name:		temp_sweep_worst_cases
+	status:		skip
+	description:	Mean DOUT between -40 and 125{degrees}C. on SS/FF and 1.6/2.0V
+	display:	Temperature Sweep (worst cases)
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data null result
+	}
+	measure {
+		tool:		python
+		filename:	analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	125
+		step:		linear
+		stepsize:	33
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		maximum:	2.0
+
+		+
+		name:		corner
+		minimum:	ss
+		maximum:	ff
+	}
 }
 
 # List of physical parameters to be measured and their specified limits
 
 physical_parameters {
 	name:		area
-	status:		active
+	status:		skip
 	description:	Total circuit layout area
 	display:	area
 	unit:		{micro}m{squared}

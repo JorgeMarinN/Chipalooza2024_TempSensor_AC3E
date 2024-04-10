@@ -743,6 +743,42 @@ electrical_parameters {
 			0.3587922907094696
 		}
 	}
+
+	+
+	name:		temp_sweep_worst_cases
+	status:		skip
+	description:	Mean DOUT between -40 and 125{degrees}C. on SS/FF and 1.6/2.0V
+	display:	Temperature Sweep (worst cases)
+	unit:		V
+	spec {
+		typical:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	transient.spice
+		format:		ascii .data null result
+	}
+	measure {
+		tool:		python
+		filename:	analyze_temps.py
+	}
+	conditions {
+		name:		temperature
+		minimum:	-40
+		maximum:	125
+		step:		linear
+		stepsize:	33
+
+		+
+		name:		vvdd
+		minimum:	1.6
+		maximum:	2.0
+
+		+
+		name:		corner
+		minimum:	ss
+		maximum:	ff
+	}
 }
 
 # List of physical parameters to be measured and their specified limits
