@@ -63,10 +63,6 @@ dependencies {
 	path:		.
 
 	+
-	name:		INVMIN
-	path:		.
-
-	+
 	name:		PASSGATE
 	path:		.
 }
@@ -165,7 +161,7 @@ default_conditions {
 
 electrical_parameters {
 	name:		freq_at_slow_case
-	status:		active
+	status:		skip
 	description:	Frequency value at -40 {degrees}C corner SS and 1.6V
 	display:	T=-40 {degrees}C cor=SS V=1.6V
 	unit:		Hz
@@ -192,7 +188,7 @@ electrical_parameters {
 
 	+
 	name:		freq_at_min_temp
-	status:		active
+	status:		skip
 	description:	Frequency value at -40 degrees C
 	display:	T=-40 {degrees}C cor=TT V=1.8V
 	unit:		Hz
@@ -219,7 +215,7 @@ electrical_parameters {
 
 	+
 	name:		freq_at_max_temp
-	status:		active
+	status:		skip
 	description:	Frequency value at 125 degrees C
 	display:	T=125 {degrees}C cor=TT V=1.8V
 	unit:		Hz
@@ -246,7 +242,7 @@ electrical_parameters {
 
 	+
 	name:		freq_at_fast_case
-	status:		active
+	status:		skip
 	description:	Frequency value at 125 {degrees}C corner FF and 2.0V
 	display:	T=125 {degrees}C cor=FF V=2.0V
 	unit:		Hz
@@ -273,7 +269,7 @@ electrical_parameters {
 
 	+
 	name:		temp_sweep_corner
-	status:		active
+	status:		skip
 	description:	Frequency between -40 and 125{degrees}C. Variations in corners
 	display:	Temperature Sweep (corner)
 	unit:		Hz
@@ -301,7 +297,7 @@ electrical_parameters {
 
 	+
 	name:		temp_sweep_voltage
-	status:		active
+	status:		skip
 	description:	Frequency between -40 and 125{degrees}C. Variations in voltage
 	display:	Temperature Sweep (voltage)
 	unit:		Hz
@@ -329,7 +325,7 @@ electrical_parameters {
 
 	+
 	name:		temp_sweep_worst_cases
-	status:		active
+	status:		skip
 	description:	Frequency between -40 and 125{degrees}C. on SS/FF and 1.6/2.0V
 	display:	Temperature Sweep (worst cases)
 	unit:		Hz
@@ -364,7 +360,7 @@ electrical_parameters {
 
 physical_parameters {
 	name:		area
-	status:		active
+	status:		skip
 	description:	Total circuit layout area
 	display:	area
 	unit:		{micro}m{squared}
