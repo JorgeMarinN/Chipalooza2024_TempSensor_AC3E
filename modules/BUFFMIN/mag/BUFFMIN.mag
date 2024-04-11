@@ -1,0 +1,27 @@
+magic
+tech sky130A
+timestamp 1641587603
+<< locali >>
+rect -15 20 10 45
+rect 430 20 455 45
+<< metal1 >>
+rect -15 220 15 310
+rect -15 65 15 155
+use invmin_magic_v1p1  invmin_magic_v1p1_0
+timestamp 1641587603
+transform 1 0 135 0 1 70
+box -150 -75 85 265
+use invmin_magic_v1p1  invmin_magic_v1p1_1
+timestamp 1641587603
+transform 1 0 370 0 1 70
+box -150 -75 85 265
+<< labels >>
+flabel locali -2 34 -2 34 0 FreeSans 240 0 0 0 VIN
+port 0 nsew
+flabel locali 435 31 435 31 0 FreeSans 240 0 0 0 VOUT
+port 1 nsew
+flabel metal1 -3 266 -3 266 0 FreeSans 240 0 0 0 VDD
+port 2 nsew
+flabel metal1 -7 108 -7 108 0 FreeSans 240 0 0 0 VSS
+port 3 nsew
+<< end >>

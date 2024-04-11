@@ -107,7 +107,7 @@ only_toplevel=true
 spice_ignore=0
 format="tcleval( @value )"
 value="
-.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.\{corner\}.red \{corner\}
+.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice \{corner\}
 
 .include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}

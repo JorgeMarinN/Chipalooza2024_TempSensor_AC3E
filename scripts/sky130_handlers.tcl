@@ -13,6 +13,92 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# The following files contains almost all the interesting functions
+
+# /usr/lib/magic/tcl/bsitools.tcl
+# - add_menu
+# - add_menu_command
+# - add_menu_separator
+
+# /usr/lib/magic/tcl/cellmgr.tcl
+# - instcallback
+# - makecellmanager
+# - addlistentry
+# - addlistset
+# - getwindowitem
+# - cellmanager
+# - mgrselect
+# - findinstance
+# - scantree
+
+# /usr/lib/magic/tcl/console.tcl
+# /usr/lib/magic/tcl/drcmgr.tcl
+# - drccallback
+# - makedrcmanager
+# - adddrcentry
+# - drcmanager
+# - drc_save_report
+# - drc_load_report
+
+# /usr/lib/magic/tcl/libmgr.tcl
+# - libcallback
+# - makelibmanager
+# - addlibentry
+# - addtolibset
+# - libmanager
+
+# /usr/lib/magic/tcl/magic.tcl
+# /usr/lib/magic/tcl/mazeroute.tcl
+# /usr/lib/magic/tcl/readspice.tcl
+# /usr/lib/magic/tcl/reorderLayers.tcl
+# /usr/lib/magic/tcl/socketcmd.tcl
+# /usr/lib/magic/tcl/strip_reflibs.tcl
+# /usr/lib/magic/tcl/techbuilder.tcl
+# /usr/lib/magic/tcl/texthelper.tcl
+# - make_texthelper
+# - analyze_labels
+# - change_label
+# - make_new_label
+# - update_texthelper
+# /usr/lib/magic/tcl/tkcon.tcl
+# /usr/lib/magic/tcl/tkshell.tcl
+# /usr/lib/magic/tcl/toolbar.tcl
+
+# /usr/lib/magic/tcl/toolkit.tcl
+# - add_toolkit_menu
+# - add_toolkit_button
+# - add_toolkit_command
+# - add_toolkit_separator
+# - move_forward_by_width
+# - get_and_move_inst
+# - create_new_pin
+# - generate_layout_add
+# - netlist_to_layout
+# - gencell
+# - gencell_makecell
+# - gencell_getparams
+# - gencell_setparams
+# - gencell_change
+# - gencell_change_orig
+# - get_gencell_name
+# - get_gencell_hash
+# - gencell_create
+# - add_entry
+# - add_check_callbacks
+# - add_dependency
+# - update_dialog
+# - add_checkbox
+# - add_message
+# - add_selectlist
+# - add_selectindex
+# - gencell_defaults
+# - gencell_update
+# - gencell_dialog
+
+# /usr/lib/magic/tcl/toolkit_rev0.tcl
+# /usr/lib/magic/tcl/tools.tcl
+# /usr/lib/magic/tcl/wrapper.tcl
+
 #----------------------------------------------------------------
 # Helper functions
 #----------------------------------------------------------------
@@ -27,6 +113,8 @@ proc default_placement { {llx 0} {lly 0} {urx 0} {ury 0} {rot 0} {half_overlap 0
     # This default parameters SHOULD NOT be specified with "um". That's going to be implicit
     # The overlap is used mainly on standard cells, because that's a gap of wells (I guess)
 
+    # rot: http://opencircuitdesign.com/magic/commandref/getcell.html
+
     return [dict create \
         llx [ expr int([magic::u2l $llx]) ] \
         lly [ expr int([magic::u2l $lly]) ] \
@@ -37,11 +125,20 @@ proc default_placement { {llx 0} {lly 0} {urx 0} {ury 0} {rot 0} {half_overlap 0
     ]
 }
 
+proc placement_get_current {} {
+    set llx [magic::l2u [lindex [box values] 0]]
+    set lly [magic::l2u [lindex [box values] 1]]
+    set urx [magic::l2u [lindex [box values] 2]]
+    set ury [magic::l2u [lindex [box values] 3]]
+
+    return [ default_placement $llx $lly $urx $ury ]
+}
+
 proc placement_move {placement dx dy} {
     # Since location is specified with the placement dictionary
     # I think movement should be done with internal units
     # Maybe is possible to use um, I haven't figured it out
-    puts "placement_move | original: $placement"
+    #puts "placement_move | original: $placement"
 
     dict set placement llx [expr [dict get $placement llx] + int([magic::u2l $dx])]
     dict set placement urx [expr [dict get $placement urx] + int([magic::u2l $dx])]
@@ -49,18 +146,16 @@ proc placement_move {placement dx dy} {
     dict set placement lly [expr [dict get $placement lly] + int([magic::u2l $dy])]
     dict set placement ury [expr [dict get $placement ury] + int([magic::u2l $dy])]
 
-    puts "placement_move | final: $placement"
+    #puts "placement_move | final: $placement"
     return $placement
 }
 
-proc _shift_placement { placement } {
+proc _placement_overlap_shift { placement } {
     # Specially on standard cells, it's important to apply a overlap to make contact on the metals
     # This operation should be applied before and after cell placement.
     set half_overlap [dict get $placement half_overlap]
-    set llx [expr [dict get $placement llx] - $half_overlap]
-
-    set placement [dict set placement llx $llx]
-
+    set shifting -[magic::l2u $half_overlap]
+    set placement [placement_move $placement $shifting 0]
     return $placement
 }
 
@@ -81,77 +176,74 @@ proc adjust_screen {} {
 }
 
 #----------------------------------------------------------------
-# insert_std_*: Instantiation of standard cells
+# insert_*: Instantiation of standard cells, pcells and other devices
 #----------------------------------------------------------------
 
 proc insert_std_cell { cellname placement  } {
-    # This function assumes all stdcells has a overlap
-    # getcell: create an instance of a cell with its lower-left corner aligned with the lower-left corner of the box
+    # description
+    #   Instanciate standard cell, assuming it has an overlap
+    # args
+    #   cellname: sky130 stdcell
+    #   placement: llx, lly are the position of the cell
+    # returns
+    #   Placement updated. rotation is cleared.
     global PDK_ROOT
 
     separation_handler
 
     puts "Placing stdcell $cellname"
 
-    set placement [_shift_placement $placement]
+    set placement [_placement_overlap_shift $placement]
 
+    set target_cell $PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/mag/sky130_fd_sc_hd__$cellname.mag
+    set rot [dict get $placement rot]
+
+    # getcell: create an instance of a cell with its lower-left corner aligned with the lower-left corner of the box
     place $placement
-    getcell $PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/mag/sky130_fd_sc_hd__$cellname.mag
-    if {[expr 0 != [dict get $placement rot]]} {
-        rotate [dict get $placement rot]
-    }
+    getcell $target_cell $rot
 
-    # TODO: This lines are ugly, fix them eventually with "dict update ..."
-    set internal_unit_scale [expr [lindex [tech lambda] 1] / [lindex [tech lambda] 0]]
-    set placement [dict set placement llx [expr [dict get $placement llx] + [box width] / $internal_unit_scale]]
-    set placement [dict set placement urx [expr [dict get $placement urx] + [box width] / $internal_unit_scale]]
-
-    set placement [_shift_placement $placement]
+    set placement [placement_move $placement [magic::i2u [box width]] 0]
+    set placement [_placement_overlap_shift $placement]
 
     separation_handler
 
     return [dict set placement rot 0]
 }
 
-#----------------------------------------------------------------
-# insert_pcell_*: Instantiation of pcells
-#----------------------------------------------------------------
+proc insert_pcell {cellname params placement} {
+    # description
+    #   This procedure is based on magic::gencell, stripping everything related with
+    #   dialogs, .spice and existing instances
+    # args
+    #   cellname: sky130A cell name-only (without sky130_fd_pr__)
+    #   params: Specific parameters for $cellname.
+    #   placement: llx, lly are the position of the cell.
+    # returns
+    #   instance name
 
-proc insert_pcell { cellname params placement } {
-    # It's possible to insert pcells without creating a specific method
-    # for each one
-    separation_handler
+    set library sky130
+    set gencell_type sky130_fd_pr__$cellname
 
-    puts "Placing pcell $cellname"
-    place $placement
-
-    set default_params [eval sky130::sky130_fd_pr__${cellname}_defaults]
-
-    sky130::sky130_fd_pr__${cellname}_draw [
-        sky130::sky130_fd_pr__${cellname}_check [
-            dict merge $default_params $params
-        ]
-    ]
-
-    if {[expr 0 != [dict get $placement rot]]} {
-        rotate [dict get $placement rot]
+    # Check that the device exists as a gencell, or else return an error
+    if {[namespace eval ::${library} info commands ${gencell_type}_draw] == ""} {
+        error "No import routine for ${library} library cell ${gencell_type}!"
     }
 
-    # TODO: This lines are ugly, fix them eventually with "dict update ..."
-    set internal_unit_scale [expr [lindex [tech lambda] 1] / [lindex [tech lambda] 0]]
-    set placement [dict set placement llx [expr [dict get $placement llx] + [box width] / $internal_unit_scale]]
-    set placement [dict set placement urx [expr [dict get $placement urx] + [box width] / $internal_unit_scale]]
+    set base_parameters [${library}::${gencell_type}_defaults]
+    set parameters [dict merge $base_parameters $params]
 
-    separation_handler
+    set rot [dict get $placement rot]
+    place $placement
+    set inst_defaultname [magic::gencell_create $gencell_type $library $parameters $rot]
+    select cell $inst_defaultname
 
-    return $placement
+    return $inst_defaultname
 }
 
 proc insert_box {layer placement} {
     place $placement
     paint $layer
 }
-
 
 proc insert_label {name layer placement} {
     place $placement
@@ -191,34 +283,24 @@ namespace eval testing {
         adjust_screen
     }
 
-    namespace export place_pcells
-    proc place_pcells {} {
-        test_start "Placing pcells"
+    namespace export place_rotated_inverter
+    proc place_rotated_inverter {} {
+        test_start "Basic test, just insert inverters"
 
-        # Inserting a capacitor
+        # Inserting inverters
 
-        set placement [default_placement 0 0 10 10]
-        dict set placement half_overlap 0
+        set placement [default_placement 0 0 0 0 90]
 
-        set placement [insert_pcell res_iso_pw {} $placement]
+        set placement [insert_std_cell inv_2 $placement]
+        set placement [insert_std_cell inv_2 $placement]
+
+        puts "Second inverter should be moved on the right and over the first one"
 
         adjust_screen
-        puts "It worked"
-        return 1
-
-        # puts "Placement 1: $placement"
-        # set placement [insert_pcell res_iso_pw {} $placement]
-
-        # dict set placement llx 10um
-        # puts "Placement 2: $placement"
-        # set placement [insert_pcell res_high_po_5p73 {} $placement]
-
-        # puts "Placement 3: $placement"
-
     }
 
-    namespace export placement_movement
-    proc placement_movement {} {
+    namespace export placement_test_movement
+    proc placement_test_movement {} {
         test_start "This tests is to evaluate if placement_move works"
 
         set placement [default_placement 0 0 1 1]
@@ -239,6 +321,70 @@ namespace eval testing {
         set placement [placement_move $placement 2 0]
         puts "After moving: $placement"
         insert_box li $placement
+
+        adjust_screen
+    }
+
+    namespace export place_rotated_pcells
+    proc place_rotated_pcells {} {
+        test_start "Placing a rotated pcells"
+
+        set placement [default_placement 0 0 0 0 90]
+        place $placement
+
+        set placement [insert_pcell res_iso_pw {} $placement]
+
+        adjust_screen
+    }
+
+    namespace export place_a_nfet
+    proc place_a_nfet {} {
+        # Placement not necessary has to be used in this function
+        test_start "Placing only one resistor"
+        set placement [default_placement]
+        dict set placement rot 90
+
+        puts $placement
+
+        insert_pcell nfet_01v8 {w 10 l 1 nf 5 guard 0} $placement
+
+        adjust_screen
+    }
+
+    namespace export place_two_nfets    
+    proc place_two_nfets {} {
+        # Placement should change pcell position
+        puts "Placing only one resistor"
+        set placement [default_placement]
+        set placement [placement_move $placement 3 0]
+        dict set placement rot 90
+        dict set placement half_overlap 0
+        puts "First nfet placement: $placement"
+
+        # Original set of parameters (orient is get from placement)
+        # TODO: which one has precedence
+        set parameters {w 10 l 1 nf 5 guard 0}
+        set inst_name [insert_pcell nfet_01v8 $parameters $placement]
+        select cell $inst_name
+        set cell_position [box position]
+        puts "Created first cell $inst_name "
+        set a 0
+        puts ". Cell positioned on $cell_position"
+        puts "If it says 0 0, then 'placement' was not used :("
+
+
+        separation_handler
+
+        # This nfet should be moved
+        set placement [placement_move $placement 13 0]
+        puts "Second nfet placement: $placement"
+        #dict set parameters nf 3 ; # If this line is commented
+        set inst_name [insert_pcell nfet_01v8 $parameters $placement]
+        select cell $inst_name
+        set cell_position [box position]
+        puts "Created second cell $inst_name "
+        puts ". Cell positioned on $cell_position"
+        puts "If it says 0 0, then 'placement' was not used :("
 
         adjust_screen
     }
