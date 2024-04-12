@@ -172,3 +172,6 @@ xschem
 # Code Models
 **/_obj_dir/*
 **/*.h
+
+# Problems directory
+**/PROBLEMS

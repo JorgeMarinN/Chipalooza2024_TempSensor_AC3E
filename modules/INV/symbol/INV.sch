@@ -14,3 +14,9 @@ C {devices/iopin.sym} 350 -40 2 0 {name=p2 lab=VDD}
 C {devices/iopin.sym} 230 -40 2 0 {name=p4 lab=VSS}
 C {devices/opin.sym} 360 60 0 0 {name=p5 lab=VOUT}
 C {sky130_stdcells/inv_2.sym} 250 60 0 0 {name=xinvosc[0:5] VGND=VSS VNB=VSS VPB=VDD VPWR=VDD prefix=sky130_fd_sc_hd__ }
+C {devices/code_shown.sym} 90 200 0 0 {name=s1
+only_toplevel=1
+format="tcleval( @value )"
+value="
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
+"}
