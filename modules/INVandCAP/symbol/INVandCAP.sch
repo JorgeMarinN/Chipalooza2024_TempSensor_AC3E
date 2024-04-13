@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -24,3 +24,9 @@ C {symbol/CAPOSC.sym} 90 10 0 0 {name=XCN}
 C {devices/opin.sym} 220 -50 0 0 {name=p4 lab=VOUT}
 C {devices/iopin.sym} 170 -100 3 0 {name=p5 lab=CON_CV}
 C {devices/iopin.sym} 200 -100 3 0 {name=p6 lab=CON_CBASE}
+C {devices/code_shown.sym} -60 220 0 0 {name=s1
+only_toplevel=1
+format="tcleval( @value )"
+value="
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
+"}
