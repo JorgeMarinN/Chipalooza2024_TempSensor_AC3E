@@ -123,8 +123,8 @@
  <l2ndb-export-start-layer-number>1000</l2ndb-export-start-layer-number>
  <l2ndb-marker-color>auto</l2ndb-marker-color>
  <l2ndb-marker-cycle-colors>255,0,0 0,255,0 0,0,255 255,255,0 255,0,255 0,255,255 160,80,255 255,160,0</l2ndb-marker-cycle-colors>
- <l2ndb-marker-cycle-colors-enabled>false</l2ndb-marker-cycle-colors-enabled>
- <l2ndb-marker-dither-pattern>-1</l2ndb-marker-dither-pattern>
+ <l2ndb-marker-cycle-colors-enabled>true</l2ndb-marker-cycle-colors-enabled>
+ <l2ndb-marker-dither-pattern>15</l2ndb-marker-dither-pattern>
  <l2ndb-marker-halo>-1</l2ndb-marker-halo>
  <l2ndb-marker-intensity>50</l2ndb-marker-intensity>
  <l2ndb-marker-line-width>-1</l2ndb-marker-line-width>
@@ -133,8 +133,8 @@
  <l2ndb-max-shapes-highlighted>10000</l2ndb-max-shapes-highlighted>
  <l2ndb-show-all>true</l2ndb-show-all>
  <l2ndb-window-dim>1</l2ndb-window-dim>
- <l2ndb-window-mode>fit-net</l2ndb-window-mode>
- <l2ndb-window-state/>
+ <l2ndb-window-mode>dont-change</l2ndb-window-mode>
+ <l2ndb-window-state>NetlistBrowserDialog="AdnQywADAAAAAAGEAAAAMQAAA9IAAAK6AAABqgAAAGwAAAOsAAAClAAAAAAAAAAABVYAAAGqAAAAbAAAA6wAAAKU";log_view="AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAGT/////AAAAgQAAAAAAAAAAAAAD6AD/////";splitter_4="AAAA/wAAAAEAAAAC//////////8B/////wEAAAABAA==";xref_directory_tree="AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAAAAAAAAAJb/////AAAAgQAAAAAAAAAAAAAD6AH/////";xref_hierarchy_tree="AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAGT/////AAAAgQAAAAAAAAAAAAAD6AH/////";splitter_3="AAAA/wAAAAEAAAAC//////////8B/////wEAAAABAA==";sch_directory_tree="AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAAAAAAAAAJb/////AAAAgQAAAAAAAAAAAAAD6AH/////";sch_hierarchy_tree="AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAGT/////AAAAgQAAAAAAAAAAAAAD6AH/////";splitter="AAAA/wAAAAEAAAACAAABAAAAAQAB/////wEAAAABAA==";nl_directory_tree="AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAADAgAAAAEAAAABAAAAGQAAASwAAAADAQEAAQAAAAAAAAAAAAAAAJYAAAAZAAAAgQAAAAAAAAADAAAAlgAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAlgAAAAEAAAAAAAAD6AEAAACW";nl_hierarchy_tree="AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP4AAAABAQAAAQAAAAAAAAAAAAAAAGQAAAAZAAAAgQAAAAAAAAABAAAA/gAAAAEAAAAAAAAD6AEAAABk";</l2ndb-window-state>
  <layer-visibility-follows-selection>false</layer-visibility-follows-selection>
  <layers-always-show-layout-index>false</layers-always-show-layout-index>
  <layers-always-show-ld>true</layers-always-show-ld>
