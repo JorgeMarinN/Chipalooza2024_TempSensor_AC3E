@@ -78,3 +78,9 @@ C {symbol/BUFFMIN.sym} 1170 -80 0 0 {name=XBUFFS}
 C {devices/opin.sym} 1080 0 0 0 {name=p7 lab=N3}
 C {symbol/INVandCAP.sym} 180 0 0 0 {name=XST1B}
 C {symbol/INVandCAP.sym} 375 0 0 0 {name=XST1C}
+C {devices/code_shown.sym} 60 240 0 0 {name=s1
+only_toplevel=1
+format="tcleval( @value )"
+value="
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
+"}
