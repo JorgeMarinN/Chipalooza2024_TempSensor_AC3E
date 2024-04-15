@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -50,6 +50,8 @@ N 560 -60 560 -20 { lab=VSS}
 N 600 -80 690 -80 { lab=nDOUT}
 N 340 -80 520 -80 { lab=N2_R}
 N 340 -160 520 -160 { lab=N2_S}
+N 340 40 700 40 {
+lab=N2_R}
 C {symbol/OSC.sym} -80 -270 0 0 {name=XOSC_SENS}
 C {devices/lab_pin.sym} 160 -290 2 0 {name=l3 sig_type=std_logic lab=N1_S}
 C {devices/lab_pin.sym} 340 -200 0 0 {name=l4 sig_type=std_logic lab=N2_S}
@@ -57,7 +59,7 @@ C {devices/lab_pin.sym} -140 -250 0 0 {name=l5 sig_type=std_logic lab=SENS_IN}
 C {devices/lab_pin.sym} 40 -370 0 0 {name=l7 sig_type=std_logic lab=VDD}
 C {symbol/OSC.sym} -80 20 0 0 {name=XOSC_REF}
 C {devices/lab_pin.sym} 160 0 2 0 {name=l11 sig_type=std_logic lab=N1_R}
-C {devices/lab_pin.sym} 340 -10 0 0 {name=l12 sig_type=std_logic lab=N2_R}
+C {devices/lab_pin.sym} 700 40 2 0 {name=l12 sig_type=std_logic lab=N2_R}
 C {devices/lab_pin.sym} 40 -80 0 0 {name=l14 sig_type=std_logic lab=VDD}
 C {symbol/PASSGATE.sym} -100 -340 0 0 {name=XPG}
 C {devices/lab_pin.sym} -100 -400 0 0 {name=l16 sig_type=std_logic lab=VDD}
@@ -83,3 +85,10 @@ C {symbol/DFF.sym} 460 -120 0 0 {name=X1}
 C {devices/lab_pin.sym} 560 -220 0 0 {name=l15 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 560 -20 0 0 {name=l10 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 690 -80 2 0 {name=l21 sig_type=std_logic lab=nDOUT}
+C {devices/code_shown.sym} -180 210 0 0 {name=s1
+only_toplevel=1
+format="tcleval( @value )"
+value="
+.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
+"}
+C {devices/opin.sym} 290 -510 0 0 {name=p8 lab=N2_R}

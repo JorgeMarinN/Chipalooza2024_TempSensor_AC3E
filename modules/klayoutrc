@@ -186,14 +186,14 @@
  <pcb-import-spec/>
  <rdb-context-mode>database-top</rdb-context-mode>
  <rdb-marker-color>auto</rdb-marker-color>
- <rdb-marker-dither-pattern>-1</rdb-marker-dither-pattern>
+ <rdb-marker-dither-pattern>15</rdb-marker-dither-pattern>
  <rdb-marker-halo>-1</rdb-marker-halo>
  <rdb-marker-line-width>-1</rdb-marker-line-width>
  <rdb-marker-vertex-size>-1</rdb-marker-vertex-size>
  <rdb-max-marker-count>1000</rdb-max-marker-count>
  <rdb-window-dim>1</rdb-window-dim>
- <rdb-window-mode>fit-marker</rdb-window-mode>
- <rdb-window-state-v2/>
+ <rdb-window-mode>dont-change</rdb-window-mode>
+ <rdb-window-state-v2>MarkerBrowserDialog="AdnQywADAAAAAAGEAAAAMQAAA9IAAAK6AAABqgAAAGwAAAOsAAAClAAAAAAAAAAABVYAAAGqAAAAbAAAA6wAAAKU";splitter_2="AAAA/wAAAAEAAAAC//////////8B/////wEAAAABAA==";splitter="AAAA/wAAAAEAAAAC//////////8B/////wEAAAACAA==";markers_list="AAAA/wAAAAAAAAABAAAAAQAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQAAAAAAAAAAAAAAAGQAAAAYAAAAgQAAAAAAAAAAAAAD6AD/////";directory_tree="AAAA/wAAAAAAAAABAAAAAQAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQAAAAAAAAAAAAAAAGT/////AAAAgQAAAAAAAAAAAAAD6AD/////";</rdb-window-state-v2>
  <reader-options-show-always>false</reader-options-show-always>
  <ruler-color>auto</ruler-color>
  <ruler-grid-snap>false</ruler-grid-snap>

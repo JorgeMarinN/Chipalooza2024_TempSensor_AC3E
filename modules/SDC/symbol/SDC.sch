@@ -28,6 +28,8 @@ N 390 110 390 270 { lab=#net2}
 N 480 110 550 110 { lab=#net2}
 N 390 270 480 270 { lab=#net2}
 N 390 110 480 110 { lab=#net2}
+N 960 170 1060 170 {
+lab=N2_R}
 C {devices/lab_pin.sym} 610 70 3 0 {name=l5 sig_type=std_logic lab=SENS_IN}
 C {devices/lab_pin.sym} 820 -70 0 0 {name=l14 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 995 90 1 0 {name=l18 sig_type=std_logic lab=DOUT}
@@ -50,3 +52,5 @@ mult=1}
 C {devices/iopin.sym} 610 -160 0 0 {name=p2 lab=VDD}
 C {devices/iopin.sym} 610 -130 0 0 {name=p3 lab=VSS}
 C {devices/opin.sym} 840 -160 0 0 {name=p5 lab=DOUT}
+C {devices/opin.sym} 840 -130 0 0 {name=p1 lab=N2_R}
+C {devices/lab_pin.sym} 995 170 1 0 {name=l1 sig_type=std_logic lab=N2_R}
