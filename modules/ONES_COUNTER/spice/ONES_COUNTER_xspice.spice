@@ -1,0 +1,139 @@
+* XSpice netlist created from SPICE and liberty sources by spi2xspice.py
+* NGSPICE file created from ONES_COUNTER_clean.ext - technology: sky130A
+.subckt ONES_COUNTER_clean a_VGND a_VPWR a_clk a_ones_0_ a_ones_10_ a_ones_1_ a_ones_2_ a_ones_3_ a_ones_4_ a_ones_5_ a_ones_6_ a_ones_7_ a_ones_8_ a_ones_9_ a_pulse a_ready a_rst
+
+.model todig_1v8 adc_bridge(in_high=1.2 in_low=0.6 rise_delay=10n fall_delay=10n)
+.model toana_1v8 dac_bridge(out_high=1.8 out_low=0)
+
+.model ddflop d_dff(ic=0 rise_delay=1n fall_delay=1n)
+.model dlatch d_dlatch(ic=0 rise_delay=1n fall_delay=1n)
+.model dzero d_pulldown(load=1p)
+.model done d_pullup(load=1p)
+
+AA2D1 [a_VGND] [VGND] todig_1v8
+AA2D2 [a_VPWR] [VPWR] todig_1v8
+AA2D3 [a_clk] [clk] todig_1v8
+AA2D4 [a_ones_0_] [ones_0_] todig_1v8
+AA2D5 [a_ones_10_] [ones_10_] todig_1v8
+AA2D6 [a_ones_1_] [ones_1_] todig_1v8
+AA2D7 [a_ones_2_] [ones_2_] todig_1v8
+AA2D8 [a_ones_3_] [ones_3_] todig_1v8
+AA2D9 [a_ones_4_] [ones_4_] todig_1v8
+AA2D10 [a_ones_5_] [ones_5_] todig_1v8
+AA2D11 [a_ones_6_] [ones_6_] todig_1v8
+AA2D12 [a_ones_7_] [ones_7_] todig_1v8
+AA2D13 [a_ones_8_] [ones_8_] todig_1v8
+AA2D14 [a_ones_9_] [ones_9_] todig_1v8
+AA2D15 [a_pulse] [pulse] todig_1v8
+AA2D16 [a_ready] [ready] todig_1v8
+AA2D17 [a_rst] [rst] todig_1v8
+
+.ends
+
+
+* sky130_fd_sc_hd__decap_3 (no function)
+* sky130_fd_sc_hd__a31o_1 (A1&A2&A3) | (B1)
+.model d_lut_sky130_fd_sc_hd__a31o_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0000000111111111")
+* sky130_fd_sc_hd__o21ai_1 (!A1&!A2) | (!B1)
+.model d_lut_sky130_fd_sc_hd__o21ai_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "11111000")
+* sky130_fd_sc_hd__buf_1 (A)
+.model d_lut_sky130_fd_sc_hd__buf_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "01")
+* sky130_fd_sc_hd__a21oi_1 (!A1&!B1) | (!A2&!B1)
+.model d_lut_sky130_fd_sc_hd__a21oi_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "11100000")
+* sky130_fd_sc_hd__buf_2 (A)
+.model d_lut_sky130_fd_sc_hd__buf_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "01")
+* sky130_fd_sc_hd__decap_8 (no function)
+* sky130_fd_sc_hd__decap_6 (no function)
+* sky130_fd_sc_hd__clkbuf_1 (A)
+.model d_lut_sky130_fd_sc_hd__clkbuf_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "01")
+* sky130_fd_sc_hd__dfxtp_1 IQ
+* sky130_fd_sc_hd__decap_4 (no function)
+* sky130_fd_sc_hd__and4_1 (A&B&C&D)
+.model d_lut_sky130_fd_sc_hd__and4_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0000000000000001")
+* sky130_fd_sc_hd__dfxtp_2 IQ
+* sky130_fd_sc_hd__and3b_1 (!A_N&B&C)
+.model d_lut_sky130_fd_sc_hd__and3b_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "00000010")
+* sky130_fd_sc_hd__inv_2 (!A)
+.model d_lut_sky130_fd_sc_hd__inv_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "10")
+* sky130_fd_sc_hd__o311a_1 (A1&B1&C1) | (A2&B1&C1) | (A3&B1&C1)
+.model d_lut_sky130_fd_sc_hd__o311a_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "00000000000000000000000001111111")
+* sky130_fd_sc_hd__a21o_1 (A1&A2) | (B1)
+.model d_lut_sky130_fd_sc_hd__a21o_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "00011111")
+* sky130_fd_sc_hd__nand3_1 (!A) | (!B) | (!C)
+.model d_lut_sky130_fd_sc_hd__nand3_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "11111110")
+* sky130_fd_sc_hd__clkbuf_16 (A)
+.model d_lut_sky130_fd_sc_hd__clkbuf_16 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "01")
+* sky130_fd_sc_hd__and4_2 (A&B&C&D)
+.model d_lut_sky130_fd_sc_hd__and4_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0000000000000001")
+* sky130_fd_sc_hd__and3_1 (A&B&C)
+.model d_lut_sky130_fd_sc_hd__and3_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "00000001")
+* sky130_fd_sc_hd__nand2_1 (!A) | (!B)
+.model d_lut_sky130_fd_sc_hd__nand2_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "1110")
+* sky130_fd_sc_hd__or2_1 (A) | (B)
+.model d_lut_sky130_fd_sc_hd__or2_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0111")
+* sky130_fd_sc_hd__clkbuf_2 (A)
+.model d_lut_sky130_fd_sc_hd__clkbuf_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "01")
+* sky130_fd_sc_hd__o211a_1 (A1&B1&C1) | (A2&B1&C1)
+.model d_lut_sky130_fd_sc_hd__o211a_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0000000000000111")
+* sky130_fd_sc_hd__and2b_1 (!A_N&B)
+.model d_lut_sky130_fd_sc_hd__and2b_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0010")
+* sky130_fd_sc_hd__nand4_1 (!A) | (!B) | (!C) | (!D)
+.model d_lut_sky130_fd_sc_hd__nand4_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "1111111111111110")
+* sky130_fd_sc_hd__a41o_1 (A1&A2&A3&A4) | (B1)
+.model d_lut_sky130_fd_sc_hd__a41o_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "00000000000000011111111111111111")
+* sky130_fd_sc_hd__o21a_1 (A1&B1) | (A2&B1)
+.model d_lut_sky130_fd_sc_hd__o21a_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "00000111")
+* sky130_fd_sc_hd__a31oi_2 (!A1&!B1) | (!A2&!B1) | (!A3&!B1)
+.model d_lut_sky130_fd_sc_hd__a31oi_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "1111111000000000")
+* sky130_fd_sc_hd__a21boi_1 (!A1&B1_N) | (!A2&B1_N)
+.model d_lut_sky130_fd_sc_hd__a21boi_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "00001110")
+* sky130_fd_sc_hd__nand3_2 (!A) | (!B) | (!C)
+.model d_lut_sky130_fd_sc_hd__nand3_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "11111110")
+* sky130_fd_sc_hd__and4b_1 (!A_N&B&C&D)
+.model d_lut_sky130_fd_sc_hd__and4b_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0000000000000010")
+* sky130_fd_sc_hd__nor4b_2 (!A&!B&!C&D_N)
+.model d_lut_sky130_fd_sc_hd__nor4b_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0000000010000000")
+* sky130_fd_sc_hd__nor2_2 (!A&!B)
+.model d_lut_sky130_fd_sc_hd__nor2_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "1000")
+* sky130_fd_sc_hd__and2_1 (A&B)
+.model d_lut_sky130_fd_sc_hd__and2_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0001")
+* sky130_fd_sc_hd__nor2_1 (!A&!B)
+.model d_lut_sky130_fd_sc_hd__nor2_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "1000")
+* sky130_fd_sc_hd__a311o_1 (A1&A2&A3) | (B1) | (C1)
+.model d_lut_sky130_fd_sc_hd__a311o_1 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "00000001111111111111111111111111")
+* sky130_fd_sc_hd__or2_2 (A) | (B)
+.model d_lut_sky130_fd_sc_hd__or2_2 d_lut (rise_delay=1n fall_delay=1n input_load=1p
++ table_values "0111")
+.end

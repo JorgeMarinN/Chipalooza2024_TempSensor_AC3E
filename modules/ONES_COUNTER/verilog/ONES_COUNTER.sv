@@ -1,5 +1,5 @@
-module sigma_delta_counter #(
-	parameter NUMBER_OF_SAMPLES = 1000
+module ones_counter #(
+	parameter NUMBER_OF_SAMPLES = 1650
 	)(
 	input wire clk,
 	input wire rst,
