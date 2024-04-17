@@ -12,7 +12,7 @@ authorship {
 	designer:	Jorge Marín.
 	company:	AC3E
 	creation_date:	March 12, 2024
-	modification_date:	April  9, 2024 at 01:20am
+	modification_date:	April 16, 2024 at 05:35am
 	license:	Apache 2.0
 }
 
@@ -61,10 +61,6 @@ dependencies {
 
 	+
 	name:		CAPOSC
-	path:		.
-
-	+
-	name:		INVMIN
 	path:		.
 
 	+
@@ -141,6 +137,10 @@ electrical_parameters {
 	spec {
 		typical:	any
 	}
+	results {
+		name:		schematic
+		typical:	1.769 pass
+	}
 	simulate {
 		tool:		ngspice
 		template:	transient.spice
@@ -162,6 +162,18 @@ electrical_parameters {
 		name:		vvdd
 		typical:	1.6
 	}
+	testbenches {
+		filename:	SDC/cace/ngspice/dout_at_slow_case_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 1.6
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.7689088290978912
+		}
+	}
 
 	+
 	name:		dout_at_m40
@@ -171,6 +183,10 @@ electrical_parameters {
 	unit:		V
 	spec {
 		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	1.768 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -185,6 +201,18 @@ electrical_parameters {
 		name:		temperature
 		typical:	-40
 	}
+	testbenches {
+		filename:	SDC/cace/ngspice/dout_at_m40_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			1.7683610902329998
+		}
+	}
 
 	+
 	name:		dout_at_25
@@ -197,7 +225,7 @@ electrical_parameters {
 	}
 	results {
 		name:		schematic
-		typical:	1.238 pass
+		typical:	1.306 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -221,7 +249,7 @@ electrical_parameters {
 			corner  tt
 		}
 		results {
-			1.2380554992380792
+			1.3061598847055547
 		}
 	}
 
@@ -233,6 +261,10 @@ electrical_parameters {
 	unit:		V
 	spec {
 		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	0.5702 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -247,6 +279,18 @@ electrical_parameters {
 		name:		temperature
 		typical:	125
 	}
+	testbenches {
+		filename:	SDC/cace/ngspice/dout_at_125_1.spice
+		conditions {
+			temperature {degrees}C 125
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			0.5701550310261579
+		}
+	}
 
 	+
 	name:		dout_at_fastest_case
@@ -256,6 +300,10 @@ electrical_parameters {
 	unit:		V
 	spec {
 		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	0.4979 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -278,6 +326,18 @@ electrical_parameters {
 		name:		vvdd
 		typical:	2.0
 	}
+	testbenches {
+		filename:	SDC/cace/ngspice/dout_at_fastest_case_1.spice
+		conditions {
+			temperature {degrees}C 125
+			vvdd V 2.0
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.497875393630167
+		}
+	}
 
 	+
 	name:		temp_sweep_corner
@@ -287,6 +347,10 @@ electrical_parameters {
 	unit:		V
 	spec {
 		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	1.168 pass
 	}
 	simulate {
 		tool:		ngspice
@@ -310,20 +374,411 @@ electrical_parameters {
 		typical:	tt
 		maximum:	ff
 	}
+	testbenches {
+		filename:	SDC/cace/ngspice/temp_sweep_corner_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.7672851601551574
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_2.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.6646900520909664
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_3.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.558114702260094
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_4.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.452405698354504
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_5.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.3378491620111734
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_6.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.225514091389593
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_7.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.1238194042655072
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_8.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.0178750357620479
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_9.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			0.9028491999095493
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_10.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			0.7855283374016455
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_11.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ss
+		}
+		results {
+			0.6685409707342393
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_12.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			1.7683610902329998
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_13.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			1.657517009291097
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_14.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			1.5422652705525475
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_15.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			1.3255138477906712
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_16.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			1.2983845683768636
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_17.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			1.1782900635597444
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_18.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			1.0604653942702316
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_19.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			0.9417585847383907
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_20.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			0.8141388379692359
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_21.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			0.6924852188932442
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_22.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvdd V 1.8
+			vvss V 0
+			corner  tt
+		}
+		results {
+			0.5701550310261579
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_23.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.770397327060972
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_24.spice
+		conditions {
+			temperature {degrees}C -23.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.657207953603977
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_25.spice
+		conditions {
+			temperature {degrees}C -7.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.5403254235504582
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_26.spice
+		conditions {
+			temperature {degrees}C 9.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.4179181846432567
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_27.spice
+		conditions {
+			temperature {degrees}C 26.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.2912687829634792
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_28.spice
+		conditions {
+			temperature {degrees}C 42.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.1708706513939457
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_29.spice
+		conditions {
+			temperature {degrees}C 59.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.0484636602306339
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_30.spice
+		conditions {
+			temperature {degrees}C 75.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.9192555247793083
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_31.spice
+		conditions {
+			temperature {degrees}C 92.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.7959055892694535
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_32.spice
+		conditions {
+			temperature {degrees}C 108.5
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.6766244299371105
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_corner_33.spice
+		conditions {
+			temperature {degrees}C 125.0
+			vvdd V 1.8
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.5567318818412758
+		}
+	}
 
 	+
 	name:		temp_sweep_voltage
-	status:		active
+	status:		skip
 	description:	Mean output voltage over a temperature sweep. Variations in voltage
 	display:	Temperature sweep (voltage)
 	unit:		V
 	spec {
 		typical:	any
-	}
-	results {
-		name:		schematic
-		typical:	1.101 pass
-		status:		done
 	}
 	simulate {
 		tool:		ngspice
@@ -347,411 +802,20 @@ electrical_parameters {
 		typical:	1.8
 		maximum:	2.0
 	}
-	testbenches {
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_1.spice
-		conditions {
-			temperature {degrees}C -40
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.7433664313913149
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_2.spice
-		conditions {
-			temperature {degrees}C -23.5
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.632791142063878
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_3.spice
-		conditions {
-			temperature {degrees}C -7.0
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.526692027368239
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_4.spice
-		conditions {
-			temperature {degrees}C 9.5
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.403426380735594
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_5.spice
-		conditions {
-			temperature {degrees}C 26.0
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.2881678932169331
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_6.spice
-		conditions {
-			temperature {degrees}C 42.5
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.1895008090130044
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_7.spice
-		conditions {
-			temperature {degrees}C 59.0
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.0577507234806907
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_8.spice
-		conditions {
-			temperature {degrees}C 75.5
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.8779020532076378
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_9.spice
-		conditions {
-			temperature {degrees}C 92.0
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.8110232446681046
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_10.spice
-		conditions {
-			temperature {degrees}C 108.5
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.689474804448465
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_11.spice
-		conditions {
-			temperature {degrees}C 125.0
-			vvdd V 1.6
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.5703319087750132
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_12.spice
-		conditions {
-			temperature {degrees}C -40
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.73698716573491
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_13.spice
-		conditions {
-			temperature {degrees}C -23.5
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.6100253464225522
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_14.spice
-		conditions {
-			temperature {degrees}C -7.0
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.4864887244310467
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_15.spice
-		conditions {
-			temperature {degrees}C 9.5
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.3646605963499943
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_16.spice
-		conditions {
-			temperature {degrees}C 26.0
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.228478367507113
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_17.spice
-		conditions {
-			temperature {degrees}C 42.5
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.1015935520406688
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_18.spice
-		conditions {
-			temperature {degrees}C 59.0
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.978218398411648
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_19.spice
-		conditions {
-			temperature {degrees}C 75.5
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.8608628251162671
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_20.spice
-		conditions {
-			temperature {degrees}C 92.0
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.7144411676993937
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_21.spice
-		conditions {
-			temperature {degrees}C 108.5
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.5828121269992838
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_22.spice
-		conditions {
-			temperature {degrees}C 125.0
-			vvdd V 1.8
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.4514173933225026
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_23.spice
-		conditions {
-			temperature {degrees}C -40
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.7292739692551176
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_24.spice
-		conditions {
-			temperature {degrees}C -23.5
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.5989224728335312
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_25.spice
-		conditions {
-			temperature {degrees}C -7.0
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.46941602939716
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_26.spice
-		conditions {
-			temperature {degrees}C 9.5
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.318228715592876
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_27.spice
-		conditions {
-			temperature {degrees}C 26.0
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.1870731383231148
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_28.spice
-		conditions {
-			temperature {degrees}C 42.5
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			1.0573319911312729
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_29.spice
-		conditions {
-			temperature {degrees}C 59.0
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.9015382835993523
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_30.spice
-		conditions {
-			temperature {degrees}C 75.5
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.7706271548505648
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_31.spice
-		conditions {
-			temperature {degrees}C 92.0
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.6269832336426582
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_32.spice
-		conditions {
-			temperature {degrees}C 108.5
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.4927352427408457
-		}
-
-		+
-		filename:	SDC/cace/ngspice/temp_sweep_voltage_33.spice
-		conditions {
-			temperature {degrees}C 125.0
-			vvdd V 2.0
-			vvss V 0
-			corner  tt
-		}
-		results {
-			0.3587922907094696
-		}
-	}
 
 	+
 	name:		temp_sweep_worst_cases
-	status:		skip
+	status:		active
 	description:	Mean DOUT between -40 and 125{degrees}C. on SS/FF and 1.6/2.0V
 	display:	Temperature Sweep (worst cases)
 	unit:		V
 	spec {
 		typical:	any
+	}
+	results {
+		name:		schematic
+		typical:	1.206 pass
+		status:		done
 	}
 	simulate {
 		tool:		ngspice
@@ -779,6 +843,294 @@ electrical_parameters {
 		minimum:	ss
 		maximum:	ff
 	}
+	testbenches {
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_1.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 1.6
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.7689088290978912
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_2.spice
+		conditions {
+			temperature {degrees}C -7
+			vvdd V 1.6
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.5831438055751827
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_3.spice
+		conditions {
+			temperature {degrees}C 26
+			vvdd V 1.6
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.3978780830773128
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_4.spice
+		conditions {
+			temperature {degrees}C 59
+			vvdd V 1.6
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.1945417466410748
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_5.spice
+		conditions {
+			temperature {degrees}C 92
+			vvdd V 1.6
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.027891106594249
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_6.spice
+		conditions {
+			temperature {degrees}C 125
+			vvdd V 1.6
+			vvss V 0
+			corner  ss
+		}
+		results {
+			0.7826217358269238
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_7.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 2.0
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.7644411578280161
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_8.spice
+		conditions {
+			temperature {degrees}C -7
+			vvdd V 2.0
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.543129014668919
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_9.spice
+		conditions {
+			temperature {degrees}C 26
+			vvdd V 2.0
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.3071896639866154
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_10.spice
+		conditions {
+			temperature {degrees}C 59
+			vvdd V 2.0
+			vvss V 0
+			corner  ss
+		}
+		results {
+			1.0691995940594718
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_11.spice
+		conditions {
+			temperature {degrees}C 92
+			vvdd V 2.0
+			vvss V 0
+			corner  ss
+		}
+		results {
+			0.8358413713497236
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_12.spice
+		conditions {
+			temperature {degrees}C 125
+			vvdd V 2.0
+			vvss V 0
+			corner  ss
+		}
+		results {
+			0.5989686274249534
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_13.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 1.6
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.7738162190977547
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_14.spice
+		conditions {
+			temperature {degrees}C -7
+			vvdd V 1.6
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.5582921162820116
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_15.spice
+		conditions {
+			temperature {degrees}C 26
+			vvdd V 1.6
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.324389805815555
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_16.spice
+		conditions {
+			temperature {degrees}C 59
+			vvdd V 1.6
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.0951862765313523
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_17.spice
+		conditions {
+			temperature {degrees}C 92
+			vvdd V 1.6
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.8695061416233051
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_18.spice
+		conditions {
+			temperature {degrees}C 125
+			vvdd V 1.6
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.6489825262106841
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_19.spice
+		conditions {
+			temperature {degrees}C -40
+			vvdd V 2.0
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.7641597697013314
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_20.spice
+		conditions {
+			temperature {degrees}C -7
+			vvdd V 2.0
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.5286534674779508
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_21.spice
+		conditions {
+			temperature {degrees}C 26
+			vvdd V 2.0
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.2654404558700412
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_22.spice
+		conditions {
+			temperature {degrees}C 59
+			vvdd V 2.0
+			vvss V 0
+			corner  ff
+		}
+		results {
+			1.0152268746597046
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_23.spice
+		conditions {
+			temperature {degrees}C 92
+			vvdd V 2.0
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.7402666065962608
+		}
+
+		+
+		filename:	SDC/cace/ngspice/temp_sweep_worst_cases_24.spice
+		conditions {
+			temperature {degrees}C 125
+			vvdd V 2.0
+			vvss V 0
+			corner  ff
+		}
+		results {
+			0.497875393630167
+		}
+	}
 }
 
 # List of physical parameters to be measured and their specified limits
@@ -794,5 +1146,9 @@ physical_parameters {
 	}
 	evaluate {
 		tool:		cace_area
+	}
+	results {
+		name:		schematic
+		maximum:	2.046e+04 pass
 	}
 }

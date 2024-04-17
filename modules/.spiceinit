@@ -49,3 +49,5 @@ option klu             ;  (ngspice 42+) select KLU as matrix solver
 
 
 *set sqrnoise    ; Set V2/Hz or A2/Hz. Unset V/Hz or A/Hz
+
+set num_threads=4  ; To evaluate device equations only. Solver is not parallel

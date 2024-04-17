@@ -26,9 +26,11 @@ only_toplevel=false
 spice_ignore=0
 value="
 
-.tran 0.1n \{period*(cycle_count+rst_count+2)\}
+*.tran 0.1n \{period*(cycle_count+rst_count+2)\}
+.tran 0.1n 1800
 
 .control
+save N2_R rst DOUT ready o0 o1 o2 o3 o4 o5 o6 o7 o8 o9 o10
 run
 
 *plot n2_r dout o0 o1 o2 o3 ready
