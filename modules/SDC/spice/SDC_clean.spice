@@ -1,0 +1,136 @@
+* NGSPICE file created from SDC_clean.ext - technology: sky130A
+
+.subckt RES_ISO w_444_n1783# w_444_4475# dw_238_n1989#
+X0 w_444_4475# w_444_n1783# dw_238_n1989# sky130_fd_pr__res_iso_pw w=20 l=30.5
+.ends
+
+.subckt ARRAY_RES_ISO B N3 IN
+XRES_ISO_0[0|0] B B B RES_ISO
+XRES_ISO_0[1|0] B B B RES_ISO
+XRES_ISO_0[2|0] B B B RES_ISO
+XRES_ISO_0[0|1] IN N3 B RES_ISO
+XRES_ISO_0[1|1] IN N3 B RES_ISO
+XRES_ISO_0[2|1] IN N3 B RES_ISO
+XRES_ISO_0[0|2] IN N3 B RES_ISO
+XRES_ISO_0[1|2] IN N3 B RES_ISO
+XRES_ISO_0[2|2] IN N3 B RES_ISO
+XRES_ISO_0[0|3] IN N3 B RES_ISO
+XRES_ISO_0[1|3] IN N3 B RES_ISO
+XRES_ISO_0[2|3] IN N3 B RES_ISO
+XRES_ISO_0[0|4] B B B RES_ISO
+XRES_ISO_0[1|4] B B B RES_ISO
+XRES_ISO_0[2|4] B B B RES_ISO
+.ends
+
+.subckt DFF IN CLK D ND VDD GND
+X0 VDD D ND VDD sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X1 a_n524_293# IN GND GND sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X2 ND a_n564_n268# a_n276_n268# GND sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X3 GND a_n524_293# a_n564_n268# GND sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X4 a_724_62# CLK a_n524_293# VDD sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X5 D ND VDD VDD sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X6 a_n476_62# a_n524_293# VDD VDD sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X7 D ND GND GND sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X8 GND CLK a_524_n268# GND sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X9 a_n276_n268# CLK GND GND sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X10 GND D ND GND sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X11 VDD IN a_724_62# VDD sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X12 a_n564_n268# CLK a_n476_62# VDD sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+X13 a_524_n268# a_n524_293# D GND sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.15
+.ends
+
+.subckt sky130_fd_sc_hd__inv_1$1 VGND VPWR VPB VNB A Y
+X0 Y A VGND VNB sky130_fd_pr__nfet_01v8 ad=0.169 pd=1.82 as=0.169 ps=1.82 w=0.65 l=0.15
+X1 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.26 pd=2.52 as=0.26 ps=2.52 w=1 l=0.15
+.ends
+
+.subckt PASSGATE VIN CTR VOUT VDD VSS
+Xsky130_fd_sc_hd__inv_1$1_0 VSS VDD VDD VSS CTR sky130_fd_sc_hd__inv_1$1_0/Y sky130_fd_sc_hd__inv_1$1
+X0 VOUT CTR VIN VSS sky130_fd_pr__nfet_01v8 ad=0.31 pd=2.62 as=0.165 ps=1.33 w=1 l=0.15
+X1 VIN CTR VOUT VSS sky130_fd_pr__nfet_01v8 ad=0.165 pd=1.33 as=0.31 ps=2.62 w=1 l=0.15
+X2 VOUT sky130_fd_sc_hd__inv_1$1_0/Y VIN VDD sky130_fd_pr__pfet_01v8 ad=0.31 pd=2.62 as=0.165 ps=1.33 w=1 l=0.15
+X3 VIN sky130_fd_sc_hd__inv_1$1_0/Y VOUT VDD sky130_fd_pr__pfet_01v8 ad=0.165 pd=1.33 as=0.31 ps=2.62 w=1 l=0.15
+X4 VOUT sky130_fd_sc_hd__inv_1$1_0/Y VIN VDD sky130_fd_pr__pfet_01v8 ad=0.165 pd=1.33 as=0.165 ps=1.33 w=1 l=0.15
+X5 VOUT sky130_fd_sc_hd__inv_1$1_0/Y VIN VDD sky130_fd_pr__pfet_01v8 ad=0.165 pd=1.33 as=0.165 ps=1.33 w=1 l=0.15
+X6 VIN sky130_fd_sc_hd__inv_1$1_0/Y VOUT VDD sky130_fd_pr__pfet_01v8 ad=0.165 pd=1.33 as=0.165 ps=1.33 w=1 l=0.15
+X7 VIN sky130_fd_sc_hd__inv_1$1_0/Y VOUT VDD sky130_fd_pr__pfet_01v8 ad=0.165 pd=1.33 as=0.165 ps=1.33 w=1 l=0.15
+.ends
+
+.subckt CAPOSC TOP_V BOT TOP_B
+X0 TOP_B BOT sky130_fd_pr__cap_mim_m3_1 l=10 w=10
+X1 TOP_B BOT sky130_fd_pr__cap_mim_m3_2 l=10 w=10
+X2 TOP_B BOT sky130_fd_pr__cap_mim_m3_1 l=10 w=10
+X3 TOP_V BOT sky130_fd_pr__cap_mim_m3_1 l=10 w=10
+X4 TOP_V BOT sky130_fd_pr__cap_mim_m3_2 l=10 w=10
+.ends
+
+.subckt sky130_fd_sc_hd__inv_2 A VGND VNB VPB VPWR Y
+X0 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.26 ps=2.52 w=1 l=0.15
+X1 VGND A Y VNB sky130_fd_pr__nfet_01v8 ad=0.169 pd=1.82 as=0.08775 ps=0.92 w=0.65 l=0.15
+X2 Y A VGND VNB sky130_fd_pr__nfet_01v8 ad=0.08775 pd=0.92 as=0.169 ps=1.82 w=0.65 l=0.15
+X3 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt ad=0.26 pd=2.52 as=0.135 ps=1.27 w=1 l=0.15
+.ends
+
+.subckt INV VIN VOUT VSS VDD
+Xsky130_fd_sc_hd__inv_2_0 VIN VSS VSS VDD VDD VOUT sky130_fd_sc_hd__inv_2
+Xsky130_fd_sc_hd__inv_2_1 VIN VSS VSS VDD VDD VOUT sky130_fd_sc_hd__inv_2
+Xsky130_fd_sc_hd__inv_2_2 VIN VSS VSS VDD VDD VOUT sky130_fd_sc_hd__inv_2
+Xsky130_fd_sc_hd__inv_2_3 VIN VSS VSS VDD VDD VOUT sky130_fd_sc_hd__inv_2
+Xsky130_fd_sc_hd__inv_2_4 VIN VSS VSS VDD VDD VOUT sky130_fd_sc_hd__inv_2
+Xsky130_fd_sc_hd__inv_2_5 VIN VSS VSS VDD VDD VOUT sky130_fd_sc_hd__inv_2
+.ends
+
+.subckt INVandCAP VIN CON_CV VDD VOUT CON_CBASE VSS
+XCAPOSC_0 CON_CV VSS CON_CBASE CAPOSC
+XINV_0 VIN VOUT VSS VDD INV
+.ends
+
+.subckt sky130_fd_sc_hd__inv_2$1 VPWR VGND VPB VNB Y A
+X0 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.26 ps=2.52 w=1 l=0.15
+X1 VGND A Y VNB sky130_fd_pr__nfet_01v8 ad=0.169 pd=1.82 as=0.08775 ps=0.92 w=0.65 l=0.15
+X2 Y A VGND VNB sky130_fd_pr__nfet_01v8 ad=0.08775 pd=0.92 as=0.169 ps=1.82 w=0.65 l=0.15
+X3 VPWR A Y VPB sky130_fd_pr__pfet_01v8_hvt ad=0.26 pd=2.52 as=0.135 ps=1.27 w=1 l=0.15
+.ends
+
+.subckt sky130_fd_sc_hd__inv_1 A VGND VNB VPB VPWR Y
+X0 Y A VGND VNB sky130_fd_pr__nfet_01v8 ad=0.169 pd=1.82 as=0.169 ps=1.82 w=0.65 l=0.15
+X1 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.26 pd=2.52 as=0.26 ps=2.52 w=1 l=0.15
+.ends
+
+.subckt BUFFMIN VIN VOUT VDD VSS
+Xsky130_fd_sc_hd__inv_2_0 VDD VSS VDD VSS VOUT sky130_fd_sc_hd__inv_2_0/A sky130_fd_sc_hd__inv_2$1
+Xsky130_fd_sc_hd__inv_1_0 VIN VSS VSS VDD VDD sky130_fd_sc_hd__inv_2_0/A sky130_fd_sc_hd__inv_1
+.ends
+
+.subckt OSC SENS_IN N1 N2 CON_CV VDD VSS N3
+XINVandCAP_0[0] SENS_IN N1 VDD N1 N1 VSS INVandCAP
+XINVandCAP_0[1] N1 x1_out VDD x1_out x1_out VSS INVandCAP
+XINVandCAP_0[2] x1_out x2_out VDD x2_out x2_out VSS INVandCAP
+XINVandCAP_0[3] x2_out BUFFMIN_0/VIN VDD BUFFMIN_0/VIN BUFFMIN_0/VIN VSS INVandCAP
+XINVandCAP_0[4] BUFFMIN_0/VIN CON_CV VDD N3 SENS_IN VSS INVandCAP
+XBUFFMIN_0 BUFFMIN_0/VIN N2 VDD VSS BUFFMIN
+.ends
+
+.subckt OSC_PGATE N2 N3 CTR VDD VSS IN
+XPASSGATE_0 IN CTR VIN VDD VSS PASSGATE
+XOSC_0 IN OSC_0/N1 N2 VIN VDD VSS N3 OSC
+.ends
+
+.subckt INTERNAL_SDC DOUT VDD N3_S N3_R REF_IN VSS SENS_IN N2_R
+XDFF_0 N2_S N2_R DOUT DFF_0/ND VDD VSS DFF
+XOSC_PGATE_0 N2_S N3_S DOUT VDD VSS SENS_IN OSC_PGATE
+XOSC_PGATE_1 N2_R N3_R VDD VDD VSS REF_IN OSC_PGATE
+.ends
+
+.subckt ARRAY_RES_HIGH N3 IN B
+X0 N3 IN B sky130_fd_pr__res_high_po_5p73 l=8
+X1 B B B sky130_fd_pr__res_high_po_5p73 l=8
+X2 B B B sky130_fd_pr__res_high_po_5p73 l=8
+.ends
+
+.subckt SDC_clean VDD VSS N2_R DOUT
+XARRAY_RES_ISO_0 VDD N3_S SENS_IN ARRAY_RES_ISO
+XINTERNAL_SDC_0 DOUT VDD N3_S N3_R REF_IN VSS SENS_IN N2_R INTERNAL_SDC
+XARRAY_RES_HIGH_0 N3_R REF_IN VSS ARRAY_RES_HIGH
+.ends
+

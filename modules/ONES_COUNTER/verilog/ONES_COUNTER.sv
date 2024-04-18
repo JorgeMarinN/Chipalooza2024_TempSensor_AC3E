@@ -1,5 +1,5 @@
 module ones_counter #(
-	parameter NUMBER_OF_SAMPLES = 1650
+	parameter NUMBER_OF_SAMPLES = 2047
 	)(
 	input wire clk,
 	input wire rst,
