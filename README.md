@@ -35,17 +35,16 @@ make TOP=SDC cace-validation  # Shows cace variables related to a design
 
 | Module         | Magic DRC | Klayout Precheck DRC | Magic LVS |
 |----------------|-----------|----------------------|-----------|
-| PASSGATE       | 0         | Y                    | Y         |
-| DFF            | 0         | Y                    | Y         |
-| INV            | 0         | Y                    | Y         |
-| BUFFMIN        | 0         | Y                    | Y         |
-| CAPOSC         | 0         | Y                    | Y         |
-| INVandCAP      | 0         | Y                    | Y         |
-| OSC            | 7         | Y                    | Y         |
-| INTERNAL_SDC   | 14        | Y                    | Y         |
-| ARRAY_RES_ISO  |           | Y                    | Y         |
-| ARRAY_RES_HIGH |           | Y                    | Y         |
-| SDC            |           | Y                    | Y         |
-| ONES_COUNTER   | 0         | Y                    | -         |
-
-Note: DRC errors can be fixed on subsequent designs.
+| PASSGATE       | 0         | 0                    | Y         |
+| DFF            | 0         | 0                    | Y         |
+| INV            | 0         | 0                    | Y         |
+| BUFFMIN        | 0         | 0                    | Y         |
+| CAPOSC         | 0         | 0                    | Y         |
+| INVandCAP      | 0         | 0                    | Y         |
+| OSC            | 7         | 0                    | Y         |
+| INTERNAL_SDC   | 14        | 0                    | Y         |
+| ARRAY_RES_ISO  |           | 0                    | Y         |
+| ARRAY_RES_HIGH |           | 0                    | Y         |
+| SDC            |           | 0                    | Y         |
+| ONES_COUNTER   | 0         | 0                    | -         |
+| SDC_DIGITAL    | 0         | 0                    | still not checked |
