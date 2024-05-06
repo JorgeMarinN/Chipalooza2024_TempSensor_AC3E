@@ -1,0 +1,60 @@
+magic
+tech sky130A
+timestamp 1713591521
+<< metal1 >>
+rect 0 37 100 48
+rect 0 11 5 37
+rect 31 11 37 37
+rect 63 11 69 37
+rect 95 11 100 37
+rect 0 0 100 11
+<< via1 >>
+rect 5 11 31 37
+rect 37 11 63 37
+rect 69 11 95 37
+<< metal2 >>
+rect 0 38 100 48
+rect 0 37 16 38
+rect 44 37 56 38
+rect 84 37 100 38
+rect 0 11 5 37
+rect 95 11 100 37
+rect 0 10 16 11
+rect 44 10 56 11
+rect 84 10 100 11
+rect 0 0 100 10
+<< via2 >>
+rect 16 37 44 38
+rect 56 37 84 38
+rect 16 11 31 37
+rect 31 11 37 37
+rect 37 11 44 37
+rect 56 11 63 37
+rect 63 11 69 37
+rect 69 11 84 37
+rect 16 10 44 11
+rect 56 10 84 11
+<< metal3 >>
+rect 0 40 100 48
+rect 0 8 14 40
+rect 46 8 54 40
+rect 86 8 100 40
+rect 0 0 100 8
+<< via3 >>
+rect 14 38 46 40
+rect 14 10 16 38
+rect 16 10 44 38
+rect 44 10 46 38
+rect 14 8 46 10
+rect 54 38 86 40
+rect 54 10 56 38
+rect 56 10 84 38
+rect 84 10 86 38
+rect 54 8 86 10
+<< metal4 >>
+rect 0 40 100 48
+rect 0 8 14 40
+rect 46 8 54 40
+rect 86 8 100 40
+rect 0 0 100 8
+<< end >>

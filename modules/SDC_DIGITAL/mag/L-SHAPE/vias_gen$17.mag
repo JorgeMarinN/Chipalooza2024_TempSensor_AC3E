@@ -1,0 +1,26 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713593032
+<< error_p >>
+rect 284 0 320 770
+<< metal4 >>
+rect 0 663 284 770
+rect 0 427 24 663
+rect 260 427 284 663
+rect 0 343 284 427
+rect 0 107 24 343
+rect 260 107 284 343
+rect 0 0 284 107
+<< via4 >>
+rect 24 427 260 663
+rect 24 107 260 343
+<< metal5 >>
+rect 0 663 284 770
+rect 0 427 24 663
+rect 260 427 284 663
+rect 0 343 284 427
+rect 0 107 24 343
+rect 260 107 284 343
+rect 0 0 284 107
+<< end >>

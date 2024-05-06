@@ -1,0 +1,43 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713591521
+<< metal4 >>
+rect 2696 -8974 3131 3398
+use mim_cap$1  mim_cap$1_0
+timestamp 1713591521
+transform 1 0 464 0 1 1370
+box -40 -40 2332 2040
+use mim_cap$1  mim_cap$1_1
+timestamp 1713591521
+transform 1 0 464 0 1 -8946
+box -40 -40 2332 2040
+use mim_cap$1  mim_cap$1_2
+timestamp 1713591521
+transform 1 0 464 0 1 -3788
+box -40 -40 2332 2040
+use mim_cap  mim_cap_0
+timestamp 1713591521
+transform 1 0 487 0 1 -1209
+box -80 -80 2644 2080
+use mim_cap  mim_cap_1
+timestamp 1713591521
+transform 1 0 487 0 1 -6367
+box -80 -80 2644 2080
+use top_connector  top_connector_0
+timestamp 1713591521
+transform 1 0 0 0 1 244
+box 503 531 2425 1165
+use top_connector  top_connector_1
+timestamp 1713591521
+transform -1 0 2928 0 -1 -5820
+box 503 531 2425 1165
+use top_connector  top_connector_2
+timestamp 1713591521
+transform 1 0 0 0 1 -4914
+box 503 531 2425 1165
+<< labels >>
+flabel metal4 s 1465 -232 1465 -232 2 FreeSans 480 0 0 0 BOT
+flabel metal4 s 1399 1847 1399 1847 2 FreeSans 480 0 0 0 TOP_V
+flabel metal4 s 1237 -2639 1237 -2639 2 FreeSans 480 0 0 0 TOP_B
+<< end >>

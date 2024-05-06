@@ -1,0 +1,56 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713593032
+<< pwell >>
+rect -26 -26 226 2026
+<< psubdiff >>
+rect 0 1969 200 2000
+rect 0 31 49 1969
+rect 151 31 200 1969
+rect 0 0 200 31
+<< psubdiffcont >>
+rect 49 31 151 1969
+<< locali >>
+rect 0 1969 200 2000
+rect 0 1953 49 1969
+rect 151 1953 200 1969
+rect 0 47 47 1953
+rect 153 47 200 1953
+rect 0 31 49 47
+rect 151 31 200 47
+rect 0 0 200 31
+<< viali >>
+rect 47 47 49 1953
+rect 49 47 151 1953
+rect 151 47 153 1953
+<< metal1 >>
+rect 0 1986 200 2000
+rect 0 14 10 1986
+rect 190 14 200 1986
+rect 0 0 200 14
+<< via1 >>
+rect 10 1953 190 1986
+rect 10 47 47 1953
+rect 47 47 153 1953
+rect 153 47 190 1953
+rect 10 14 190 47
+<< metal2 >>
+rect 0 1988 200 2000
+rect 0 1986 32 1988
+rect 168 1986 200 1988
+rect 0 14 10 1986
+rect 190 14 200 1986
+rect 0 12 32 14
+rect 168 12 200 14
+rect 0 0 200 12
+<< via2 >>
+rect 32 1986 168 1988
+rect 32 14 168 1986
+rect 32 12 168 14
+<< metal3 >>
+rect 0 1988 200 2000
+rect 0 12 32 1988
+rect 168 12 200 1988
+rect 0 0 200 12
+<< end >>

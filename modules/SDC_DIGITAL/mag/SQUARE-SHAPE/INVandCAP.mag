@@ -1,0 +1,39 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713591521
+<< poly >>
+rect -136 12537 -135 12539
+<< metal1 >>
+rect -136 12843 -128 12862
+rect 1686 12538 1688 12543
+rect -136 12307 -134 12309
+<< metal4 >>
+rect 519 10486 543 10508
+rect 298 5905 606 6172
+use CAPOSC  CAPOSC_0
+timestamp 1713591521
+transform -1 0 2112 0 1 8650
+box 407 -8986 3131 3410
+use INV  INV_0
+timestamp 1713591521
+transform 1 0 -60 0 1 12308
+box -76 -48 1748 592
+use vias_gen$5  vias_gen$5_0
+timestamp 1713591521
+transform 1 0 -136 0 1 12060
+box 0 0 1824 200
+<< labels >>
+flabel metal1 s -136 12852 -136 12852 2 FreeSans 224 0 0 0 VDD
+port 1 nsew
+flabel metal1 s 1688 12540 1688 12540 2 FreeSans 224 0 0 0 VOUT
+port 2 nsew
+flabel metal1 s -135 12308 -135 12308 2 FreeSans 224 0 0 0 VSS
+port 3 nsew
+flabel metal4 s 361 6011 361 6011 2 FreeSans 480 0 0 0 CON_CBASE
+port 4 nsew
+flabel metal4 s 523 10497 523 10497 2 FreeSans 480 0 0 0 CON_CV
+port 5 nsew
+flabel poly s -136 12537 -135 12539 2 FreeSans 240 0 0 0 VIN
+port 7 nsew
+<< end >>

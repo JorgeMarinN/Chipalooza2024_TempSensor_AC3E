@@ -150,6 +150,20 @@ proc placement_move {placement dx dy} {
     return $placement
 }
 
+proc placement_expand {placement dx dy} {
+    # Stretch or shrink the placement box.
+    # dx and dy are added to both corners
+
+    dict set placement llx [expr [dict get $placement llx] - int([magic::u2l $dx])]
+    dict set placement lly [expr [dict get $placement lly] - int([magic::u2l $dy])]
+
+    dict set placement urx [expr [dict get $placement urx] + int([magic::u2l $dx])]
+    dict set placement ury [expr [dict get $placement ury] + int([magic::u2l $dy])]
+
+    #puts "placement_move | final: $placement"
+    return $placement
+}
+
 proc _placement_overlap_shift { placement } {
     # Specially on standard cells, it's important to apply a overlap to make contact on the metals
     # This operation should be applied before and after cell placement.
@@ -221,6 +235,7 @@ proc insert_pcell {cellname params placement} {
     # returns
     #   instance name
 
+    separation_handler
     set library sky130
     set gencell_type sky130_fd_pr__$cellname
 
@@ -229,8 +244,12 @@ proc insert_pcell {cellname params placement} {
         error "No import routine for ${library} library cell ${gencell_type}!"
     }
 
+    puts "Inserting $cellname pcell"
+
     set base_parameters [${library}::${gencell_type}_defaults]
     set parameters [dict merge $base_parameters $params]
+
+    puts "Parameters: $parameters"
 
     set rot [dict get $placement rot]
     place $placement
@@ -351,8 +370,8 @@ namespace eval testing {
         adjust_screen
     }
 
-    namespace export place_two_nfets    
-    proc place_two_nfets {} {
+    namespace export place_two_pcells    
+    proc place_two_pcells {} {
         # Placement should change pcell position
         puts "Placing only one resistor"
         set placement [default_placement]
@@ -387,5 +406,22 @@ namespace eval testing {
         puts "If it says 0 0, then 'placement' was not used :("
 
         adjust_screen
+    }
+
+    proc guard_ring_insertion {} {
+        test_start "Placing a guard ring"
+
+        set placement [default_placement 0 0 10 10]
+
+        puts "Default placement: $placement"
+
+        place $placement
+
+
+        separation_handler
+        set library sky130
+        set gencell_type nwell_draw
+        set parameters {}
+        magic::gencell_create $gencell_type $library $parameters
     }
 }

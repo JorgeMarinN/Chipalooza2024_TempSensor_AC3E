@@ -1,0 +1,13 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713591521
+<< metal4 >>
+rect 503 1065 2425 1165
+<< metal5 >>
+rect 503 531 2425 781
+use vias_gen$1  vias_gen$1_0
+timestamp 1713591521
+transform 1 0 503 0 1 781
+box 0 0 1922 320
+<< end >>

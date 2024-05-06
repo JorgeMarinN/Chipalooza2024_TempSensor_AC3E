@@ -1,0 +1,78 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713593032
+<< metal1 >>
+rect 13831 13288 14179 13384
+rect 12996 12964 13979 13164
+rect 83 12668 16003 12840
+rect -1000 12307 -117 12507
+rect 83 12048 16003 12220
+<< metal3 >>
+rect 13631 11924 13831 13288
+<< metal4 >>
+rect 12796 12507 12996 12964
+rect -1200 -520 -1000 12307
+rect 14002 -520 15924 -393
+rect -1200 -680 15924 -520
+use BUFFMIN  BUFFMIN_0
+timestamp 1713593032
+transform 1 0 14255 0 -1 13336
+box -76 -48 644 592
+use inv_connection  inv_connection_0
+array 0 3 3524 0 0 0
+timestamp 1713593032
+transform 1 0 0 0 1 0
+box 1828 -472 3607 12507
+use INVandCAP  INVandCAP_0
+array 0 4 3524 0 0 0
+timestamp 1713593032
+transform 1 0 219 0 1 -136
+box -1019 -336 1705 12900
+use vias_gen$2  vias_gen$2_0
+timestamp 1713593032
+transform 1 0 -1200 0 1 12307
+box 0 0 200 200
+use vias_gen$2  vias_gen$2_1
+timestamp 1713593032
+transform 1 0 12796 0 1 12964
+box 0 0 200 200
+use vias_gen$4  vias_gen$4_0
+timestamp 1713593032
+transform 1 0 -117 0 1 12307
+box 0 0 200 200
+use vias_gen$4  vias_gen$4_1
+timestamp 1713593032
+transform 1 0 13979 0 1 12964
+box 0 0 200 200
+use vias_gen$5$2  vias_gen$5$2_0
+timestamp 1713593032
+transform 1 0 13631 0 1 13288
+box 0 0 200 96
+<< labels >>
+flabel metal1 s -707 12431 -707 12431 2 FreeSans 44 0 0 0 SENS_IN
+flabel metal1 s 14851 13106 14851 13106 2 FreeSans 44 0 0 0 N2
+flabel metal1 s 85 12717 85 12717 2 FreeSans 44 0 0 0 VDD
+flabel metal1 s 84 12173 84 12173 2 FreeSans 44 0 0 0 VSS
+flabel metal1 s 2489 12451 2489 12451 2 FreeSans 44 0 0 0 N1
+flabel metal1 s 6307 12392 6307 12392 2 FreeSans 44 0 0 0 x1_out
+flabel metal1 s 9840 12408 9840 12408 2 FreeSans 44 0 0 0 x2_out
+flabel metal1 s 16001 12406 16001 12406 2 FreeSans 44 0 0 0 N3
+flabel metal1 s -718 12454 -718 12454 2 FreeSans 44 0 0 0 SENS_IN
+port 1 nsew
+flabel metal1 s 16001 12405 16001 12405 2 FreeSans 44 0 0 0 N3
+port 2 nsew
+flabel metal1 s 85 12716 85 12716 2 FreeSans 44 0 0 0 VDD
+port 3 nsew
+flabel metal1 s 14851 13103 14851 13103 2 FreeSans 44 0 0 0 N2
+port 4 nsew
+flabel metal1 s 84 12172 84 12172 2 FreeSans 44 0 0 0 VSS
+port 5 nsew
+flabel metal1 s 2489 12448 2489 12448 2 FreeSans 44 0 0 0 N1
+port 6 nsew
+flabel metal4 s 14838 10350 14838 10350 2 FreeSans 96 0 0 0 CON_CV
+flabel metal4 s 14838 10361 14838 10361 2 FreeSans 96 0 0 0 CON_CV
+port 7 nsew
+flabel poly s 83 12402 83 12402 2 FreeSans 48 0 0 0 SENS_IN
+port 1 nsew
+<< end >>

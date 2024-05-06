@@ -1,0 +1,127 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713593032
+<< error_s >>
+rect -6593 16016 -2181 16104
+rect -821 16016 3591 16104
+rect 4951 16016 9363 16104
+rect 10723 16016 15135 16104
+rect 16495 16016 20907 16104
+rect -6593 8016 -2181 8104
+rect -821 8016 3591 8104
+rect 4951 8016 9363 8104
+rect 10723 8016 15135 8104
+rect 16495 8016 20907 8104
+<< nwell >>
+rect -2101 15936 -901 22924
+rect 3671 15936 4871 22924
+rect 9443 15936 10643 22924
+rect 15215 15936 16415 22924
+rect -6673 14924 20987 15936
+rect -2101 7936 -901 14924
+rect 3671 7936 4871 14924
+rect 9443 7936 10643 14924
+rect 15215 7936 16415 14924
+rect -6673 6924 20987 7936
+rect -2101 -64 -901 6924
+rect 3671 -64 4871 6924
+rect 9443 -64 10643 6924
+rect 15215 -64 16415 6924
+<< locali >>
+rect -6547 22764 20861 22798
+rect -6547 16062 20861 16096
+rect -6547 14764 20861 14798
+rect -6547 8062 20861 8096
+rect -6547 6764 20861 6798
+rect -6547 62 20861 96
+<< metal1 >>
+rect -7073 370 -6673 22790
+rect -2427 22490 -1701 22790
+rect -7073 70 -6347 370
+rect -2101 70 -1701 22490
+rect -1301 -784 -901 23044
+rect 3671 -184 4071 23644
+rect 4471 -784 4871 23044
+rect 9443 -184 9843 23644
+rect 10243 -784 10643 23044
+rect 15215 -184 15615 23644
+rect 16015 370 16415 22790
+rect 20661 22490 21387 22790
+rect 16015 70 16741 370
+rect 20987 70 21387 22490
+<< metal2 >>
+rect 3671 23644 15615 24044
+rect -1301 23044 10643 23444
+rect 3671 -584 15615 -184
+rect -1301 -1184 10643 -784
+use RES_ISO  RES_ISO_0
+array 0 4 5772 0 2 8000
+timestamp 1713593032
+transform 1 0 -6831 0 1 2005
+box 158 -2069 4730 4919
+use vias_gen$3  vias_gen$3_0
+array 0 1 27600 0 2 8000
+timestamp 1713593032
+transform 1 0 -6747 0 1 2032
+box -36 -36 236 2036
+use vias_gen$3  vias_gen$3_1
+timestamp 1713593032
+transform 1 0 -6747 0 1 2032
+box -36 -36 236 2036
+use vias_gen$22  vias_gen$22_0
+timestamp 1713593032
+transform 1 0 3671 0 1 23644
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_1
+timestamp 1713593032
+transform 1 0 15215 0 1 23644
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_2
+timestamp 1713593032
+transform 1 0 9443 0 1 23644
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_3
+timestamp 1713593032
+transform 1 0 10243 0 1 -1184
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_4
+timestamp 1713593032
+transform 1 0 4471 0 1 -1184
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_5
+timestamp 1713593032
+transform 1 0 15215 0 1 -584
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_6
+timestamp 1713593032
+transform 1 0 9443 0 1 -584
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_7
+timestamp 1713593032
+transform 1 0 3671 0 1 -584
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_8
+timestamp 1713593032
+transform 1 0 -1301 0 1 23044
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_9
+timestamp 1713593032
+transform 1 0 10243 0 1 23044
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_10
+timestamp 1713593032
+transform 1 0 4471 0 1 23044
+box 0 0 400 400
+use vias_gen$22  vias_gen$22_11
+timestamp 1713593032
+transform 1 0 -1301 0 1 -1184
+box 0 0 400 400
+<< labels >>
+flabel metal1 s -7000 11248 -6900 11351 2 FreeSans 44 0 0 0 B
+port 2 nsew
+flabel metal1 s 4617 22650 4658 22691 2 FreeSans 44 0 0 0 N3
+port 3 nsew
+flabel metal1 s 9599 95 9640 136 2 FreeSans 44 0 0 0 IN
+port 1 nsew
+<< end >>

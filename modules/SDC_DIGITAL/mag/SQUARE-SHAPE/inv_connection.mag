@@ -1,0 +1,25 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713591521
+<< metal1 >>
+rect 1907 12371 2224 12437
+rect 2424 12307 3407 12507
+<< metal3 >>
+rect 1907 9844 3059 10044
+rect 1907 4686 3059 4886
+rect 1907 -472 3059 -272
+<< metal4 >>
+rect 2224 11845 2424 12307
+rect 1828 11645 2424 11845
+rect 2224 6687 2424 11645
+rect 1828 6487 2424 6687
+use vias_gen$2  vias_gen$2_0
+timestamp 1713591521
+transform 1 0 2224 0 1 12307
+box 0 0 200 200
+use vias_gen$4  vias_gen$4_0
+timestamp 1713591521
+transform 1 0 3407 0 1 12307
+box 0 0 200 200
+<< end >>

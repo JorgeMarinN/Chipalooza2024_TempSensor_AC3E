@@ -1,0 +1,49 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713591521
+<< error_s >>
+rect 32 1953 168 1986
+rect 10 392 190 1953
+rect 8 190 392 392
+rect 8 172 778 190
+rect 8 28 792 172
+rect 8 10 778 28
+rect 8 8 392 10
+use vias_gen$16  vias_gen$16_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box 0 0 200 200
+use vias_gen$18  vias_gen$18_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box 0 0 800 200
+use vias_gen$19  vias_gen$19_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box 0 0 800 200
+use vias_gen$21  vias_gen$21_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box 0 0 200 200
+use vias_gen$22  vias_gen$22_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box 0 0 400 400
+use vias_gen$23  vias_gen$23_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box -26 -26 226 2026
+use vias_gen$24  vias_gen$24_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box 0 0 300 400
+use vias_gen$25  vias_gen$25_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box 0 0 400 400
+use vias_gen$26  vias_gen$26_0
+timestamp 1713591521
+transform 1 0 0 0 1 0
+box 0 0 200 400
+<< end >>

@@ -1,0 +1,12 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713593032
+<< metal1 >>
+rect 158 4485 4404 4785
+rect 484 -1935 4730 -1635
+use res_poly$1  res_poly$1_0
+timestamp 1713593032
+transform 1 0 2444 0 1 1425
+box -2286 -3494 2286 3494
+<< end >>

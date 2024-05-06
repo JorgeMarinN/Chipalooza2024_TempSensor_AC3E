@@ -1,0 +1,92 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713593032
+<< poly >>
+rect 20414 8490 20449 8520
+<< metal1 >>
+rect 16765 21497 16803 21524
+rect 16864 21423 20585 21623
+rect 1267 20816 1297 20845
+rect 17943 20807 17968 20838
+rect 18708 15973 19982 16173
+rect 18972 14572 19031 15247
+rect 19782 8606 19982 15973
+rect 20385 8690 20585 21423
+rect 18987 -7 19068 192
+rect 19782 -588 19982 7004
+rect 20602 6690 20714 7020
+rect 18708 -788 19982 -588
+rect 1192 -5493 1354 -5388
+rect 17933 -5453 17968 -5409
+rect 20379 -6100 20579 6242
+rect 16764 -6144 16797 -6126
+rect 16864 -6166 20579 -6100
+<< metal2 >>
+rect 18918 7732 19118 14372
+rect 18918 7680 19770 7732
+rect 20420 6442 20520 7274
+<< metal3 >>
+rect 2393 7443 2629 7942
+rect 6276 7443 6553 7942
+rect 9368 7443 9973 7942
+rect 13061 7443 13478 7942
+rect 16796 7443 17234 7942
+rect 17968 6688 20602 6888
+use DFF  DFF_0
+timestamp 1713593032
+transform 0 -1 20120 1 0 7596
+box -636 -644 1036 626
+use OSC_PGATE  OSC_PGATE_0
+timestamp 1713593032
+transform 1 0 18106 0 1 8529
+box -17341 -795 1458 13269
+use OSC_PGATE  OSC_PGATE_1
+timestamp 1713593032
+transform 1 0 18106 0 -1 6856
+box -17341 -795 1458 13269
+use vias_gen$12  vias_gen$12_0
+timestamp 1713593032
+transform 1 0 20602 0 1 6688
+box 0 0 200 200
+use vias_gen$13  vias_gen$13_0
+timestamp 1713593032
+transform 0 -1 19822 1 0 7673
+box 0 0 64 52
+use vias_gen$14  vias_gen$14_0
+timestamp 1713593032
+transform 1 0 20379 0 1 6242
+box 0 0 200 200
+use vias_gen$14  vias_gen$14_1
+timestamp 1713593032
+transform 1 0 18918 0 1 14372
+box 0 0 200 200
+use vias_gen$15  vias_gen$15_0
+timestamp 1713593032
+transform 1 0 20449 0 1 8490
+box 0 0 66 200
+<< labels >>
+flabel metal1 s 16777 -6138 16777 -6138 2 FreeSans 44 0 0 0 N2_R
+flabel metal1 s 16777 21510 16777 21510 2 FreeSans 44 0 0 0 N2_S
+flabel metal1 s 20654 6928 20654 6928 2 FreeSans 44 0 0 0 VSS
+flabel metal1 s 17952 20810 17952 20810 2 FreeSans 44 0 0 0 N3_S
+flabel metal1 s 17953 -5441 17953 -5441 2 FreeSans 44 0 0 0 N3_R
+flabel metal1 s 1274 -5441 1274 -5441 2 FreeSans 44 0 0 0 REF_IN
+flabel metal1 s 1274 20818 1274 20818 2 FreeSans 44 0 0 0 SENS_IN
+flabel metal1 s 19845 10361 19845 10361 2 FreeSans 44 0 0 0 VDD
+flabel metal1 s 20654 6947 20654 6947 2 FreeSans 44 0 0 0 VSS
+port 1 nsew
+flabel metal1 s 17952 20829 17952 20829 2 FreeSans 44 0 0 0 N3_S
+port 2 nsew
+flabel metal1 s 17953 -5422 17953 -5422 2 FreeSans 44 0 0 0 N3_R
+port 3 nsew
+flabel metal1 s 1274 -5422 1274 -5422 2 FreeSans 44 0 0 0 REF_IN
+port 4 nsew
+flabel metal1 s 1274 20837 1274 20837 2 FreeSans 44 0 0 0 SENS_IN
+port 5 nsew
+flabel metal1 s 19845 10380 19845 10380 2 FreeSans 44 0 0 0 VDD
+port 6 nsew
+flabel metal2 s 19017 10340 19017 10340 2 FreeSans 44 0 0 0 DOUT
+flabel metal2 s 18981 10340 18981 10340 2 FreeSans 44 0 0 0 DOUT
+port 7 nsew
+<< end >>

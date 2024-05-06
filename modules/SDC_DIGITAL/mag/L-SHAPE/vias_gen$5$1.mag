@@ -1,0 +1,43 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713593032
+<< poly >>
+rect 0 44 300 54
+rect 0 10 31 44
+rect 65 10 99 44
+rect 133 10 167 44
+rect 201 10 235 44
+rect 269 10 300 44
+rect 0 0 300 10
+<< polycont >>
+rect 31 10 65 44
+rect 99 10 133 44
+rect 167 10 201 44
+rect 235 10 269 44
+<< locali >>
+rect 0 44 300 54
+rect 0 10 25 44
+rect 65 10 97 44
+rect 133 10 167 44
+rect 203 10 235 44
+rect 275 10 300 44
+rect 0 0 300 10
+<< viali >>
+rect 25 10 31 44
+rect 31 10 59 44
+rect 97 10 99 44
+rect 99 10 131 44
+rect 169 10 201 44
+rect 201 10 203 44
+rect 241 10 269 44
+rect 269 10 275 44
+<< metal1 >>
+rect 0 44 300 54
+rect 0 10 25 44
+rect 59 10 97 44
+rect 131 10 169 44
+rect 203 10 241 44
+rect 275 10 300 44
+rect 0 0 300 10
+<< end >>

@@ -1,0 +1,62 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713591521
+<< error_s >>
+rect -2478 13249 -2422 13269
+rect -2398 13249 -2342 13269
+rect -2510 13193 -2478 13249
+rect -2422 13193 -2398 13249
+rect -2342 13193 -2310 13249
+rect -2478 13009 -2422 13193
+rect -2398 13009 -2342 13193
+<< metal1 >>
+rect -1296 12956 -1242 13022
+rect -13359 12553 -13324 12725
+rect -138 12553 602 12725
+rect -16941 12192 -16769 12392
+rect -170 12256 -138 12322
+rect -13250 11933 -13213 12105
+rect 402 7644 602 12553
+rect 881 6477 924 6718
+<< metal3 >>
+rect -138 6058 402 6258
+<< metal4 >>
+rect 1 7110 472 7310
+rect -217 6372 596 6572
+<< metal5 >>
+rect -217 7206 1 7976
+use OSC  OSC_0
+timestamp 1713591521
+transform 1 0 -16141 0 1 -115
+box -1200 -680 16108 13384
+use PASSGATE  PASSGATE_0
+timestamp 1713591521
+transform 1 0 -1000 0 1 6400
+box 1366 -368 2458 1280
+use vias_gen$17  vias_gen$17_0
+timestamp 1713591521
+transform 1 0 1 0 1 7206
+box 0 0 320 770
+<< labels >>
+flabel metal1 s -16891 12281 -16891 12281 2 FreeSans 44 0 0 0 IN
+flabel metal1 s -13352 12632 -13352 12632 2 FreeSans 44 0 0 0 VDD
+flabel metal1 s -13243 12011 -13243 12011 2 FreeSans 44 0 0 0 VSS
+flabel metal1 s -1276 12983 -1276 12983 2 FreeSans 44 0 0 0 N2
+flabel metal1 s -157 12282 -157 12282 2 FreeSans 44 0 0 0 N3
+flabel metal1 s 904 6555 904 6555 2 FreeSans 44 0 0 0 CTR
+flabel metal1 s -16891 12300 -16891 12300 2 FreeSans 44 0 0 0 IN
+port 1 nsew
+flabel metal1 s -13352 12651 -13352 12651 2 FreeSans 44 0 0 0 VDD
+port 2 nsew
+flabel metal1 s -13243 12030 -13243 12030 2 FreeSans 44 0 0 0 VSS
+port 3 nsew
+flabel metal1 s -1276 13002 -1276 13002 2 FreeSans 44 0 0 0 N2
+port 4 nsew
+flabel metal1 s -157 12301 -157 12301 2 FreeSans 44 0 0 0 N3
+port 5 nsew
+flabel metal1 s 904 6574 904 6574 2 FreeSans 44 0 0 0 CTR
+port 6 nsew
+flabel metal4 s 69 6445 69 6445 2 FreeSans 96 0 0 0 VOUT
+flabel metal4 s 69 7187 69 7187 2 FreeSans 96 0 0 0 VIN
+<< end >>

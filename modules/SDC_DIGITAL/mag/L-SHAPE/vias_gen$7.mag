@@ -1,0 +1,87 @@
+magic
+tech sky130A
+timestamp 1713593032
+<< metal2 >>
+rect 0 194 38 200
+rect 0 166 5 194
+rect 33 166 38 194
+rect 0 154 38 166
+rect 0 126 5 154
+rect 33 126 38 154
+rect 0 114 38 126
+rect 0 86 5 114
+rect 33 86 38 114
+rect 0 74 38 86
+rect 0 46 5 74
+rect 33 46 38 74
+rect 0 34 38 46
+rect 0 6 5 34
+rect 33 6 38 34
+rect 0 0 38 6
+<< via2 >>
+rect 5 166 33 194
+rect 5 126 33 154
+rect 5 86 33 114
+rect 5 46 33 74
+rect 5 6 33 34
+<< metal3 >>
+rect 0 196 38 200
+rect 0 164 3 196
+rect 35 164 38 196
+rect 0 156 38 164
+rect 0 124 3 156
+rect 35 124 38 156
+rect 0 116 38 124
+rect 0 84 3 116
+rect 35 84 38 116
+rect 0 76 38 84
+rect 0 44 3 76
+rect 35 44 38 76
+rect 0 36 38 44
+rect 0 4 3 36
+rect 35 4 38 36
+rect 0 0 38 4
+<< via3 >>
+rect 3 194 35 196
+rect 3 166 5 194
+rect 5 166 33 194
+rect 33 166 35 194
+rect 3 164 35 166
+rect 3 154 35 156
+rect 3 126 5 154
+rect 5 126 33 154
+rect 33 126 35 154
+rect 3 124 35 126
+rect 3 114 35 116
+rect 3 86 5 114
+rect 5 86 33 114
+rect 33 86 35 114
+rect 3 84 35 86
+rect 3 74 35 76
+rect 3 46 5 74
+rect 5 46 33 74
+rect 33 46 35 74
+rect 3 44 35 46
+rect 3 34 35 36
+rect 3 6 5 34
+rect 5 6 33 34
+rect 33 6 35 34
+rect 3 4 35 6
+<< metal4 >>
+rect 0 196 38 200
+rect 0 164 3 196
+rect 35 164 38 196
+rect 0 156 38 164
+rect 0 124 3 156
+rect 35 124 38 156
+rect 0 116 38 124
+rect 0 84 3 116
+rect 35 84 38 116
+rect 0 76 38 84
+rect 0 44 3 76
+rect 35 44 38 76
+rect 0 36 38 44
+rect 0 4 3 36
+rect 35 4 38 36
+rect 0 0 38 4
+<< end >>

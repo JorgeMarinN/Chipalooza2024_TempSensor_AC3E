@@ -1,0 +1,48 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1713591521
+<< error_s >>
+rect 700 1312 734 1346
+rect 2126 1312 2160 1346
+rect 700 -1346 734 -1312
+rect 2126 -1346 2160 -1312
+<< pwell >>
+rect -752 1286 3558 1372
+rect -752 -1286 -666 1286
+rect 3472 -1286 3558 1286
+rect -752 -1372 3558 -1286
+<< locali >>
+rect -726 1312 3532 1346
+rect -726 -1312 -692 1312
+rect 3498 -1312 3532 1312
+rect -726 -1346 3532 -1312
+<< metal1 >>
+rect -726 795 -592 1010
+rect 834 794 1972 1481
+rect 3398 795 3532 1010
+rect -882 -123 -782 -20
+rect -726 -990 -592 -795
+rect 834 -1481 1972 -794
+rect 3398 -990 3532 -795
+use sky130_fd_pr__res_high_po_5p73_DTWCRZ  sky130_fd_pr__res_high_po_5p73_DTWCRZ_0
+array 0 2 1426 0 0 0
+timestamp 1713591521
+transform 1 0 -23 0 1 0
+box -729 -1372 729 1372
+use vias_gen$23  vias_gen$23_0
+timestamp 1713591521
+transform 1 0 -926 0 1 -990
+box -26 -26 226 2026
+use vias_gen$23  vias_gen$23_1
+timestamp 1713591521
+transform 1 0 3532 0 1 -990
+box -26 -26 226 2026
+<< labels >>
+flabel metal1 s -882 -123 -782 -20 2 FreeSans 44 0 0 0 B
+port 3 nsew
+flabel metal1 s 1280 1380 1300 1400 2 FreeSans 44 0 0 0 N3
+port 1 nsew
+flabel metal1 s 1280 -1427 1300 -1407 2 FreeSans 44 0 0 0 IN
+port 2 nsew
+<< end >>
