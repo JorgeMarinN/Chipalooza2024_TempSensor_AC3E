@@ -72,8 +72,7 @@ only_toplevel=true
 spice_ignore=0
 format="tcleval( @value )"
 value="
-.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice tt
-*.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice tt
+.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice tt
 
 *.include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}
@@ -82,8 +81,7 @@ only_toplevel=true
 spice_ignore=1
 format="tcleval( @value )"
 value="
-*.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice ff
-.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.ff.red ff
+.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice ff
 
 .include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}
@@ -92,8 +90,7 @@ only_toplevel=true
 spice_ignore=1
 format="tcleval( @value )"
 value="
-*.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/combined/sky130.lib.spice ss
-.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.ss.red ss
+.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice ss
 
 .include $env(PDK_ROOT)/$env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 "}

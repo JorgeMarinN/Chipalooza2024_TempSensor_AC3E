@@ -254,6 +254,7 @@ create-schematic: create-validation
 ifneq (,$(wildcard $(_FIRST_TOP_MODULE_DIR)/$(TOP)/symbol/$(TOP).sch))
 	$(call ERROR_MESSAGE, schematic already exists)
 else
+	mkdir -p $(_FIRST_TOP_MODULE_DIR)/$(TOP)/symbol/
 	xschem --rcfile $(XSCHEM_RCFILE) \
 	--no_x \
 	--quit \
